@@ -1,0 +1,66 @@
+# Unity generated files
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
+
+# Auto-generated project files
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.meta
+
+# macOS specific files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows thumbnail cache files
+/Thumbs.db
+/ehthumbs.db
+
+# Windows folder configuration file
+Desktop.ini
+
+# Visual Studio Code generated files
+.vscode/
+
+# Rider generated files
+.idea/
+
+# Project settings
+ProjectSettings/AssetStore.json
+ProjectSettings/ProjectVersion.txt
+ProjectSettings/UnityConnectSettings.asset
+
+# Build artifacts
+*.apk
+*.unitypackage
+
+# iOS
+/[Bb]uild/[Ii]OS/
+*.ipa
+*.xcworkspace
+*.xcuserdatad
+
+# Android
+/[Bb]uild/[Aa]ndroid/
+*.apk
+*.aar
+*.gradle
+*.keystore
+
+# WebGL
+/[Bb]uild/[Ww]eb[Gg]L/
