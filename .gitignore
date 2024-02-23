@@ -1,11 +1,11 @@
 # Unity generated files
-/[Ll]ibrary/
-/[Tt]emp/
-/[Oo]bj/
-/[Bb]uild/
-/[Bb]uilds/
-/[Ll]ogs/
-/[Uu]ser[Ss]ettings/
+*/[Ll]ibrary/
+*/[Tt]emp/
+*/[Oo]bj/
+*/[Bb]uild/
+*/[Bb]uilds/
+*/[Ll]ogs/
+*/[Uu]ser[Ss]ettings/
 
 # Auto-generated project files
 *.csproj
@@ -20,7 +20,7 @@
 *.svd
 *.pdb
 *.mdb
-*.meta
+*.htm
 
 # macOS specific files
 .DS_Store
@@ -48,6 +48,7 @@ ProjectSettings/UnityConnectSettings.asset
 # Build artifacts
 *.apk
 *.unitypackage
+*.vsconfig
 
 # iOS
 /[Bb]uild/[Ii]OS/
