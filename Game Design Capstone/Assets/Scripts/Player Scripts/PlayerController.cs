@@ -16,8 +16,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Transform brtransform;
     [SerializeField] Transform bltransform;
 
-    public float rightAcceleration = 500.0f;
-    public float leftAcceleration = 500.0f;
+    public float rightAcceleration = 1000.0f;
+    public float leftAcceleration = 1000.0f;
     public float breakingForce = 300.0f;
 
     private float currentRightAcceleration = 0.0f;
