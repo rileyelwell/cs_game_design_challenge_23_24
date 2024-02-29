@@ -336,6 +336,11 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 3613567641014311022, guid: 2631550de16b54543bb762f2a16bfaf8, type: 3}
+--- !u!1 &605736932 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6656078602638682886, guid: 3257c0ec70121e44ba5e3c66e51fd34d, type: 3}
+  m_PrefabInstance: {fileID: 1572368976788774197}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -659,7 +664,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1612192759
 Transform:
   m_ObjectHideFlags: 0
@@ -684,7 +689,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1612192758}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed12ac982a067cd418e52fa5f89f8be2, type: 3}
   m_Name: 
@@ -853,13 +858,37 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1448940773750864594, guid: 3257c0ec70121e44ba5e3c66e51fd34d, type: 3}
       insertIndex: 0
       addedObject: {fileID: 1612192759}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6656078602638682886, guid: 3257c0ec70121e44ba5e3c66e51fd34d, type: 3}
+      insertIndex: 5
+      addedObject: {fileID: 4256796521823157753}
   m_SourcePrefab: {fileID: 100100000, guid: 3257c0ec70121e44ba5e3c66e51fd34d, type: 3}
 --- !u!4 &4256796521823157751 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1448940773750864594, guid: 3257c0ec70121e44ba5e3c66e51fd34d, type: 3}
   m_PrefabInstance: {fileID: 1572368976788774197}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4256796521823157753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 605736932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 632784c36beaef1408eace6a3bcf9bd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  raycastDistance: 100
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  rayDirection: {x: 0, y: 0, z: 0}
+  drawDistance: 5
+  interpolationRatio: 0.5
+  lifeSpan: 1
+  stepDensity: 0.5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

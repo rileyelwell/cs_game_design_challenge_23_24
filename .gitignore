@@ -8,7 +8,7 @@
 */[Uu]ser[Ss]ettings/
 
 # Auto-generated project files
-*.csproj
+
 *.unityproj
 *.sln
 *.suo
@@ -23,7 +23,7 @@
 *.htm
 *.vsidx
 *.traceevents
-*.csproj
+
 
 # macOS specific files
 .DS_Store
