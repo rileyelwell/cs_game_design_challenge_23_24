@@ -848,6 +848,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5313373360577917464, guid: 3257c0ec70121e44ba5e3c66e51fd34d, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6656078602638682886, guid: 3257c0ec70121e44ba5e3c66e51fd34d, type: 3}
       propertyPath: m_Name
       value: Robot
@@ -883,15 +887,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 632784c36beaef1408eace6a3bcf9bd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  raycastDistance: 100
+  raycastDistance: 10
   layerMask:
     serializedVersion: 2
     m_Bits: 0
   rayDirection: {x: 0, y: 0, z: 0}
   drawDistance: 5
   interpolationRatio: 1
-  stepCountSortOf: 1
   ySteps: 1
+  xSteps: 1
   lifeSpan: 1
   stepDensity: 0.05
   myCode: 0

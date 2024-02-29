@@ -53,7 +53,7 @@ public class Ray : MonoBehaviour
                {
                     for (float y = 0.0f; y < ySteps; y += stepDensity)
                     {
-                         Debug.DrawLine(transform.position, transform.position +( (transform.forward + Vector3.Lerp(-transform.up, transform.up, y) + Vector3.Lerp(-transform.right, transform.right, x)) ).normalized * drawDistance, Color.blue, lifeSpan, false);
+                         Debug.DrawLine(transform.position, transform.position + ( (transform.forward + Vector3.Lerp(-transform.up, transform.up, y) + Vector3.Lerp(-transform.right, transform.right, x)) ).normalized * drawDistance, Color.blue, lifeSpan, false);
                     }
                }
           }
@@ -64,7 +64,8 @@ public class Ray : MonoBehaviour
                {
                     for (float y = 0.0f; y < ySteps; y += stepDensity)
                     {
-                         Debug.DrawLine(transform.position, transform.position +( (transform.forward + Vector3.Lerp(-transform.up, transform.up, y) + Vector3.Lerp(-transform.right, transform.right, x)) ) * drawDistance, Color.blue, lifeSpan, false);
+                         //Debug.DrawLine(transform.position, transform.position + ().normalized * drawDistance, Color.green, lifeSpan, false);
+                         Debug.DrawLine(transform.position, transform.position + ( (transform.forward + Vector3.Lerp(-transform.up, transform.up, y) + Vector3.Lerp(-transform.right, transform.right, x)) ).normalized * drawDistance, Color.blue, lifeSpan, false);
                     }
                }
           }
