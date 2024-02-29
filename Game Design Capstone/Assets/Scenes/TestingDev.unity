@@ -886,9 +886,9 @@ MonoBehaviour:
     m_Bits: 0
   rayDirection: {x: 0, y: 0, z: 0}
   drawDistance: 5
-  interpolationRatio: 0.5
+  interpolationRatio: 1
   lifeSpan: 1
-  stepDensity: 0.5
+  stepDensity: 0.05
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
