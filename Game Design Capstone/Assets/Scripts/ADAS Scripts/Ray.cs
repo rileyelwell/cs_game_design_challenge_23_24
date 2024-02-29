@@ -51,29 +51,11 @@ public class Ray : MonoBehaviour
                     {
                     
                          Debug.DrawLine(transform.position, transform.position + (transform.forward + Vector3.Lerp(-transform.up, transform.up, y) + Vector3.Lerp(-transform.right, transform.right, x)) * drawDistance, Color.blue, lifeSpan, false);
-                         //Debug.DrawLine(transform.position, transform.position + (transform.forward + Vector3.Lerp(-transform.up, transform.up, y) + Vector3.Lerp(-transform.right, transform.right, x)) * drawDistance, Color.blue, lifeSpan, false);
                     }
                }
           }
 
 
-
-          //Debug.Log(transform.position);
-
-          //Debug.DrawLine(transform.position, transform.position + transform.forward * drawDistance, Color.blue, lifeSpan, false);
-
-
-          //Debug.DrawLine(transform.position, transform.position + Vector3.Lerp(transform.forward, transform.up, interpolationRatio) * drawDistance, Color.blue, lifeSpan, false);
-         //Debug.DrawLine(transform.position, transform.position + Vector3.Lerp(transform.forward, (transform.up+transform.right), interpolationRatio) * drawDistance, Color.blue, lifeSpan, false);
-          //Debug.DrawLine(transform.position, transform.position + Vector3.Lerp(transform.forward, transform.right, interpolationRatio) * drawDistance, Color.blue, lifeSpan, false);
-          // up
-          //Debug.DrawLine(transform.position, transform.position + (Vector3(transform.forward.x, transform.forward.y + 0.25f, transform.forward.z) * drawDistance), Color.blue, 10.0f, false);
-
-          //Debug.DrawLine(transform.position, transform.position + (Vector3(transform.forward.x, transform.forward.y + 0.25f, transform.forward.z) * drawDistance), Color.blue, 10.0f, false);
-         // Debug.DrawLine(transform.position, transform.position + (Vector3(transform.forward.x, transform.forward.y + 0.25f, transform.forward.z + 0.25f) * drawDistance), Color.blue, 10.0f, false);
-          //Debug.DrawLine(transform.position, transform.position + (Vector3(transform.forward.x + 0.25f, transform.forward.y + 0.25f, transform.forward.z) * drawDistance), Color.blue, 10.0f, false);
-
-          //Debug.Log(transform.forward);
 
           // Perform the raycast
           RaycastHit hit;
