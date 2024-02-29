@@ -9,7 +9,6 @@ public class Ray : MonoBehaviour
      public Vector3 rayDirection;
      public float drawDistance = 5.0f;
      public float interpolationRatio = 1.0f;
-     public float stepCountSortOf = 1.0f;
      public float ySteps = 1.0f;
      public float xSteps = 1.0f;
      public float lifeSpan = 1.0f;
@@ -50,7 +49,7 @@ public class Ray : MonoBehaviour
           }
           else if (normal)
           {
-               for (float x = 0.0f; x < stepCountSortOf; x += stepDensity)
+               for (float x = 0.0f; x < xSteps; x += stepDensity)
                {
                     for (float y = 0.0f; y < ySteps; y += stepDensity)
                     {
@@ -61,9 +60,9 @@ public class Ray : MonoBehaviour
           else
           {
                {
-               for (float x = 0.0f; x < stepCountSortOf; x += stepDensity)
+               for (float x = 0.0f; x < xSteps; x += stepDensity)
                {
-                    for (float y = 0.0f; y < stepCountSortOf; y += stepDensity)
+                    for (float y = 0.0f; y < ySteps; y += stepDensity)
                     {
                          Debug.DrawLine(transform.position, transform.position +( (transform.forward + Vector3.Lerp(-transform.up, transform.up, y) + Vector3.Lerp(-transform.right, transform.right, x)) ) * drawDistance, Color.blue, lifeSpan, false);
                     }
