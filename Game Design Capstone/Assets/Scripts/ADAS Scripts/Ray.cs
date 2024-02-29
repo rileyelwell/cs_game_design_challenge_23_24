@@ -9,8 +9,10 @@ public class Ray : MonoBehaviour
      public Vector3 rayDirection;
      public float drawDistance = 5.0f;
      public float interpolationRatio = 1.0f;
+     public float stepCountSortOf = 1.0f;
      public float lifeSpan = 1.0f;
      public float stepDensity = 0.05f;
+     public bool myCode = false;
 
      void Update()
      {
@@ -24,16 +26,37 @@ public class Ray : MonoBehaviour
           Vector3 rayDirection = transform.TransformDirection(Vector3.forward);
 
           
-          
-          for (float x = 0.0f; x < interpolationRatio; x += stepDensity)
-          {
-               for (float y = 0.0f; y < interpolationRatio; y += stepDensity)
+          // intended for interpolation ratio of 1.0
+          if (myCode){
+               for (float x = 0.0f; x < interpolationRatio; x += stepDensity)
                {
-                    //Vector3 horizontalVec = Vector3(0.0f, 0.0f, (transform.right.z - (transform.right + stepDensity) * x )).normalize;
-                    Debug.DrawLine(transform.position, transform.position + (transform.forward + Vector3.Lerp(-transform.up, transform.up, y) + Vector3.Lerp(-transform.right, transform.right, x)) * drawDistance, Color.blue, lifeSpan, false);
-                    //Debug.DrawLine(transform.position, transform.position + (transform.forward + Vector3.Lerp(-transform.up, transform.up, y) + Vector3.Lerp(-transform.right, transform.right, x)) * drawDistance, Color.blue, lifeSpan, false);
+                    for (float y = 0.0f; y < interpolationRatio; y += stepDensity)
+                    {
+                         Vector3 horizontalVec = new Vector3(
+                                                       (transform.right.x - (transform.right.x) * 2 * x ), 
+                                                       (transform.up.y - (transform.up.y) * 2 * y ), 
+                                                       (transform.right.z - (transform.right.z) * 2 * x )
+                         ); //.normalized
+                         Debug.DrawLine(transform.position, transform.position + (transform.forward + horizontalVec) * drawDistance, Color.red, lifeSpan, false);
+                         //Debug.DrawLine(transform.position, transform.position + (transform.forward + Vector3.Lerp(-transform.up, transform.up, y) + Vector3.Lerp(-transform.right, transform.right, x)) * drawDistance, Color.blue, lifeSpan, false);
+                         //Debug.DrawLine(transform.position, transform.position + (transform.forward + Vector3.Lerp(-transform.up, transform.up, y) + Vector3.Lerp(-transform.right, transform.right, x)) * drawDistance, Color.blue, lifeSpan, false);
+                    }
                }
           }
+          else
+          {
+               for (float x = 0.0f; x < stepCountSortOf; x += stepDensity)
+               {
+                    for (float y = 0.0f; y < stepCountSortOf; y += stepDensity)
+                    {
+                    
+                         Debug.DrawLine(transform.position, transform.position + (transform.forward + Vector3.Lerp(-transform.up, transform.up, y) + Vector3.Lerp(-transform.right, transform.right, x)) * drawDistance, Color.blue, lifeSpan, false);
+                         //Debug.DrawLine(transform.position, transform.position + (transform.forward + Vector3.Lerp(-transform.up, transform.up, y) + Vector3.Lerp(-transform.right, transform.right, x)) * drawDistance, Color.blue, lifeSpan, false);
+                    }
+               }
+          }
+
+
 
           //Debug.Log(transform.position);
 
