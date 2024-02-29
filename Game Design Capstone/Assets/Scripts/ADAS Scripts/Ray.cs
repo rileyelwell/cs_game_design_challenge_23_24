@@ -11,10 +11,14 @@ public class Ray : MonoBehaviour
      public float interpolationRatio = 1.0f;
      public float stepCountSortOf = 1.0f;
      public float ySteps = 1.0f;
+     public float xSteps = 1.0f;
      public float lifeSpan = 1.0f;
      public float stepDensity = 0.05f;
      public bool myCode = false;
      public bool normal = false;
+
+     [SerializeField] LineRenderer lineRend;
+
      void Update()
      {
           // Define the origin of the ray. This should be a point on the exterior of the Robot.
@@ -75,11 +79,16 @@ public class Ray : MonoBehaviour
           {
                // The ray hit something
                Debug.Log("Raycast hit: " + hit.collider.name);
+               lineRend.enabled = true;
+               lineRend.SetPosition(0, transform.position);
+               lineRend.SetPosition(1, hit.point);
+               //Destroy(hit.transform.gameObject);
           }
           else
           {
                // The ray did not hit anything
                Debug.Log("Raycast did not hit anything.");
+               lineRend.enabled = false;
           }
      }
 }
