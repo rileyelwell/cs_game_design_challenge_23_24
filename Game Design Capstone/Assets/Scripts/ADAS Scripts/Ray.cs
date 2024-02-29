@@ -10,10 +10,11 @@ public class Ray : MonoBehaviour
      public float drawDistance = 5.0f;
      public float interpolationRatio = 1.0f;
      public float stepCountSortOf = 1.0f;
+     public float ySteps = 1.0f;
      public float lifeSpan = 1.0f;
      public float stepDensity = 0.05f;
      public bool myCode = false;
-
+     public bool normal = false;
      void Update()
      {
           // Define the origin of the ray. This should be a point on the exterior of the Robot.
@@ -43,16 +44,27 @@ public class Ray : MonoBehaviour
                     }
                }
           }
+          else if (normal)
+          {
+               for (float x = 0.0f; x < stepCountSortOf; x += stepDensity)
+               {
+                    for (float y = 0.0f; y < ySteps; y += stepDensity)
+                    {
+                         Debug.DrawLine(transform.position, transform.position +( (transform.forward + Vector3.Lerp(-transform.up, transform.up, y) + Vector3.Lerp(-transform.right, transform.right, x)) ).normalized * drawDistance, Color.blue, lifeSpan, false);
+                    }
+               }
+          }
           else
           {
+               {
                for (float x = 0.0f; x < stepCountSortOf; x += stepDensity)
                {
                     for (float y = 0.0f; y < stepCountSortOf; y += stepDensity)
                     {
-                    
-                         Debug.DrawLine(transform.position, transform.position + (transform.forward + Vector3.Lerp(-transform.up, transform.up, y) + Vector3.Lerp(-transform.right, transform.right, x)) * drawDistance, Color.blue, lifeSpan, false);
+                         Debug.DrawLine(transform.position, transform.position +( (transform.forward + Vector3.Lerp(-transform.up, transform.up, y) + Vector3.Lerp(-transform.right, transform.right, x)) ) * drawDistance, Color.blue, lifeSpan, false);
                     }
                }
+          }
           }
 
 
