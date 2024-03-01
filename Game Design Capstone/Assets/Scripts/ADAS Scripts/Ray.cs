@@ -76,10 +76,11 @@ void Update()
 
      if (fuckme)
      {
-          //float sAdjust = Mathf.Atan(transform.forward.z/transform.forward.x);
-          for (float s = -Mathf.PI/2; s < Mathf.PI/2; s += Mathf.PI/sStep)
+          float sAdjust = Mathf.Atan(transform.forward.z/transform.forward.x);
+          Debug.Log(sAdjust);
+          for (float s = -Mathf.PI/2; s <= Mathf.PI/2; s += Mathf.PI/sStep)
           {
-               for (float t = -Mathf.PI/2; t < Mathf.PI/2; t += Mathf.PI/tStep)
+               for (float t = -Mathf.PI/2; t <= Mathf.PI/2; t += Mathf.PI/tStep)
                {
                     Vector3 direction = new Vector3(
                          Mathf.Sin(s) * Mathf.Cos(t),
@@ -87,14 +88,17 @@ void Update()
                          Mathf.Cos(s)
                     );
                     
-                    
-                    
                     //Vector3 direction = Quaternion.AngleAxis(t, transform.forward) * transform.forward;
 
                     //direction = Quaternion.AngleAxis(t, transform.forward) * direction;
 
-
                     // Draw the ray
+
+                    //RaycastHit hit;
+                    //if (Physics.Raycast(transform.position, direction, out hit, raycastDistance))
+
+                    direction = Player.transform.rotation * direction;
+
                     Debug.DrawLine(transform.position, transform.position + direction.normalized * drawDistance, Color.blue, lifeSpan, true);
                }
           }
@@ -236,7 +240,7 @@ void Update()
 
      // Define the direction of the ray. This example sends the ray forwards.
      Vector3 rayDirection = transform.TransformDirection(Vector3.forward);
-
+     /*
      // Perform the raycast
      RaycastHit hit;
      if (Physics.Raycast(rayOrigin, rayDirection, out hit, raycastDistance))
@@ -253,6 +257,6 @@ void Update()
           // The ray did not hit anything
           Debug.Log("Raycast did not hit anything.");
           //lineRend.enabled = false;
-     }
+     }*/
 }
 }
