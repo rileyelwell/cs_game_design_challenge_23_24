@@ -17,11 +17,6 @@ public class Ray : MonoBehaviour
      public float xAngle = 180.0f;
      public float lifeSpan = 1.0f;
      public float stepDensity = 10.0f;
-     public bool myCode = false;
-     public bool normal = false;
-     public bool quads = false;
-     public bool phind = false;
-     public bool gemini = false;
      public bool fuckme = false;
      public float steps = 10.0f;
 
@@ -63,21 +58,21 @@ void Start()
 
 void Update()
 {
-     if (Player != null)
-     {
-          Transform playerTransform = Player.transform;
-          transform.position = Player.transform.position;
-          Debug.Log("transforming");
-          // Optional: Set the semisphere's rotation to face the player's forward direction
-          transform.rotation = Quaternion.LookRotation(playerTransform.forward);
-     }
+     //if (Player != null)
+     //{
+     //     Transform playerTransform = Player.transform;
+     //     transform.position = Player.transform.position;
+     //     Debug.Log("transforming");
+     //     // Optional: Set the semisphere's rotation to face the player's forward direction
+     //     transform.rotation = Quaternion.LookRotation(playerTransform.forward);
+     //}
 
 
 
      if (fuckme)
      {
           float sAdjust = Mathf.Atan(transform.forward.z/transform.forward.x);
-          Debug.Log(sAdjust);
+          //Debug.Log(sAdjust);
           for (float s = -Mathf.PI/2; s <= Mathf.PI/2; s += Mathf.PI/sStep)
           {
                for (float t = -Mathf.PI/2; t <= Mathf.PI/2; t += Mathf.PI/tStep)
@@ -94,10 +89,15 @@ void Update()
 
                     // Draw the ray
 
-                    //RaycastHit hit;
-                    //if (Physics.Raycast(transform.position, direction, out hit, raycastDistance))
+                    RaycastHit hit;
+                    
 
                     direction = Player.transform.rotation * direction;
+
+                    if (Physics.Raycast(transform.position, direction.normalized, out hit, drawDistance))
+                    {
+                         Debug.Log("Raycast hit: " + hit.collider.name);
+                    }
 
                     Debug.DrawLine(transform.position, transform.position + direction.normalized * drawDistance, Color.blue, lifeSpan, true);
                }
@@ -105,6 +105,40 @@ void Update()
      }
 
           
+     
+
+     // Define the origin of the ray. This should be a point on the exterior of the Robot.
+     // For simplicity, let's assume the Robot has a Collider and we'll use its bounds.
+     Vector3 rayOrigin = transform.position;
+
+     //Debug.Log(transform.position);
+
+     // Define the direction of the ray. This example sends the ray forwards.
+     Vector3 rayDirection = transform.TransformDirection(Vector3.forward);
+     /*
+     // Perform the raycast
+     RaycastHit hit;
+     if (Physics.Raycast(rayOrigin, rayDirection, out hit, raycastDistance))
+     {
+          // The ray hit something
+          Debug.Log("Raycast hit: " + hit.collider.name);
+          //lineRend.enabled = true;
+         // lineRend.SetPosition(0, transform.position);
+          //lineRend.SetPosition(1, hit.point);
+          //Destroy(hit.transform.gameObject);
+     }
+     else
+     {
+          // The ray did not hit anything
+          Debug.Log("Raycast did not hit anything.");
+          //lineRend.enabled = false;
+     }*/
+}    
+}
+
+/*
+private void depricated ()
+{
      // intended for interpolation ratio of 1.0
           
      if (false)
@@ -231,32 +265,4 @@ void Update()
                }
           }
      }
-
-     // Define the origin of the ray. This should be a point on the exterior of the Robot.
-     // For simplicity, let's assume the Robot has a Collider and we'll use its bounds.
-     Vector3 rayOrigin = transform.position;
-
-     //Debug.Log(transform.position);
-
-     // Define the direction of the ray. This example sends the ray forwards.
-     Vector3 rayDirection = transform.TransformDirection(Vector3.forward);
-     /*
-     // Perform the raycast
-     RaycastHit hit;
-     if (Physics.Raycast(rayOrigin, rayDirection, out hit, raycastDistance))
-     {
-          // The ray hit something
-          Debug.Log("Raycast hit: " + hit.collider.name);
-          //lineRend.enabled = true;
-         // lineRend.SetPosition(0, transform.position);
-          //lineRend.SetPosition(1, hit.point);
-          //Destroy(hit.transform.gameObject);
-     }
-     else
-     {
-          // The ray did not hit anything
-          Debug.Log("Raycast did not hit anything.");
-          //lineRend.enabled = false;
-     }*/
-}
-}
+}*/
