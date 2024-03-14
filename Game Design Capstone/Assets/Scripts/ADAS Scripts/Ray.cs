@@ -11,29 +11,25 @@ public class Ray : MonoBehaviour
      public Vector3 rayDirection;
      public float drawDistance = 5.0f;
      public float interpolationRatio = 1.0f;
-     public float ySteps = 1.0f;
-     public float xSteps = 1.0f;
-     public float yAngle = 180.0f;
-     public float xAngle = 180.0f;
      public float lifeSpan = 1.0f;
      public float stepDensity = 10.0f;
      public bool fuckme = false;
-     public float steps = 10.0f;
 
 
      /* funny new algo */
      public float sStep = 16f;
      public float tStep = 16f;
 
-
+     public float sLeft = 2;
+     public float sRight = 2;
+     public float tTop = 2;
+     public float tBot = 2;
 
      public float radius = 1f;
      public float angle = 90f;
      public int segments = 10;
 
-     public float iterationAngle;// = 180.0f/steps;
-
-     [SerializeField] LineRenderer lineRend;
+     //[SerializeField] LineRenderer lineRend;
 
 
      private void DrawCircle(Vector3 center, float radius, int segments)
@@ -53,7 +49,7 @@ public class Ray : MonoBehaviour
 
 void Start()
 {
-     //iterationAngle = 180.0f/steps;
+     
 }
 
 void Update()
@@ -67,15 +63,16 @@ void Update()
      //     transform.rotation = Quaternion.LookRotation(playerTransform.forward);
      //}
 
-
+     float sL = Mathf.PI/sLeft; float sR = Mathf.PI/sRight; float sS = (sL + sR) / sStep;
+     float tB = Mathf.PI/tBot; float tT = Mathf.PI/tTop; float tS = (tT + tB) / tStep;
 
      if (fuckme)
      {
           //float sAdjust = Mathf.Atan(transform.forward.z/transform.forward.x);
           //Debug.Log(sAdjust);
-          for (float s = -Mathf.PI/2; s <= Mathf.PI/4; s += Mathf.PI/sStep)
+          for (float s = (-sL); s <= sR; s += sS) // horizontal
           {
-               for (float t = -Mathf.PI/2; t <= Mathf.PI/2; t += Mathf.PI/tStep)
+               for (float t = (-tB); t <= tT; t += tS) // vertical
                {
                     Vector3 direction = new Vector3(
                          Mathf.Sin(s) * Mathf.Cos(t),
