@@ -388,6 +388,7 @@
 "Assets/Scripts/Player Scripts/CameraFollow.cs"
 "Assets/Scripts/Player Scripts/cone.cs"
 "Assets/Scripts/Player Scripts/PlayerController.cs"
+"Assets/Scripts/UI Scripts/PolarGraph.cs"
 -langversion:9.0
 
 /deterministic
