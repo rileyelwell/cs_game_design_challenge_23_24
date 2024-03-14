@@ -11,8 +11,8 @@ public class PolarGraph : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
+     void Update()
+     {
+         
+     }
 }

@@ -97,7 +97,7 @@ public class Ray : MonoBehaviour
                          if (Physics.Raycast(transform.position, direction.normalized, out hit, drawDistance, layerMask))
                          {
                               Debug.Log("Raycast hit: " + hit.collider.name);
-                              Debug.Log(sIter);Debug.Log(tIter);
+                              Debug.Log(sIter);//Debug.Log(tIter);
                               results[sIter, tIter] = hit;
                          }
                          Debug.DrawLine(transform.position, transform.position + direction.normalized * drawDistance, Color.blue, lifeSpan, true);
