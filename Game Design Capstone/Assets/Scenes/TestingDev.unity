@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 369282644}
   - component: {fileID: 369282643}
   - component: {fileID: 369282642}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -575,7 +575,7 @@ BoxCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -851,7 +851,7 @@ MonoBehaviour:
   raycastDistance: 100
   layerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 904
   rayDirection: {x: 0, y: 0, z: 0}
   drawDistance: 5
   interpolationRatio: 1
@@ -861,12 +861,7 @@ MonoBehaviour:
   xAngle: 180
   lifeSpan: 1
   stepDensity: 10
-  myCode: 0
-  normal: 0
-  quads: 0
-  phind: 0
-  gemini: 0
-  fuckme: 0
+  fuckme: 1
   steps: 10
   sStep: 16
   tStep: 16
@@ -952,7 +947,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1448940773750864594, guid: 3257c0ec70121e44ba5e3c66e51fd34d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.65
+      value: 3.33
       objectReference: {fileID: 0}
     - target: {fileID: 1448940773750864594, guid: 3257c0ec70121e44ba5e3c66e51fd34d, type: 3}
       propertyPath: m_LocalPosition.z

@@ -71,9 +71,9 @@ void Update()
 
      if (fuckme)
      {
-          float sAdjust = Mathf.Atan(transform.forward.z/transform.forward.x);
+          //float sAdjust = Mathf.Atan(transform.forward.z/transform.forward.x);
           //Debug.Log(sAdjust);
-          for (float s = -Mathf.PI/2; s <= Mathf.PI/2; s += Mathf.PI/sStep)
+          for (float s = -Mathf.PI/2; s <= Mathf.PI/4; s += Mathf.PI/sStep)
           {
                for (float t = -Mathf.PI/2; t <= Mathf.PI/2; t += Mathf.PI/tStep)
                {
@@ -82,24 +82,18 @@ void Update()
                          Mathf.Sin(t) ,
                          Mathf.Cos(s)
                     );
-                    
-                    //Vector3 direction = Quaternion.AngleAxis(t, transform.forward) * transform.forward;
-
-                    //direction = Quaternion.AngleAxis(t, transform.forward) * direction;
-
-                    // Draw the ray
 
                     RaycastHit hit;
-                    
 
                     direction = Player.transform.rotation * direction;
 
-                    if (Physics.Raycast(transform.position, direction.normalized, out hit, drawDistance))
+                    if (Physics.Raycast(transform.position, direction.normalized, out hit, drawDistance, layerMask))
                     {
                          Debug.Log("Raycast hit: " + hit.collider.name);
+                         
                     }
-
                     Debug.DrawLine(transform.position, transform.position + direction.normalized * drawDistance, Color.blue, lifeSpan, true);
+                    
                }
           }
      }
@@ -109,12 +103,12 @@ void Update()
 
      // Define the origin of the ray. This should be a point on the exterior of the Robot.
      // For simplicity, let's assume the Robot has a Collider and we'll use its bounds.
-     Vector3 rayOrigin = transform.position;
+     //Vector3 rayOrigin = transform.position;
 
      //Debug.Log(transform.position);
 
      // Define the direction of the ray. This example sends the ray forwards.
-     Vector3 rayDirection = transform.TransformDirection(Vector3.forward);
+     //Vector3 rayDirection = transform.TransformDirection(Vector3.forward);
      /*
      // Perform the raycast
      RaycastHit hit;
