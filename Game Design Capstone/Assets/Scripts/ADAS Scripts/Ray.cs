@@ -6,13 +6,11 @@ public class Ray : MonoBehaviour
 {
      public GameObject Player;
 
-     public float raycastDistance = 100f; // The distance the ray will travel
+     public float raycastDistance = 1f; // The distance the ray will travel
      public LayerMask layerMask; // Layers to consider for the raycast
      public Vector3 rayDirection;
      public float drawDistance = 5.0f;
-     public float interpolationRatio = 1.0f;
      public float lifeSpan = 1.0f;
-     public float stepDensity = 10.0f;
      public bool fuckme = false;
 
 
@@ -25,9 +23,6 @@ public class Ray : MonoBehaviour
      public float tTop = 2;
      public float tBot = 2;
 
-     public float radius = 1f;
-     public float angle = 90f;
-     public int segments = 10;
 
      //[SerializeField] LineRenderer lineRend;
 
@@ -47,55 +42,54 @@ public class Ray : MonoBehaviour
     }
 
 
-void Start()
-{
-     
-}
-
-void Update()
-{
-     //if (Player != null)
-     //{
-     //     Transform playerTransform = Player.transform;
-     //     transform.position = Player.transform.position;
-     //     Debug.Log("transforming");
-     //     // Optional: Set the semisphere's rotation to face the player's forward direction
-     //     transform.rotation = Quaternion.LookRotation(playerTransform.forward);
-     //}
-
-     float sL = Mathf.PI/sLeft; float sR = Mathf.PI/sRight; float sS = (sL + sR) / sStep;
-     float tB = Mathf.PI/tBot; float tT = Mathf.PI/tTop; float tS = (tT + tB) / tStep;
-
-     if (fuckme)
+     void Start()
      {
-          //float sAdjust = Mathf.Atan(transform.forward.z/transform.forward.x);
-          //Debug.Log(sAdjust);
-          for (float s = (-sL); s <= sR; s += sS) // horizontal
-          {
-               for (float t = (-tB); t <= tT; t += tS) // vertical
-               {
-                    Vector3 direction = new Vector3(
-                         Mathf.Sin(s) * Mathf.Cos(t),
-                         Mathf.Sin(t) ,
-                         Mathf.Cos(s)
-                    );
-
-                    RaycastHit hit;
-
-                    direction = Player.transform.rotation * direction;
-
-                    if (Physics.Raycast(transform.position, direction.normalized, out hit, drawDistance, layerMask))
-                    {
-                         Debug.Log("Raycast hit: " + hit.collider.name);
-                         
-                    }
-                    Debug.DrawLine(transform.position, transform.position + direction.normalized * drawDistance, Color.blue, lifeSpan, true);
-                    
-               }
-          }
+     
      }
 
-          
+     void Update()
+     {
+          float sL = Mathf.PI/sLeft; float sR = Mathf.PI/sRight; float sS = (sL + sR) / sStep;
+          float tB = Mathf.PI/tBot; float tT = Mathf.PI/tTop; float tS = (tT + tB) / tStep;
+
+          if (fuckme)
+          {
+               RaycastHit[,] results = new RaycastHit[(int) sStep, (int) tStep];
+               int sIter = 0;
+               int tIter = 0;
+
+               //float sAdjust = Mathf.Atan(transform.forward.z/transform.forward.x);
+               //Debug.Log(sAdjust);
+               for (float s = (-sL); s <= sR; s += sS) // horizontal
+               {
+                    for (float t = (-tB); t <= tT; t += tS) // vertical
+                    {
+                         Vector3 direction = new Vector3(
+                              Mathf.Sin(s) * Mathf.Cos(t),
+                              Mathf.Sin(t) ,
+                              Mathf.Cos(s)
+                         );
+
+                         RaycastHit hit;
+
+                         direction = Player.transform.rotation * direction;
+
+                         if (Physics.Raycast(transform.position, direction.normalized, out hit, drawDistance, layerMask))
+                         {
+                              Debug.Log("Raycast hit: " + hit.collider.name);
+                              results[i, j] = hit;
+                         }
+                         Debug.DrawLine(transform.position, transform.position + direction.normalized * drawDistance, Color.blue, lifeSpan, true);
+                         
+                         tIter++;
+                    }
+                    sIter++;
+               }
+          }
+          console.log(results);
+
+     }
+}
      
 
      // Define the origin of the ray. This should be a point on the exterior of the Robot.
@@ -123,9 +117,8 @@ void Update()
           // The ray did not hit anything
           Debug.Log("Raycast did not hit anything.");
           //lineRend.enabled = false;
-     }*/
-}    
-}
+     }*/ 
+
 
 /*
 private void depricated ()

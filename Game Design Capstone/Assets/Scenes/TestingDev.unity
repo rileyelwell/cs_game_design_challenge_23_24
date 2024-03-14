@@ -848,15 +848,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 605736932}
-  raycastDistance: 100
+  raycastDistance: 1.5
   layerMask:
     serializedVersion: 2
     m_Bits: 904
   rayDirection: {x: 0, y: 0, z: 0}
   drawDistance: 5
-  interpolationRatio: 1
   lifeSpan: 1
-  stepDensity: 10
   fuckme: 1
   sStep: 16
   tStep: 4
@@ -864,9 +862,6 @@ MonoBehaviour:
   sRight: 2
   tTop: 64
   tBot: 4
-  radius: 1
-  angle: 90
-  segments: 10
 --- !u!23 &1957962277
 MeshRenderer:
   m_ObjectHideFlags: 0
