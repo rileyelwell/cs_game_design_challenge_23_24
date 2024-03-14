@@ -1,6 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
+
+public class RaycastResultsUpdatedEventArgs
+{
+     public RaycastHit[,] Results { get; private set; }
+
+     public RaycastResultsUpdatedEventArgs(RaycastHit[,] results)
+     {
+          this.Results = results;
+     }
+}
+
+//public event EventHandler<RaycastResultsUpdatedEventArgs> OnRaycastResultsUpdated;
 
 public class Ray : MonoBehaviour
 {
@@ -22,6 +35,12 @@ public class Ray : MonoBehaviour
      public float sRight = 2;
      public float tTop = 2;
      public float tBot = 2;
+
+     // Define a delegate for the event within the class
+     public delegate void RaycastResultsUpdatedEventHandler(object sender, RaycastResultsUpdatedEventArgs e);
+
+     // Declare a public event of the delegate type within the class
+     public event RaycastResultsUpdatedEventHandler OnRaycastResultsUpdated;
 
 
      //[SerializeField] LineRenderer lineRend;
@@ -77,16 +96,20 @@ public class Ray : MonoBehaviour
                          if (Physics.Raycast(transform.position, direction.normalized, out hit, drawDistance, layerMask))
                          {
                               Debug.Log("Raycast hit: " + hit.collider.name);
-                              results[i, j] = hit;
+                              Debug.Log(sIter);Debug.Log(tIter);
+                              results[sIter, tIter] = hit;
                          }
                          Debug.DrawLine(transform.position, transform.position + direction.normalized * drawDistance, Color.blue, lifeSpan, true);
                          
                          tIter++;
                     }
+                    tIter = 0;
                     sIter++;
                }
+               OnRaycastResultsUpdated?.Invoke(this, new RaycastResultsUpdatedEventArgs(results));
+               Debug.Log(results);
           }
-          console.log(results);
+          
 
      }
 }
