@@ -73,7 +73,7 @@ public class Ray : MonoBehaviour
 
           if (fuckme)
           {
-               RaycastHit[,] results = new RaycastHit[(int) sStep, (int) tStep];
+               RaycastHit[,] results = new RaycastHit[(int) sStep + 1, (int) tStep + 1];
                int sIter = 0;
                int tIter = 0;
 
@@ -81,6 +81,7 @@ public class Ray : MonoBehaviour
                //Debug.Log(sAdjust);
                for (float s = (-sL); s <= sR; s += sS) // horizontal
                {
+                    tIter = 0;
                     for (float t = (-tB); t <= tT; t += tS) // vertical
                     {
                          Vector3 direction = new Vector3(
@@ -103,7 +104,7 @@ public class Ray : MonoBehaviour
                          
                          tIter++;
                     }
-                    tIter = 0;
+                    
                     sIter++;
                }
                OnRaycastResultsUpdated?.Invoke(this, new RaycastResultsUpdatedEventArgs(results));
