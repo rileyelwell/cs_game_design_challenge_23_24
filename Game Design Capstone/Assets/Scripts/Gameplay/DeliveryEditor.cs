@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GetEditor : MonoBehaviour
+public class DeliveryEditor : MonoBehaviour
 {
     public Color startColor = Color.red;
     public Color endColor = Color.green;
