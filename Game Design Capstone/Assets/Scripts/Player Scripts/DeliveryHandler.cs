@@ -19,9 +19,13 @@ public class DeliveryHandler : MonoBehaviour
     public Transform currEnd;
 
     public GameObject waypoint;
+    public bool ExpoMode;
 
     bool startReached;
     bool endReached;
+
+    bool printedStart;
+    bool printedEnd;
 
     float goalRange = 3.0f;
 
@@ -29,6 +33,9 @@ public class DeliveryHandler : MonoBehaviour
     {
         startReached = true;
         endReached = true;
+
+        printedStart = false;
+        printedEnd = false;
 
         theStartsArray = startsObj.GetComponentsInChildren<Transform>();
         theEndsArray = endsObj.GetComponentsInChildren<Transform>();
@@ -57,21 +64,46 @@ public class DeliveryHandler : MonoBehaviour
         {
             startReached = false;
             endReached = false;
-            GetDelivery();
+            if(ExpoMode == false)
+            {
+                GetDelivery();
+            }
+            else
+            {
+                ExpoDeliveryComplete();
+            }
             CreateWaypoint(currStart);
-            UnityEngine.Debug.Log("Goal: Pickup order at location: " + currStart.name, player);
+            if (!printedStart)
+            {
+                printedStart = true;
+                UnityEngine.Debug.Log("Goal: Pickup order at location: " + currStart.name, player);
+            }
         }
         if (Vector3.Distance(currStart.position, player.transform.position) < goalRange)
         {
             startReached = true;
             CreateWaypoint(currEnd);
-            UnityEngine.Debug.Log("Goal: Deliver order to location", player);
+            if (!printedEnd)
+            {
+                printedEnd = true;
+                UnityEngine.Debug.Log("Goal: Deliver order to location" + currEnd.name, player);
+            }
         }
         if (Vector3.Distance(currEnd.position, player.transform.position) < goalRange && startReached)
         {
             endReached = true;
             UnityEngine.Debug.Log("Goal: Complete!", player);
+            printedEnd = false;
+            printedStart = false;
         }
+    }
+
+    void ExpoDeliveryComplete()
+    {
+        currStart = starts[0];
+        currEnd = ends[0];
+
+        player.transform.position = currStart.position;
     }
 
     void GetDelivery()

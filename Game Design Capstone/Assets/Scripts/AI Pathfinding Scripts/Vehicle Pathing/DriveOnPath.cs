@@ -12,7 +12,6 @@ public class DriveOnPath : MonoBehaviour
     public float speed;
     public float reachDistance = 1.0f;
     public float rotationSpeed = 5.0f;
-    public string pathName;
 
     // Start is called before the first frame update
     void Start()
@@ -37,7 +36,7 @@ public class DriveOnPath : MonoBehaviour
         }
         if (CurrentWayPointID >= PathToFollow.path_objs.Count)
         {
-            CurrentWayPointID = 0;
+            Destroy(gameObject);
         }
     }
 }
