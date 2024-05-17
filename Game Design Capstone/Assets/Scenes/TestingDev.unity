@@ -350,6 +350,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffbff6c402aad254b8437a21e9b24475, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  raycastScript: {fileID: 0}
 --- !u!1 &478585893
 GameObject:
   m_ObjectHideFlags: 0
@@ -1147,8 +1148,8 @@ MonoBehaviour:
   activateRaycast: 0
   sStep: 16
   tStep: 4
-  sLeft: 2
-  sRight: 2
+  sLeft: 4
+  sRight: 4
   tTop: 64
   tBot: 4
 --- !u!23 &1957962277

@@ -29,51 +29,86 @@ public class Ray : MonoBehaviour
     public float tTop = 2;
     public float tBot = 2;
 
-    // Define a delegate for the event within the class
     public delegate void RaycastResultsUpdatedEventHandler(object sender, RaycastResultsUpdatedEventArgs e);
 
-    // Declare a public event of the delegate type within the class
-    public event RaycastResultsUpdatedEventHandler OnRaycastResultsUpdated;
+    public event RaycastResultsUpdatedEventHandler OnRayFUpdated;
+    public event RaycastResultsUpdatedEventHandler OnRayLUpdated;
+    public event RaycastResultsUpdatedEventHandler OnRayRUpdated;
+    public event RaycastResultsUpdatedEventHandler OnRayBUpdated;
+
+    private bool RaycastInDirection(Vector3 directionOffset, Quaternion rotationOffset, RaycastHit[,] results, Color debugColor)
+    {
+        bool hasHit = false;
+        int sIter = 0;
+        int tIter = 0;
+
+        float sL = Mathf.PI / sLeft;
+        float sR = Mathf.PI / sRight;
+        float sS = (sL + sR) / sStep;
+        float tB = Mathf.PI / tBot;
+        float tT = Mathf.PI / tTop;
+        float tS = (tT + tB) / tStep;
+
+        for (float s = -sL; s <= sR; s += sS)
+        {
+            tIter = 0;
+            for (float t = -tB; t <= tT; t += tS)
+            {
+                Vector3 direction = new Vector3(
+                    Mathf.Sin(s) * Mathf.Cos(t),
+                    Mathf.Sin(t),
+                    Mathf.Cos(s)
+                );
+
+                direction = rotationOffset * Player.transform.rotation * direction;
+
+                Vector3 offsetPosition = Player.transform.position + (Player.transform.rotation * directionOffset);
+
+                if (Physics.Raycast(offsetPosition, direction.normalized, out RaycastHit hit, drawDistance, layerMask))
+                {
+                    results[sIter, tIter] = hit;
+                    hasHit = true;
+                }
+
+                Debug.DrawLine(offsetPosition, offsetPosition + direction.normalized * drawDistance, debugColor, lifeSpan, true);
+                tIter++;
+            }
+            sIter++;
+        }
+
+        return hasHit;
+    }
 
     void Update()
     {
         if (activateRaycast)
         {
-            RaycastHit[,] results = new RaycastHit[(int)sStep + 1, (int)tStep + 1];
-            int sIter = 0;
-            int tIter = 0;
+            RaycastHit[,] rayF = new RaycastHit[(int)sStep + 1, (int)tStep + 1];
+            RaycastHit[,] rayL = new RaycastHit[(int)sStep + 1, (int)tStep + 1];
+            RaycastHit[,] rayR = new RaycastHit[(int)sStep + 1, (int)tStep + 1];
+            RaycastHit[,] rayB = new RaycastHit[(int)sStep + 1, (int)tStep + 1];
 
-            float sL = Mathf.PI / sLeft;
-            float sR = Mathf.PI / sRight;
-            float sS = (sL + sR) / sStep;
-            float tB = Mathf.PI / tBot;
-            float tT = Mathf.PI / tTop;
-            float tS = (tT + tB) / tStep;
+            bool hitF = RaycastInDirection(Vector3.forward * 0.5f, Quaternion.identity, rayF, Color.blue);
+            bool hitL = RaycastInDirection(Vector3.left * 0.5f, Quaternion.Euler(0, -90, 0), rayL, Color.green);
+            bool hitR = RaycastInDirection(Vector3.right * 0.5f, Quaternion.Euler(0, 90, 0), rayR, Color.red);
+            bool hitB = RaycastInDirection(Vector3.back * 0.5f, Quaternion.Euler(0, 180, 0), rayB, Color.yellow);
 
-            for (float s = -sL; s <= sR; s += sS)
+            if (hitF)
             {
-                tIter = 0;
-                for (float t = -tB; t <= tT; t += tS)
-                {
-                    Vector3 direction = new Vector3(
-                        Mathf.Sin(s) * Mathf.Cos(t),
-                        Mathf.Sin(t),
-                        Mathf.Cos(s)
-                    );
-
-                    direction = Player.transform.rotation * direction;
-
-                    if (Physics.Raycast(transform.position, direction.normalized, out RaycastHit hit, drawDistance, layerMask))
-                    {
-                        results[sIter, tIter] = hit;
-                    }
-
-                    Debug.DrawLine(transform.position, transform.position + direction.normalized * drawDistance, Color.blue, lifeSpan, true);
-                    tIter++;
-                }
-                sIter++;
+                OnRayFUpdated?.Invoke(this, new RaycastResultsUpdatedEventArgs(rayF));
             }
-            OnRaycastResultsUpdated?.Invoke(this, new RaycastResultsUpdatedEventArgs(results));
+            if (hitL)
+            {
+                OnRayLUpdated?.Invoke(this, new RaycastResultsUpdatedEventArgs(rayL));
+            }
+            if (hitR)
+            {
+                OnRayRUpdated?.Invoke(this, new RaycastResultsUpdatedEventArgs(rayR));
+            }
+            if (hitB)
+            {
+                OnRayBUpdated?.Invoke(this, new RaycastResultsUpdatedEventArgs(rayB));
+            }
         }
     }
 }
