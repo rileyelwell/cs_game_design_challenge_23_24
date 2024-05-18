@@ -1,0 +1,754 @@
+fileFormatVersion: 2
+guid: fe60f7696ca8e1e439a0a916c36c982f
+ModelImporter:
+  serializedVersion: 22200
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Black Metal
+    second: {fileID: 2100000, guid: 46bebdb5d2fb213449506a6e61741ddb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Brick Wall
+    second: {fileID: 2100000, guid: e2246420dcc310f45a98f8bc51edbc4b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Concrete
+    second: {fileID: 2100000, guid: 7793e56912399144aaf7a6b27e49d743, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Concrete_SM
+    second: {fileID: 2100000, guid: f0c77cdb7505c104c8301bd76ba07ab9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Crosswalk_Clean
+    second: {fileID: 2100000, guid: 68f4be86aac001242b119e5eaf95485a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Dirt
+    second: {fileID: 2100000, guid: 65cf37731e9a7a444b58b65a911f58b8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Dixon Bottom Wall
+    second: {fileID: 2100000, guid: 45567ea79b14a04438edef8ede153281, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Dixon Brick
+    second: {fileID: 2100000, guid: 9534b520d5997db4487e4d2003efb342, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Dixon Doors
+    second: {fileID: 2100000, guid: 6af531962da60b44fa4cdb8b9176c98d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Dixon Glass
+    second: {fileID: 2100000, guid: 2799e1277f8af8c408d870fb11cf66af, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Dixon Light Metal
+    second: {fileID: 2100000, guid: b262d11091df21041b9636331086b034, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Dixon Sign
+    second: {fileID: 2100000, guid: 27843613e3e51c6459d03787d39a958b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Dorm Bricks
+    second: {fileID: 2100000, guid: 05d011355580c084fbe1bc4bef2b2f23, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Dorm Connector
+    second: {fileID: 2100000, guid: 4ed7c0574bad74149a63058baa8399b1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Dorm Door
+    second: {fileID: 2100000, guid: 620bfd7b5663cc844853f61bed07ef87, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Dorm Windows
+    second: {fileID: 2100000, guid: cb081fbf160c4d046958da40fe6a32d6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Dutch Bros Front
+    second: {fileID: 2100000, guid: cd5c05bbbe59c4249aef204e2170e86f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Dutch Bros Front Top
+    second: {fileID: 2100000, guid: a4e9c51a7be7228499662228d64b3c40, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Dutch Bros Overhang
+    second: {fileID: 2100000, guid: b4df12fc16e56a94081f4326ed2b6c58, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Dutch Bros Pillar
+    second: {fileID: 2100000, guid: e11863e533c83364094da6198a8608a9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Gold Metal Top
+    second: {fileID: 2100000, guid: 189564fbb5f59aa4398a946776aa3f1e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Grass
+    second: {fileID: 2100000, guid: f190e74ef960b25489c1f443493d36ee, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Grey Plastic.003
+    second: {fileID: 2100000, guid: 64b74954966068949a4905c3e7afe827, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Handicap Sign
+    second: {fileID: 2100000, guid: 6c6e3fc8d906f424892a2d7e3a83d0aa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Moreland Bottom Wall
+    second: {fileID: 2100000, guid: 3c81956fb35a88a428ef46bf5fe30a4e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Moreland Brick
+    second: {fileID: 2100000, guid: ca453260604ab9c4781ea08868186fb1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Moreland Brick Pillar
+    second: {fileID: 2100000, guid: 724bae6a6192aed4eb274c010ec89329, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Moreland Hall Front
+    second: {fileID: 2100000, guid: 25b6256b7f3080e40b655e4a1cb9fe5c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Moreland Sign
+    second: {fileID: 2100000, guid: 6e67e71650c20ac428a385047f39c445, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Moreland Top Wall
+    second: {fileID: 2100000, guid: 81955689ccfe0924ba334d0732c3457a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Moreland Windows
+    second: {fileID: 2100000, guid: 18c1a88908655e94997e7708fc865c44, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: NA Sign
+    second: {fileID: 2100000, guid: bccc715b64aa5974e997c7868f935f9a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: NA_Door
+    second: {fileID: 2100000, guid: d882890d865bbe244823c977a56a2706, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: NA_Roof
+    second: {fileID: 2100000, guid: 550d5cdcb9f0c8145b0226f59266481f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: NA_Window1
+    second: {fileID: 2100000, guid: f44cee3f08cbccb40a89352531aa4150, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: NA_Window2
+    second: {fileID: 2100000, guid: f8bae9912fe6cd14ea6b280b81bc4df4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Railroad Tracks
+    second: {fileID: 2100000, guid: bb58759b2601b80479d4282212b086f9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Red Dorm Pole
+    second: {fileID: 2100000, guid: 1da52280f326772479863072f1f41238, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Reserved Parking Sign
+    second: {fileID: 2100000, guid: 0094798630a95674fa01ea9e705aef5c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Road Gray Clean
+    second: {fileID: 2100000, guid: a2cb8131e4e37fc48be89a5ffb8e3476, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Road Placeholder
+    second: {fileID: 2100000, guid: f5a709360aad45e4ab126fce3b386cb8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: RoadDblYlw
+    second: {fileID: 2100000, guid: 68328dbef955ce44184ea586f791eba3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Road_Basic_8x8
+    second: {fileID: 2100000, guid: d5b479d575c155542b2150e833743f10, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Road_BikeLane_8x8
+    second: {fileID: 2100000, guid: eff945999a4e12d458ed5a66d709e2ff, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Road_Clean_2x2
+    second: {fileID: 2100000, guid: 1c6f7ca11a466e041b1baab6706a9767, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Road_Crosswalk_8x8
+    second: {fileID: 2100000, guid: d9c271c7fdb647d498eaed445aeb7541, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Road_NoParking_8x8
+    second: {fileID: 2100000, guid: e731090db671ebe479923a8dd8b05a65, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Road_Parking_8x8
+    second: {fileID: 2100000, guid: b0822a2b77e1df947963dbb4fd4133ff, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rocks
+    second: {fileID: 2100000, guid: bac52e658ca521742a3f6f363e7b303b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SLP Track
+    second: {fileID: 2100000, guid: 9cc4804c75e33ab469a79b53565f2fdc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SLP Turf
+    second: {fileID: 2100000, guid: 0b9b15f161397b64fbaca4ed6f79212b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Sidewalk Clean Repeat
+    second: {fileID: 2100000, guid: a1be4e6597c3f4747b82c2cb47984977, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Sidewalk Placeholder
+    second: {fileID: 2100000, guid: 721950e06f99e694192d04f4fb403550, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Sidewalk Rocky
+    second: {fileID: 2100000, guid: 17d6614eb8b5f7646bdac1eb4f942b53, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Sidewalk_Clean_3x3
+    second: {fileID: 2100000, guid: e68bfbf090284ae47850d58ff5f87e44, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Sidewalk_Clean_Repeat
+    second: {fileID: 2100000, guid: 3e280e26674528d4ca5b07e293587ee2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Sidewalk_Rocky_Crack_Seamless
+    second: {fileID: 2100000, guid: 32fc0cdd1ef08aa469598ce5ab924dfc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Sidewalk_Yellow_Bumps
+    second: {fileID: 2100000, guid: 03363a825f40cab44ba21b864f4ab103, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Sign Pole Black
+    second: {fileID: 2100000, guid: bd3d790ddbd7b7f4b9a2dff927bce69e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Sign Silver
+    second: {fileID: 2100000, guid: ba1f887288480df41a553840a557f507, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Street Lamp Glass_Light
+    second: {fileID: 2100000, guid: 1ae68abff924cf74888747cf039d0e2c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Street Lamp Gold Trim
+    second: {fileID: 2100000, guid: 590742794127de74aa3f80ec40eafb42, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tiled_Curb_SLP
+    second: {fileID: 2100000, guid: 34191807fbec43646b9f82385a515692, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tiled_Sidewalk
+    second: {fileID: 2100000, guid: 80030750be690414d86c367f9fdfa50e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wall Top
+    second: {fileID: 2100000, guid: 2b732b2c4c1470246bcf62e858a5f0b6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wall Top Plain
+    second: {fileID: 2100000, guid: af371fbb4b61e3f42b7c4dc9bdf33366, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: White Metal
+    second: {fileID: 2100000, guid: 99c9bc933ed344a4f9a57372ec9fe0de, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wood Pillar
+    second: {fileID: 2100000, guid: e7e8d1db59533764aae4a3a88ad4c9aa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wood Wall
+    second: {fileID: 2100000, guid: 422631b3929b67e4e967043d121d9788, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Asphalt_Clean_8x8_Albedo
+    second: {fileID: 2800000, guid: e93f104ea8828eb4da8fa9b5090047d8, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: DixonMetal
+    second: {fileID: 2800000, guid: 84ef1a823045ccd458f4550769c4dc7d, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Dixon_Sign_texture
+    second: {fileID: 2800000, guid: 602af75801f9a404d87778810af4c00c, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: NA_Door
+    second: {fileID: 2800000, guid: 22f84dbde7212eb43b685eca015ae28d, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: NA_roof
+    second: {fileID: 2800000, guid: c31205ddd78b1d94e96085636c98ce92, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: NA_sign
+    second: {fileID: 2800000, guid: 6ede8c871e9676446bc01160fb6c640a, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: NA_window1
+    second: {fileID: 2800000, guid: fa8928bdb72a39d4b9516440fcb4ac16, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: NA_window2
+    second: {fileID: 2800000, guid: dc38f85c19a0705459294ae3aa71b2ff, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Road_Basic_9x9_Albedo
+    second: {fileID: 2800000, guid: 6dde926c3d25d174aba7a38d61804332, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Road_BikeLane_8x8_Albedo
+    second: {fileID: 2800000, guid: c2a0276efa306244881b5fe55ce5456a, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Road_Crosswalk_8x8_Albedo
+    second: {fileID: 2800000, guid: d6911e486a79abb4fa79f0c6706fa67a, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Road_Crosswalk_Clean_4x4_Albedo
+    second: {fileID: 2800000, guid: 5680960df5fa1144b8e95c84461601bc, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Road_Gray_Clean_4x4_Albedo
+    second: {fileID: 2800000, guid: 271bc22505142504984d9747fe4d45f6, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Road_NoParking_8x8_Albedo
+    second: {fileID: 2800000, guid: b39acfa4972c96e4db9930a85eb45407, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Road_Parking_8x8_Albedo
+    second: {fileID: 2800000, guid: b4d3e092aa58ae64bb1f22d8620462a1, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Road_SolidDoubleYellow_8x8_Albedo
+    second: {fileID: 2800000, guid: ccf2a0b59e00e8b4086a65b86d98ccb0, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Screenshot 2024-04-08 111053
+    second: {fileID: 2800000, guid: e33fce3e8a40e024e806e6078a8bc3ea, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Screenshot 2024-04-08 112148
+    second: {fileID: 2800000, guid: 30b4951ee5b2e3b4b86df7c3ef1731dc, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Sidewalk_Clean_Crack_3x3
+    second: {fileID: 2800000, guid: f461245e68ea21d4c9c229ad8d0e46ec, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: bricks
+    second: {fileID: 2800000, guid: 1574c26ce44e47d4ba54fe1dbda6bf6e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: concrete_sm
+    second: {fileID: 2800000, guid: c135df425afc52f4e8b270ab8f7191f4, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: dirt_seamless
+    second: {fileID: 2800000, guid: 738429395635f4943a0b9fe92513fa32, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: dixon_bricks_seamless
+    second: {fileID: 2800000, guid: c6d9f4fac560ea84da4fc1a0de12be99, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: dixon_front_doors
+    second: {fileID: 2800000, guid: 5ebe8198aee13824ca1b10f450b51c82, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: dixon_sign_black_metal
+    second: {fileID: 2800000, guid: 895a444165c29044b9d4e9433caac6e0, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: dixon_sign_top_metal
+    second: {fileID: 2800000, guid: 8ebdb64adc97068439aec01c50c39329, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: dixon_tile_piece
+    second: {fileID: 2800000, guid: eb45b6e823f640b43a2485e6637d37da, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: dixon_wall_plain
+    second: {fileID: 2800000, guid: 47e14d3fd2b173c47a9bef4850df49f0, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: dixon_wall_top
+    second: {fileID: 2800000, guid: d09cbcbbe1258864b82650e39949206a, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: dixon_window
+    second: {fileID: 2800000, guid: 5cc5c4c75614e11429b2a00823649d24, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: dorm_bricks_sm
+    second: {fileID: 2800000, guid: d79d9fd5bb47ef04eaf900afe31254ae, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: dorm_connector
+    second: {fileID: 2800000, guid: adff656d2007b2c4aa044b4e111ce90e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: dorm_door
+    second: {fileID: 2800000, guid: 98d21060e3855fd4cb784ff886410350, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: dorm_window panes
+    second: {fileID: 2800000, guid: d20e5bcde43955942be7b51f164f2355, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: dutch_front_close
+    second: {fileID: 2800000, guid: 77061304a876aeb4e9c695eb6a596b3b, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: dutch_front_top
+    second: {fileID: 2800000, guid: f49b6fbf9f80d9544a6c486c516a9827, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: dutch_overhang
+    second: {fileID: 2800000, guid: 71c7c2e6768c09c4499e765c6b8db3e3, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: dutch_pillar
+    second: {fileID: 2800000, guid: 08f8ce1aab2b51a42b604b010a6648e9, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: grass_tile
+    second: {fileID: 2800000, guid: 71d4dae9f83c31041b5da0903f99b1ba, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: moreland_bottom_wall
+    second: {fileID: 2800000, guid: fac54cd33fc961e44a8fd7dda4475d51, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: moreland_brick
+    second: {fileID: 2800000, guid: ff9368dbfc045664ea71e8875b1a4fcc, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: moreland_brick_pillar
+    second: {fileID: 2800000, guid: 49d9feccac840c34b9e4fdac3534852f, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: moreland_sign
+    second: {fileID: 2800000, guid: e4565ddbdcdb05d4fa8032846ba16cee, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: moreland_top_sm
+    second: {fileID: 2800000, guid: ff16ff3cc945996458c2b899d24e9b30, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: railroad
+    second: {fileID: 2800000, guid: 7b2cc3acc3f2e5349b9e4be40d7f916c, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: rocks
+    second: {fileID: 2800000, guid: 055fce7fa31f3fa43882492c29d7737e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: sidewalk_clean_og
+    second: {fileID: 2800000, guid: 8ab63e12dc65d1e49ab5e75aaa6d699c, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: sidewalk_clean_repeat
+    second: {fileID: 2800000, guid: 5e00a1c9b34903a4dbf6912c5c3f25f6, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: sidewalk_rocky_crack
+    second: {fileID: 2800000, guid: 07a351f8f0fb2064484853dc6eaacd1a, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: sidewalk_rocky_seamless
+    second: {fileID: 2800000, guid: 20c537b4e21eb414aa809770198fa44a, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: sidewalk_rocky_sm
+    second: {fileID: 2800000, guid: 4b5d2e041ed5824468c6a9e228d06609, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: sign_handicap_texture
+    second: {fileID: 2800000, guid: 5d9721562d4987444b4327d4d6da95ca, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: sign_pole_black
+    second: {fileID: 2800000, guid: 3b48f3698236d824a9c57cab4b6b83e3, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: sign_reserved_parking
+    second: {fileID: 2800000, guid: a33d2ce546c22d94fa49fed1c00a1524, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: slp_track_seamless
+    second: {fileID: 2800000, guid: 3463cca797d592744802a93e8197571e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: slp_turf_seamless
+    second: {fileID: 2800000, guid: 2869f4de90baac840a9dc1af7e9b8d44, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: tex_beaver_wall
+    second: {fileID: 2800000, guid: 24c451cceb79ac54ea90a98c4f831ad5, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: wood_pillar
+    second: {fileID: 2800000, guid: e19d492a8d2a0364aa8f6b4fbf977a8a, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: wood_wall
+    second: {fileID: 2800000, guid: b7df0af3062812e49a0ade68bfa3b6d3, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: yellow_bumps_seamless
+    second: {fileID: 2800000, guid: ed60abdee7ed0a046a7a2c0e113c560e, type: 3}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
