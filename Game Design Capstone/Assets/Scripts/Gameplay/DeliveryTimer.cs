@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class DeliveryTimer : MonoBehaviour
 {
-    [SerializeField] private float duration = 60f;
+    [SerializeField] private float duration = 59f;
     [SerializeField] private bool autoStart = true;
 
     [SerializeField] private TMPro.TextMeshProUGUI timerText;
@@ -56,6 +56,12 @@ public class DeliveryTimer : MonoBehaviour
 
     private void UpdateTimerUI(int currentTime)
     {
-        timerText.text = "Timer: " + currentTime;
+        if (currentTime < 10)
+        {
+            timerText.text = $"0:0{currentTime}";
+        } else 
+        {
+            timerText.text = $"0:{currentTime}";
+        }
     }
 }

@@ -60,6 +60,7 @@ public class DeliveryHandler : MonoBehaviour
 
     void Update()
     {
+        // if the player has not made a delivery yet or picked one up
         if (startReached && endReached)
         {
             startReached = false;
@@ -73,26 +74,35 @@ public class DeliveryHandler : MonoBehaviour
                 ExpoDeliveryComplete();
             }
             CreateWaypoint(currStart);
+
             if (!printedStart)
             {
                 printedStart = true;
                 UnityEngine.Debug.Log("Goal: Pickup order at location: " + currStart.name, player);
+                GameplayManager.instance.DisplayCurrentObjective("Pickup order from " + currStart.name /*"order pickup"*/);
             }
         }
+
+        // if the player has picked up, but not delivered yet
         if (Vector3.Distance(currStart.position, player.transform.position) < goalRange)
         {
             startReached = true;
             CreateWaypoint(currEnd);
+
             if (!printedEnd)
             {
                 printedEnd = true;
                 UnityEngine.Debug.Log("Goal: Deliver order to location" + currEnd.name, player);
+                GameplayManager.instance.DisplayCurrentObjective("Ddeliver order to " + currEnd.name /*"order delivery"*/ );
             }
         }
+
+        // if the player has successfully delivered an order
         if (Vector3.Distance(currEnd.position, player.transform.position) < goalRange && startReached)
         {
             endReached = true;
             UnityEngine.Debug.Log("Goal: Complete!", player);
+            GameplayManager.instance.DisplayCurrentObjective("Order successfully delivered!");
             printedEnd = false;
             printedStart = false;
         }
