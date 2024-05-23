@@ -20,20 +20,40 @@ public class PlayerController : MonoBehaviour
     public float leftAcceleration = 500.0f;
     public float breakingForce = 300.0f;
 
+    private bool frontWarning = false;
+    private bool backWarning = false;
+    private bool rightWarning = false;
+    private bool leftWarning = false;
+
+    private float leftModifier = -1.0f;
+    private float rightModifier = -1.0f;
+
     private float currentRightAcceleration = 0.0f;
     private float currentLeftAcceleration = 0.0f;
     private float currentBreakForce = 0.0f;
 
+    void Start ()
+    {
+        frontWarning = false;
+        backWarning = false;
+        rightWarning = false;
+        leftWarning = false;
+        leftModifier = -1.0f;
+        rightModifier = -1.0f;
+    }
+
     void FixedUpdate ()
     {
+        GetWarnings();
+        CheckWarnings();
 
         if (Input.GetKey(KeyCode.Space))
             currentBreakForce = breakingForce;
         else
             currentBreakForce = 0.0f;
 
-        currentRightAcceleration = -1 * rightAcceleration * Input.GetAxis("RightVertical");
-        currentLeftAcceleration = -1 * leftAcceleration * Input.GetAxis("LeftVertical");
+        currentRightAcceleration = rightModifier * rightAcceleration * Input.GetAxis("RightVertical");
+        currentLeftAcceleration = leftModifier * leftAcceleration * Input.GetAxis("LeftVertical");
 
         frwheel.motorTorque = currentRightAcceleration;
         mrwheel.motorTorque = currentRightAcceleration;
@@ -56,6 +76,7 @@ public class PlayerController : MonoBehaviour
         UpdateWheel(mlwheel, mltransform);
         UpdateWheel(brwheel, brtransform);
         UpdateWheel(blwheel, bltransform);
+
     }
 
     void UpdateWheel (WheelCollider col, Transform trans)
@@ -65,5 +86,48 @@ public class PlayerController : MonoBehaviour
         col.GetWorldPose(out position, out rotation);
         trans.position = position;
         trans.rotation = rotation;
+    }
+
+    void GetWarnings()
+    {
+        /* replace with gathering sensor data to determine if there should be a warning */
+        frontWarning = false;
+        backWarning = false;
+        rightWarning = false;
+        leftWarning = false;
+    }
+
+    void CheckWarnings()
+    {
+        // Check front warning (won't slow down if something is behind it)
+        if (frontWarning && !backWarning)
+        {
+            leftModifier = -0.5f;
+            rightModifier = -0.5f;
+        }
+
+        // Check back warning
+        else if (backWarning)
+        {
+            leftModifier = -1.25f;
+            rightModifier = -1.25f;
+        }
+
+        // Check no front or back warnings
+        else
+        {
+            leftModifier = -1.0f;
+            rightModifier = -1.0f;
+        }
+
+        // Check left warning
+        if (leftWarning)
+            rightModifier *= 0.5f;
+
+        // Check right warning
+        else if (rightWarning)
+            leftModifier *= 0.5f;
+
+        /* might need to add warning for curbs or other specific scenarios */
     }
 }

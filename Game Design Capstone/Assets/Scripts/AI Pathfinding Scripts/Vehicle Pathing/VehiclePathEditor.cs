@@ -12,6 +12,7 @@ public class VehiclePathEditor : MonoBehaviour
     public GameObject vehicle;
     public float minTime;
     public float maxTime;
+    public float startTimer;
 
     private float timer;
 
@@ -20,6 +21,8 @@ public class VehiclePathEditor : MonoBehaviour
         start = new GameObject("Spawner");
         start.transform.parent = this.gameObject.transform.parent;
         start.transform.position = path_objs[0].position;
+        start.transform.rotation = Quaternion.LookRotation(path_objs[1].position - path_objs[0].position);
+        timer = startTimer;
     }
 
     void Update()

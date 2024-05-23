@@ -6,7 +6,7 @@ public class TagManager : MonoBehaviour
 {
     public static string PLAYER_TAG = "Player";
 
-    public static string GAMEPLAY_SCENE_TAG = "TestingDev";
-    public static string MAIN_MENU_SCENE_TAG = "Title_Screen";
+    public static string GAMEPLAY_SCENE_TAG = "MainGame";
+    public static string MAIN_MENU_SCENE_TAG = "TitleScreen";
     
 }

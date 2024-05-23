@@ -24,6 +24,7 @@ public class PedestrianPathEditor : MonoBehaviour
         start = new GameObject("Spawner");
         start.transform.parent = this.gameObject.transform.parent;
         start.transform.position = path_objs[0].position;
+        start.transform.rotation = Quaternion.LookRotation(path_objs[1].position - path_objs[0].position);
     }
 
     void Update()
