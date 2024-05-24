@@ -95,6 +95,9 @@ public class PlayerController : MonoBehaviour
         backWarning = false;
         rightWarning = false;
         leftWarning = false;
+
+        // send the bool flags to be displayed accordingly
+        // gameObject.GetComponent<DisplayADAS>().DisplaySensorActive(frontWarning, backWarning, leftWarning, rightWarning);
     }
 
     void CheckWarnings()

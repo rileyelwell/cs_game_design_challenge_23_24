@@ -21,7 +21,7 @@ public class DeliveryHandler : MonoBehaviour
     public GameObject waypoint;
     public bool ExpoMode;
 
-    bool startReached;
+    public bool startReached;
     bool endReached;
 
     bool printedStart;
@@ -79,7 +79,7 @@ public class DeliveryHandler : MonoBehaviour
             {
                 printedStart = true;
                 UnityEngine.Debug.Log("Goal: Pickup order at location: " + currStart.name, player);
-                GameplayManager.instance.DisplayCurrentObjective("Pickup order from " + currStart.name /*"order pickup"*/);
+                GameplayManager.instance.DisplayCurrentObjective("Pickup order from " + currStart.name);
             }
         }
 
@@ -89,11 +89,17 @@ public class DeliveryHandler : MonoBehaviour
             startReached = true;
             CreateWaypoint(currEnd);
 
+            // if the player has picked up their order and the timer is not running yet, start the timer
+            if (!GameplayManager.instance.GetComponent<DeliveryTimer>().isRunning) 
+            {
+                GameplayManager.instance.GetComponent<DeliveryTimer>().StartTimer();
+            }
+
             if (!printedEnd)
             {
                 printedEnd = true;
-                UnityEngine.Debug.Log("Goal: Deliver order to location" + currEnd.name, player);
-                GameplayManager.instance.DisplayCurrentObjective("Ddeliver order to " + currEnd.name /*"order delivery"*/ );
+                //UnityEngine.Debug.Log("Goal: Deliver order to location" + currEnd.name, player);
+                GameplayManager.instance.DisplayCurrentObjective("Deliver order to " + currEnd.name);
             }
         }
 
@@ -101,10 +107,21 @@ public class DeliveryHandler : MonoBehaviour
         if (Vector3.Distance(currEnd.position, player.transform.position) < goalRange && startReached)
         {
             endReached = true;
-            UnityEngine.Debug.Log("Goal: Complete!", player);
-            GameplayManager.instance.DisplayCurrentObjective("Order successfully delivered!");
+            //UnityEngine.Debug.Log("Goal: Complete!", player);
+            GameplayManager.instance.DisplayCurrentObjective("Order successfully delivered");
             printedEnd = false;
             printedStart = false;
+
+            // temporarily pause the game and show the player their delivery score
+            ScoreHandler.instance.CalculateDeliveryScore();
+            ScoreHandler.instance.DisplayScoreScreen();
+
+            // stop and reset the temp timer
+            GameplayManager.instance.GetComponent<DeliveryTimer>().StopTimer();
+            GameplayManager.instance.GetComponent<DeliveryTimer>().ResetTimer();
+
+            // reset the UI for health and temps
+            //ScoreHandler.instance.ResetUI();
         }
     }
 
@@ -133,5 +150,19 @@ public class DeliveryHandler : MonoBehaviour
     void CreateWaypoint(Transform newWaypoint)
     {
         waypoint.transform.position = newWaypoint.position;
+    }
+
+    public void UpdateForFailedDelivery()
+    {
+        endReached = true;
+        printedEnd = false;
+        printedStart = false;
+
+        // temporarily pause the game and show the player their delivery score
+        ScoreHandler.instance.DisplayScoreScreen();
+
+        // stop and reset the temp timer
+        GameplayManager.instance.GetComponent<DeliveryTimer>().StopTimer();
+        GameplayManager.instance.GetComponent<DeliveryTimer>().ResetTimer();
     }
 }

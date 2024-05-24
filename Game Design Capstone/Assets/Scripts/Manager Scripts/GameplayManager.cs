@@ -8,15 +8,14 @@ public class GameplayManager : MonoBehaviour
 {
     public static GameplayManager instance;
 
-    [SerializeField] private GameObject pausePanel, gameplayPanel;
+    [SerializeField] private GameObject pausePanel, gameplayPanel, scorePanel;
 
-    [SerializeField] private TMPro.TextMeshProUGUI currObjText, objTitleText;
+    [SerializeField] private TMPro.TextMeshProUGUI currObjText;
 
-    private bool isPaused, canPause = true;
+    public bool isPaused, canPause = true;
 
 
     private void Awake() {
-        
         // create a singleton instance of gameplay manager to exist during this execution
         if (instance != null && instance != this) { 
             Destroy(this); 
@@ -33,18 +32,12 @@ public class GameplayManager : MonoBehaviour
 
     private void Update() {
         // pause the game if ESC is hit by the user
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && canPause)
             pauseGame();
     }
 
-    public void UpdateStartingVariables() {
-        Time.timeScale = 1f;
-        canPause = true;
-        gameplayPanel.SetActive(true);
-    }
-
     public void pauseGame() {
-        if (!isPaused && canPause) {
+        if (!isPaused) {
             //SoundManager.instance.PlayButtonClick();
             Time.timeScale = 0f;
             gameplayPanel.SetActive(false);
@@ -58,9 +51,22 @@ public class GameplayManager : MonoBehaviour
     public void resumeGame() {
         //SoundManager.instance.PlayButtonClick();
         gameplayPanel.SetActive(true);
-        pausePanel.SetActive(false);
+        pausePanel.SetActive(false); 
         Time.timeScale = 1f;
         isPaused = false;
+    }
+
+    public void ResumeGameFromScoreScreen() {
+        //SoundManager.instance.PlayButtonClick();
+        scorePanel.SetActive(false);
+        gameplayPanel.SetActive(true);
+        Time.timeScale = 1f;
+
+        // reset the food gauge
+        ScoreHandler.instance.SetFoodTempRect(0);
+        ScoreHandler.instance.SetFoodTempCircle(0);
+
+        canPause = true;
     }
 
     private IEnumerator PlayClickSoundWait() {
