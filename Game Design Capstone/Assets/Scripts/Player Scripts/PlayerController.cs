@@ -32,6 +32,8 @@ public class PlayerController : MonoBehaviour
     private float currentLeftAcceleration = 0.0f;
     private float currentBreakForce = 0.0f;
 
+    [SerializeField] private float roboBoost = 1.0f;
+
     void Start ()
     {
         frontWarning = false;
@@ -44,16 +46,24 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate ()
     {
-        GetWarnings();
-        CheckWarnings();
+        //GetWarnings();
+        CheckWarnings(frontWarning, backWarning, leftWarning, rightWarning);
+
+        // send the bool flags to be displayed accordingly
+        gameObject.GetComponent<DisplayADAS>().DisplaySensorActive(frontWarning, backWarning, leftWarning, rightWarning);
 
         if (Input.GetKey(KeyCode.Space))
             currentBreakForce = breakingForce;
         else
             currentBreakForce = 0.0f;
 
-        currentRightAcceleration = rightModifier * rightAcceleration * Input.GetAxis("RightVertical");
-        currentLeftAcceleration = leftModifier * leftAcceleration * Input.GetAxis("LeftVertical");
+        if (Input.GetKey(KeyCode.LeftShift))
+            roboBoost = 1.5f;
+        else
+            roboBoost = 1f;
+
+        currentRightAcceleration = rightModifier * rightAcceleration * Input.GetAxis("RightVertical") * roboBoost;
+        currentLeftAcceleration = leftModifier * leftAcceleration * Input.GetAxis("LeftVertical") * roboBoost;
 
         frwheel.motorTorque = currentRightAcceleration;
         mrwheel.motorTorque = currentRightAcceleration;
@@ -88,29 +98,50 @@ public class PlayerController : MonoBehaviour
         trans.rotation = rotation;
     }
 
-    void GetWarnings()
+    public void GetWarnings(int cordSurround, int cordHeight)
     {
-        /* replace with gathering sensor data to determine if there should be a warning */
-        frontWarning = false;
-        backWarning = false;
-        rightWarning = false;
-        leftWarning = false;
+        // front warning
+        if (cordSurround >= 6 && cordSurround <= 10)
+        {
+            // print("Front Sensor Active!");
+            frontWarning = true;
+        }
+
+        if (cordSurround >= 14 || cordSurround <= 2)
+        {
+            // print("Back Sensor Active!");
+            backWarning = true;
+        } 
+
+        if (cordSurround >= 2 && cordSurround <= 6)
+        {
+            // print("Left Sensor Active!");
+            leftWarning = true;
+        }
+
+        if (cordSurround >= 10 && cordSurround <= 14)
+        {
+            // print("Right Sensor Active!");
+            rightWarning = true;
+        }
+        
+        CheckWarnings(frontWarning, backWarning, leftWarning, rightWarning);
 
         // send the bool flags to be displayed accordingly
-        // gameObject.GetComponent<DisplayADAS>().DisplaySensorActive(frontWarning, backWarning, leftWarning, rightWarning);
+        gameObject.GetComponent<DisplayADAS>().DisplaySensorActive(frontWarning, backWarning, leftWarning, rightWarning);
     }
 
-    void CheckWarnings()
+    public void CheckWarnings(bool frontWarning1, bool backWarning1, bool leftWarning1, bool rightWarning1)
     {
         // Check front warning (won't slow down if something is behind it)
-        if (frontWarning && !backWarning)
+        if (frontWarning1 && !backWarning1)
         {
             leftModifier = -0.5f;
             rightModifier = -0.5f;
         }
 
         // Check back warning
-        else if (backWarning)
+        else if (backWarning1)
         {
             leftModifier = -1.25f;
             rightModifier = -1.25f;
@@ -124,13 +155,20 @@ public class PlayerController : MonoBehaviour
         }
 
         // Check left warning
-        if (leftWarning)
+        if (leftWarning1)
             rightModifier *= 0.5f;
 
         // Check right warning
-        else if (rightWarning)
+        else if (rightWarning1)
             leftModifier *= 0.5f;
 
         /* might need to add warning for curbs or other specific scenarios */
+    }
+
+    public void ResetSensorWarnings() {
+        frontWarning = false;
+        backWarning = false;
+        rightWarning = false;
+        leftWarning = false;
     }
 }

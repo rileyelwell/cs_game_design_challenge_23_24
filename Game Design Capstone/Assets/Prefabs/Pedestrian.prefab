@@ -987,6 +987,7 @@ GameObject:
   - component: {fileID: 2220307305588068816}
   - component: {fileID: -9062343443106175041}
   - component: {fileID: 4038730108710169178}
+  - component: {fileID: 5613650532655420227}
   m_Layer: 3
   m_Name: Pedestrian
   m_TagString: Pedestrian
@@ -1099,6 +1100,20 @@ MonoBehaviour:
   speed: 2
   reachDistance: 1
   rotationSpeed: 5
+--- !u!114 &5613650532655420227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2686890238580948232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d2dffb961554854aa47900e857c4440, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDistance: 50
+  visualContainer: {fileID: 2686890238580844520}
 --- !u!1 &2686890238580948236
 GameObject:
   m_ObjectHideFlags: 0

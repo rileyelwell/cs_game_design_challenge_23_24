@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 9096201243410185558}
   - component: {fileID: 2889508141360602212}
   - component: {fileID: 81830524797173475}
-  m_Layer: 0
+  - component: {fileID: 3027101236606162063}
+  m_Layer: 3
   m_Name: Car
   m_TagString: Vehicle
   m_Icon: {fileID: 0}
@@ -100,6 +101,20 @@ MonoBehaviour:
   speed: 15
   reachDistance: 1
   rotationSpeed: 5
+--- !u!114 &3027101236606162063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6494536042137597264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d2dffb961554854aa47900e857c4440, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDistance: 80
+  visualContainer: {fileID: 1099952000792104122}
 --- !u!1001 &633153741520694097
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -148,9 +163,57 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8307703979184332466, guid: 604d4d000a2e78f40b9440edfa232eba, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -6979188468643421312, guid: 604d4d000a2e78f40b9440edfa232eba, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -6791420377111819989, guid: 604d4d000a2e78f40b9440edfa232eba, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -5341548325046856723, guid: 604d4d000a2e78f40b9440edfa232eba, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -4056447700803264161, guid: 604d4d000a2e78f40b9440edfa232eba, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -3421110980520288052, guid: 604d4d000a2e78f40b9440edfa232eba, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -1646277561826977357, guid: 604d4d000a2e78f40b9440edfa232eba, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -1170551268003061507, guid: 604d4d000a2e78f40b9440edfa232eba, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 41921740076763691, guid: 604d4d000a2e78f40b9440edfa232eba, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 604d4d000a2e78f40b9440edfa232eba, type: 3}
       propertyPath: m_Name
       value: vehicle_test
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 604d4d000a2e78f40b9440edfa232eba, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4494645614987471354, guid: 604d4d000a2e78f40b9440edfa232eba, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5800069020482085388, guid: 604d4d000a2e78f40b9440edfa232eba, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

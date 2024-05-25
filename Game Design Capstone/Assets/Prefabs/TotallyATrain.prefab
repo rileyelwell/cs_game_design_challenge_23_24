@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2209638505350637100}
   - component: {fileID: 7035332241416165913}
   - component: {fileID: 4525008108827410322}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TotallyATrain
   m_TagString: Train
   m_Icon: {fileID: 0}
