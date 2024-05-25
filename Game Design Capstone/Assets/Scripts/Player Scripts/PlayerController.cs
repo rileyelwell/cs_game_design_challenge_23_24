@@ -20,10 +20,10 @@ public class PlayerController : MonoBehaviour
     public float leftAcceleration = 500.0f;
     public float breakingForce = 300.0f;
 
-    private bool frontWarning = false;
-    private bool backWarning = false;
-    private bool rightWarning = false;
-    private bool leftWarning = false;
+    public bool frontWarning = false;
+    public bool backWarning = false;
+    public bool rightWarning = false;
+    public bool leftWarning = false;
 
     private float leftModifier = -1.0f;
     private float rightModifier = -1.0f;
@@ -98,38 +98,38 @@ public class PlayerController : MonoBehaviour
         trans.rotation = rotation;
     }
 
-    public void GetWarnings(int cordSurround, int cordHeight)
-    {
-        // front warning
-        if (cordSurround >= 6 && cordSurround <= 10)
-        {
-            // print("Front Sensor Active!");
-            frontWarning = true;
-        }
+    // public void GetWarnings()
+    // {
+    //     // front warning
+    //     if (cordSurround >= 6 && cordSurround <= 10)
+    //     {
+    //         // print("Front Sensor Active!");
+    //         frontWarning = true;
+    //     }
 
-        if (cordSurround >= 14 || cordSurround <= 2)
-        {
-            // print("Back Sensor Active!");
-            backWarning = true;
-        } 
+    //     if (cordSurround >= 14 || cordSurround <= 2)
+    //     {
+    //         // print("Back Sensor Active!");
+    //         backWarning = true;
+    //     } 
 
-        if (cordSurround >= 2 && cordSurround <= 6)
-        {
-            // print("Left Sensor Active!");
-            leftWarning = true;
-        }
+    //     if (cordSurround >= 2 && cordSurround <= 6)
+    //     {
+    //         // print("Left Sensor Active!");
+    //         leftWarning = true;
+    //     }
 
-        if (cordSurround >= 10 && cordSurround <= 14)
-        {
-            // print("Right Sensor Active!");
-            rightWarning = true;
-        }
+    //     if (cordSurround >= 10 && cordSurround <= 14)
+    //     {
+    //         // print("Right Sensor Active!");
+    //         rightWarning = true;
+    //     }
         
-        CheckWarnings(frontWarning, backWarning, leftWarning, rightWarning);
+    //     CheckWarnings(frontWarning, backWarning, leftWarning, rightWarning);
 
-        // send the bool flags to be displayed accordingly
-        gameObject.GetComponent<DisplayADAS>().DisplaySensorActive(frontWarning, backWarning, leftWarning, rightWarning);
-    }
+    //     // send the bool flags to be displayed accordingly
+    //     gameObject.GetComponent<DisplayADAS>().DisplaySensorActive(frontWarning, backWarning, leftWarning, rightWarning);
+    // }
 
     public void CheckWarnings(bool frontWarning1, bool backWarning1, bool leftWarning1, bool rightWarning1)
     {

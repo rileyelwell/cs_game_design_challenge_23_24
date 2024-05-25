@@ -300,7 +300,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6516364376257699831}
   - component: {fileID: 4941730553165659466}
-  - component: {fileID: 7772013449482180392}
   m_Layer: 0
   m_Name: Raycastinator
   m_TagString: Untagged
@@ -346,23 +345,10 @@ MonoBehaviour:
   activateRaycast: 0
   sStep: 16
   tStep: 4
-  sLeft: 2
-  sRight: 2
+  sLeft: 4
+  sRight: 4
   tTop: 32
   tBot: 4
---- !u!114 &7772013449482180392
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2638021515311456182}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ea9900978e8b444f9e5798aba24ca25, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rayComponent: {fileID: 0}
 --- !u!1 &2709264852632687928
 GameObject:
   m_ObjectHideFlags: 0
@@ -1063,6 +1049,11 @@ MonoBehaviour:
   rightAcceleration: 20
   leftAcceleration: 20
   breakingForce: 15
+  frontWarning: 0
+  backWarning: 0
+  rightWarning: 0
+  leftWarning: 0
+  roboBoost: 1
 --- !u!114 &4890368895002123235
 MonoBehaviour:
   m_ObjectHideFlags: 0
