@@ -10,30 +10,30 @@ public class GameplayManager : MonoBehaviour
 
     [SerializeField] private GameObject pausePanel, gameplayPanel, scorePanel;
 
-    [SerializeField] private TMPro.TextMeshProUGUI currObjText;
-
-    public bool isPaused, canPause = true;
+    public bool isPaused, canPause;
 
 
     private void Awake() {
         // create a singleton instance of gameplay manager to exist during this execution
-        if (instance != null && instance != this) { 
+        if (instance != null && instance != this)
             Destroy(this); 
-        } else { 
+        else 
             instance = this; 
-        } 
     }
 
     private void Start() {
-        //Time.timeScale = 0f;
         canPause = true;
         isPaused = false;
     }
 
     private void Update() {
         // pause the game if ESC is hit by the user
-        if (Input.GetKeyDown(KeyCode.Escape) && canPause)
+        if (Input.GetKeyDown(KeyCode.Escape) /*|| Input.GetButton()*/ && canPause)
             pauseGame();
+
+        // check player's health and temperature values for lose conditions
+        if (UIManager.instance.HasPlayerLost())
+            DisplayScoreScreen();
     }
 
     public void pauseGame() {
@@ -61,11 +61,6 @@ public class GameplayManager : MonoBehaviour
         scorePanel.SetActive(false);
         gameplayPanel.SetActive(true);
         Time.timeScale = 1f;
-
-        // reset the food gauge
-        ScoreHandler.instance.SetFoodTempRect(0);
-        ScoreHandler.instance.SetFoodTempCircle(0);
-
         canPause = true;
     }
 
@@ -76,7 +71,7 @@ public class GameplayManager : MonoBehaviour
 
     public void MainMenu() {
         PlayClickSoundWait();
-        SceneManager.LoadScene(TagManager.MAIN_MENU_SCENE_TAG);
+        SceneManager.LoadScene(TagManager.TITLE_SCREEN_SCENE_TAG);
         Time.timeScale = 1f;
     }
 
@@ -87,24 +82,20 @@ public class GameplayManager : MonoBehaviour
         Time.timeScale = 1f;
     }
 
-    public void DisplayCurrentObjective(string text)
+    public void DisplayScoreScreen()
     {
-        currObjText.text = text;
-        // objTitleText.text = text2;
+        Time.timeScale = 0f;
+        scorePanel.SetActive(true);
+        gameplayPanel.SetActive(false);
+        canPause = false;
+        UIManager.instance.UpdateScoreScreenInfo();
+        UIManager.instance.ResetUIValues();
     }
 
+    
 
     // public void TurnOffInstructions() {
     //     SoundManager.instance.PlayButtonClick();
     //     instructionsPanel.SetActive(false);
-    // }
-
-    // public void gameOver() {
-    //     Time.timeScale = 0f;
-    //     gameOverPanel.SetActive(true);
-    //     canPause = false;
-
-    //     // update the score for the end screen
-    //     ScoreManager.instance.UpdateEndScoreScreen();
     // }
 }

@@ -7,7 +7,7 @@ public class TagManager : MonoBehaviour
     public static string PLAYER_TAG = "Player";
 
     public static string GAMEPLAY_SCENE_TAG = "RileyBackup";
-    public static string MAIN_MENU_SCENE_TAG = "TitleScreen";
+    public static string TITLE_SCREEN_SCENE_TAG = "TitleScreen";
     public static string EXPO_SCENE_TAG = "ExpoScene";
 
     // for decribing objects and collisions

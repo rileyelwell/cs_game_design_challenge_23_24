@@ -20,10 +20,10 @@ public class PlayerController : MonoBehaviour
     public float leftAcceleration = 500.0f;
     public float breakingForce = 300.0f;
 
-    public bool frontWarning = false;
-    public bool backWarning = false;
-    public bool rightWarning = false;
-    public bool leftWarning = false;
+    public bool frontWarning;
+    public bool backWarning;
+    public bool rightWarning;
+    public bool leftWarning;
 
     private float leftModifier = -1.0f;
     private float rightModifier = -1.0f;
@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
     private float currentBreakForce = 0.0f;
 
     [SerializeField] private float roboBoost = 1.0f;
+    [SerializeField] private float roboBoostUseRate = 0.3f;
 
     void Start ()
     {
@@ -46,21 +47,27 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate ()
     {
-        //GetWarnings();
         CheckWarnings(frontWarning, backWarning, leftWarning, rightWarning);
 
         // send the bool flags to be displayed accordingly
-        gameObject.GetComponent<DisplayADAS>().DisplaySensorActive(frontWarning, backWarning, leftWarning, rightWarning);
+        UIManager.instance.UpdateSensorDisplay(frontWarning, backWarning, leftWarning, rightWarning);
 
         if (Input.GetKey(KeyCode.Space))
             currentBreakForce = breakingForce;
         else
             currentBreakForce = 0.0f;
 
-        if (Input.GetKey(KeyCode.LeftShift))
+        // handle the roboBOOST with left shift
+        if (Input.GetKey(KeyCode.LeftShift) && !UIManager.instance.isBatteryOnCooldown)
+        {
             roboBoost = 1.5f;
+            UIManager.instance.UpdateBatteryDisplay(roboBoostUseRate);
+        }
         else
+        {
             roboBoost = 1f;
+            UIManager.instance.UpdateBatteryDisplay(-roboBoostUseRate / 3);
+        }
 
         currentRightAcceleration = rightModifier * rightAcceleration * Input.GetAxis("RightVertical") * roboBoost;
         currentLeftAcceleration = leftModifier * leftAcceleration * Input.GetAxis("LeftVertical") * roboBoost;
@@ -97,39 +104,6 @@ public class PlayerController : MonoBehaviour
         trans.position = position;
         trans.rotation = rotation;
     }
-
-    // public void GetWarnings()
-    // {
-    //     // front warning
-    //     if (cordSurround >= 6 && cordSurround <= 10)
-    //     {
-    //         // print("Front Sensor Active!");
-    //         frontWarning = true;
-    //     }
-
-    //     if (cordSurround >= 14 || cordSurround <= 2)
-    //     {
-    //         // print("Back Sensor Active!");
-    //         backWarning = true;
-    //     } 
-
-    //     if (cordSurround >= 2 && cordSurround <= 6)
-    //     {
-    //         // print("Left Sensor Active!");
-    //         leftWarning = true;
-    //     }
-
-    //     if (cordSurround >= 10 && cordSurround <= 14)
-    //     {
-    //         // print("Right Sensor Active!");
-    //         rightWarning = true;
-    //     }
-        
-    //     CheckWarnings(frontWarning, backWarning, leftWarning, rightWarning);
-
-    //     // send the bool flags to be displayed accordingly
-    //     gameObject.GetComponent<DisplayADAS>().DisplaySensorActive(frontWarning, backWarning, leftWarning, rightWarning);
-    // }
 
     public void CheckWarnings(bool frontWarning1, bool backWarning1, bool leftWarning1, bool rightWarning1)
     {

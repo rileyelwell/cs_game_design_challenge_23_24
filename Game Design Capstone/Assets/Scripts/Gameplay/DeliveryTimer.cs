@@ -7,17 +7,14 @@ using UnityEngine.SocialPlatforms.Impl;
 public class DeliveryTimer : MonoBehaviour
 {
     [SerializeField] private float duration = 100f;
-    // [SerializeField] private bool autoStart = false;
 
-    [SerializeField] private TMPro.TextMeshProUGUI timerText;
+    private float timeRemaining, firstPhaseDuration, secondPhaseDuration, elapsedTime, startTime;
 
-    private float timeRemaining, firstPhaseDuration, secondPhaseDuration, elapsedTime;
-    private float startTime;
     public bool isRunning;
 
     void Start()
     {
-        // Calculate phase durations
+        // calculate phase durations
         firstPhaseDuration = duration * 0.75f;
         secondPhaseDuration = duration * 0.25f;
     }
@@ -27,7 +24,6 @@ public class DeliveryTimer : MonoBehaviour
         if (isRunning)
         {
             timeRemaining -= Time.deltaTime;
-
             elapsedTime = Time.time - startTime;
 
             // stop the timer if there is no time left
@@ -37,28 +33,14 @@ public class DeliveryTimer : MonoBehaviour
                 isRunning = false;
             }
 
-            // update the UI with the current time
-            //UpdateTimerUI((int)timeRemaining);
-
-            // update the first fill image for the first phase duration
-            if (elapsedTime <= firstPhaseDuration)
-            {
-                ScoreHandler.instance.SetFoodTempRect(elapsedTime / firstPhaseDuration);
-            }
-
-            // update the second image for the second phase duration
-            else
-            {
-                float secondPhaseElapsed = elapsedTime - firstPhaseDuration;
-                ScoreHandler.instance.SetFoodTempCircle(secondPhaseElapsed / secondPhaseDuration);
-            }
+            // update the UI displays
+            UIManager.instance.UpdateStopwatchDisplay((int)elapsedTime);
+            UIManager.instance.UpdateTempDisplay((int)elapsedTime, firstPhaseDuration, secondPhaseDuration);
         }
         else
         {
-            if (startTime != 0) // Ensure startTime is set
-            {
+            if (startTime != 0)
                 elapsedTime = Time.time - startTime;
-            }
         }
     }
 
@@ -82,31 +64,8 @@ public class DeliveryTimer : MonoBehaviour
         isRunning = false;
     }
 
-    public int GetElapsedTime() 
-    {
-        return (int)elapsedTime;
-    }
-
-    public float GetTimerDuration() 
-    {
-        return duration;
-    }
-
-    public float GetCurrentTemp() 
-    {
-        return duration - elapsedTime; 
-    }
-
-    private void UpdateTimerUI(int currentTime)
-    {
-        if (currentTime < 10)
-        {
-            timerText.text = $"0:0{currentTime}";
-        } 
-        else 
-        {
-            timerText.text = $"0:{currentTime}";
-        }
-    }
+    public int GetElapsedTime() { return (int)elapsedTime; }
+    public float GetTimerDuration() { return duration; }
+    public float GetCurrentTemp() { return duration - elapsedTime; }
 }
 
