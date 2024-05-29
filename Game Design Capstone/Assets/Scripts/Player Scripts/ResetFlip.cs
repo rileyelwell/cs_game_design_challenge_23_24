@@ -4,19 +4,28 @@ using UnityEngine;
 
 public class ResetFlip : MonoBehaviour
 {
-    
     private Vector3 currentPosition;
     private Quaternion correctRotation;
-
     [SerializeField] private List<Transform> wheelTransforms;
-
     private bool isFlipped;
 
+    /*
+     * Name: Start (Unity)
+     * Inputs: none
+     * Outputs: none
+     * Description: Sets initial values
+     */
     private void Start() {
         correctRotation = transform.rotation;
         isFlipped = false;
     }
 
+    /*
+     * Name: Update (Unity)
+     * Inputs: none
+     * Outputs: none
+     * Description: Checks for player input to flip robot
+     */
     private void Update() {
         // currentPosition = transform.position;
 
@@ -32,6 +41,12 @@ public class ResetFlip : MonoBehaviour
         // }
     }
 
+    /*
+     * Name: PlayerResetFlip
+     * Inputs: none
+     * Outputs: none
+     * Description: Flips the player right side up
+     */
     private void PlayerResetFlip()
     {
         // handle the new position (drop from slight height)
@@ -46,6 +61,18 @@ public class ResetFlip : MonoBehaviour
         print("Flipping Robot!");
     }
 
+    /*
+     * Name: SetBoolFlipped
+     * Inputs: boolean flag
+     * Outputs: none
+     * Description: Sets the isFlipped value to the value of the flag
+     */
+    public void SetBoolFlipped(bool flag)
+    {
+        isFlipped = flag;
+    }
+
+    /*
     private bool AreWheelsOffGround()
     {
         // Check if the wheels are touching the ground using raycasts
@@ -65,63 +92,49 @@ public class ResetFlip : MonoBehaviour
         return wheelsOffGround;
     }
 
-    // private void OnCollisionStay(Collision collision)
-    // {
-    //     // Check if any collision is happening with the ground
-    //     foreach (ContactPoint contact in collision.contacts)
-    //     {
-    //         if (contact.otherCollider.CompareTag("Ground"))
-    //         {
-    //             isFlipped = false;
-    //             return;
-    //         }
-    //     }
-    //     isFlipped = true;
-    // }
-
-    // private void OnCollisionExit(Collision collision)
-    // {
-    //     if (collision.collider.CompareTag("Ground"))
-    //     {
-    //         isFlipped = true;
-    //     }
-    // }
-
-
-
-
-
-
-
-
-
-    public void SetBoolFlipped(bool flag) 
+    private void OnCollisionStay(Collision collision)
     {
-        isFlipped = flag;
+        // Check if any collision is happening with the ground
+        foreach (ContactPoint contact in collision.contacts)
+        {
+            if (contact.otherCollider.CompareTag("Ground"))
+            {
+                isFlipped = false;
+                return;
+            }
+        }
+        isFlipped = true;
     }
 
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.collider.CompareTag("Ground"))
+        {
+            isFlipped = true;
+        }
+    }
 
-    // private void CheckForFlipped()
-    // {
-    //     // print(transform.eulerAngles);
+    private void CheckForFlipped()
+    {
+        // print(transform.eulerAngles);
 
-    //     if (transform.eulerAngles.z <= -70 || transform.eulerAngles.z >= 70)
-    //     {
-    //         print("Robot flipped on z axis");
-    //         isFlipped = true;
-    //     }
+        if (transform.eulerAngles.z <= -70 || transform.eulerAngles.z >= 70)
+        {
+            print("Robot flipped on z axis");
+            isFlipped = true;
+        }
 
-    //     else if (transform.eulerAngles.x < -70 || transform.eulerAngles.z >= 70)
-    //     {
-    //         print("Robot flipped on x axis");
-    //         isFlipped = true;
-    //     }
+        else if (transform.eulerAngles.x < -70 || transform.eulerAngles.z >= 70)
+        {
+            print("Robot flipped on x axis");
+            isFlipped = true;
+        }
 
-    //     else 
-    //     {
-    //         // print("Robot should not be able to flip");
-    //         isFlipped = false;
-    //     }
-    // }
-
+        else 
+        {
+            // print("Robot should not be able to flip");
+            isFlipped = false;
+        }
+    }
+    */
 }

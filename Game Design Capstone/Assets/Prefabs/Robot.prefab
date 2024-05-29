@@ -335,7 +335,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 6656078602638682886}
-  raycastDistance: 1
   layerMask:
     serializedVersion: 2
     m_Bits: 904
@@ -891,7 +890,6 @@ GameObject:
   - component: {fileID: 9147472380474758974}
   - component: {fileID: 8052002473608356125}
   - component: {fileID: 4890368895002123235}
-  - component: {fileID: 100284363785525928}
   - component: {fileID: 7909749761851251537}
   m_Layer: 0
   m_Name: Robot
@@ -1040,20 +1038,16 @@ MonoBehaviour:
   mlwheel: {fileID: 9002871350015992771}
   brwheel: {fileID: 8589736485403810518}
   blwheel: {fileID: 5510001280368821650}
-  frtransform: {fileID: 1376461436696212691}
-  fltransform: {fileID: 3138107624998288026}
-  mrtransform: {fileID: 8260559467274548215}
-  mltransform: {fileID: 3517720074969071885}
-  brtransform: {fileID: 8968906333554281576}
-  bltransform: {fileID: 3388128319219324697}
-  rightAcceleration: 20
-  leftAcceleration: 20
-  breakingForce: 15
-  frontWarning: 0
-  backWarning: 0
-  rightWarning: 0
-  leftWarning: 0
+  frtrans: {fileID: 1376461436696212691}
+  fltrans: {fileID: 3138107624998288026}
+  mrtrans: {fileID: 8260559467274548215}
+  mltrans: {fileID: 3517720074969071885}
+  brtrans: {fileID: 8968906333554281576}
+  bltrans: {fileID: 3388128319219324697}
+  acceleration: 20
+  breakingForce: 20
   roboBoost: 1
+  roboBoostUseRate: 0.3
 --- !u!114 &4890368895002123235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1073,7 +1067,7 @@ MonoBehaviour:
   - {fileID: 7766219353629113307}
   - {fileID: 4107519950097945186}
   - {fileID: 9090721910327072454}
---- !u!114 &100284363785525928
+--- !u!114 &7909749761851251537
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1085,22 +1079,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 914b02cfa5588b949b9217f02e75b02d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7909749761851251537
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6656078602638682886}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a98e67947764204eb5f2290ee8f9305, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leftSensorImg: {fileID: 0}
-  rightSensorImg: {fileID: 0}
-  backSensorImg: {fileID: 0}
-  frontSensorImg: {fileID: 0}
 --- !u!1 &7022093819512834893
 GameObject:
   m_ObjectHideFlags: 0

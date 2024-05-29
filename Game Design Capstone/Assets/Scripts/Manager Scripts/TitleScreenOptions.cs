@@ -3,12 +3,24 @@ using UnityEngine.SceneManagement;
 
 public class TitleScreenOptions : MonoBehaviour
 {
+    /*
+     * Name: PlayGame
+     * Inputs: none
+     * Outputs: none
+     * Description: Starts the game
+     */
     public void PlayGame()
     {
         SceneManager.LoadScene(TagManager.GAMEPLAY_SCENE_TAG);
         Time.timeScale = 1f;
     }
 
+    /*
+     * Name: QuitGame
+     * Inputs: none
+     * Outputs: none
+     * Description: Quits the game
+     */
     public void QuitGame()
     {
         // If we are running in a standalone build of the game

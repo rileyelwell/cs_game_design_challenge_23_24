@@ -4,23 +4,40 @@ using UnityEngine;
 
 public class SpawnGrass : MonoBehaviour
 {
-    [SerializeField] GameObject grassPrefab;
-    [SerializeField] int numberOfGrass = 100;
+    [SerializeField] GameObject grassPrefab;    // Grass prefab
+    [SerializeField] int numberOfGrass = 100;   // Number of grass to spawn
 
     private Matrix4x4[] matrices;
 
+    /*
+     * Name: Start (Unity)
+     * Inputs: none
+     * Outputs: none
+     * Description: Initializes and updates matrices
+     */
     void Start()
     {
         matrices = new Matrix4x4[numberOfGrass];
         UpdateMatrices();
     }
 
+    /*
+     * Name: Update (Unity)
+     * Inputs: none
+     * Outputs: none
+     * Description: Draw grass instances
+     */
     void Update()
     {
-        // Draw grass instances
         DrawGrass();
     }
 
+    /*
+     * Name: UpdateMatrices
+     * Inputs: none
+     * Outputs: none
+     * Description: Randomly places grass on the matrix
+     */
     void UpdateMatrices()
     {
         for (int i = 0; i < numberOfGrass; i++)
@@ -32,6 +49,12 @@ public class SpawnGrass : MonoBehaviour
         }
     }
 
+    /*
+     * Name: DrawGrass
+     * Inputs: none
+     * Outputs: none
+     * Description: Draws a grass instance
+     */
     void DrawGrass()
     {
         Mesh mesh = grassPrefab.GetComponent<MeshFilter>().sharedMesh;
@@ -39,6 +62,12 @@ public class SpawnGrass : MonoBehaviour
         Graphics.DrawMeshInstanced(mesh, 0, material, matrices);
     }
 
+    /*
+     * Name: GetRandomPointOnPlane
+     * Inputs: transform of plane
+     * Outputs: vector3 of randomized point
+     * Description: Finds a random point on a plane
+     */
     Vector3 GetRandomPointOnPlane(Transform planeTransform)
     {
         // Cast a ray from above the mesh downward to find a point on the surface

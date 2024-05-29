@@ -2,10 +2,16 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    public Transform target;
-    public float smoothSpeed = 0.05f;
-    public Vector3 offset;
+    [SerializeField] private Transform target;          // Target to follow (the player)
+    [SerializeField] private float smoothSpeed = 0.05f; // Smooth transistion into movement
+    [SerializeField] private Vector3 offset;            // Offset behind the target
 
+    /*
+     * Name: FixedUpdate (Unity)
+     * Inputs: none
+     * Outputs: none
+     * Description: Follows the player with the camera
+     */
     void FixedUpdate ()
     {
         Vector3 desiredPosition = target.position - target.forward + offset;

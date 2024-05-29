@@ -4,15 +4,27 @@ using UnityEngine;
 
 public class ObjectRendering : MonoBehaviour
 {
-    [SerializeField] private float maxDistance = 50f; // Maximum render distance
+    [SerializeField] private float maxDistance = 50f;   // Maximum render distance
     [SerializeField] private Transform visualContainer; // Reference to a child object/container with Renderer components
-    private Transform player; // Reference to the player (main camera)
+    private Transform player;                           // Reference to the player (main camera)
 
-    
-    private void Start() {
+    /*
+     * Name: Start (Unity)
+     * Inputs: none
+     * Outputs: none
+     * Description: Gets the player reference
+     */
+    private void Start()
+    {
         player = GameObject.FindGameObjectWithTag(TagManager.PLAYER_TAG).transform;
     }
 
+    /*
+     * Name: Update (Unity)
+     * Inputs: none
+     * Outputs: none
+     * Description: Render objects to the player if they are in range
+     */
     void Update()
     {
         // Calculate the distance between the pedestrian and the player (main camera)
@@ -27,16 +39,10 @@ public class ObjectRendering : MonoBehaviour
             {
                 visualContainer.GetComponent<Renderer>().enabled = distance <= maxDistance;
                 foreach (Renderer renderer in visualContainer.GetComponentsInChildren<Renderer>())
-                {
                     renderer.enabled = distance <= maxDistance;
-                }
             }
-            else 
-            {
+            else
                 visualContainer.GetComponent<Renderer>().enabled = distance <= maxDistance;
-            }
-                
-            
         }
     }
 }

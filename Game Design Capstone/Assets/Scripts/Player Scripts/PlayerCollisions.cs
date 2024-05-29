@@ -8,6 +8,12 @@ public class PlayerCollisions : MonoBehaviour
     private Dictionary<Collider, float> lastProcessedTimes = new Dictionary<Collider, float>();
     private float cooldownTime = 1f;
 
+    /*
+     * Name: OnCollisionEnter (Unity)
+     * Inputs: collided collider
+     * Outputs: none
+     * Description: Checks for player collisions and handles them accordingly
+     */
     private void OnCollisionEnter(Collision collision) {
         Collider collider = collision.collider;
         float currentTime = Time.time;
@@ -25,7 +31,7 @@ public class PlayerCollisions : MonoBehaviour
         // Update the last processed time for this collider
         lastProcessedTimes[collider] = currentTime;
 
-        // player loses 10% health when hit by a pedestrain
+        // Player loses 10% health when hit by a pedestrain
         if (collider.gameObject.tag == TagManager.PEDESTRIAN_TAG)
         {
             UIManager.instance.UpdateRobotHealthDisplay(0.1f);

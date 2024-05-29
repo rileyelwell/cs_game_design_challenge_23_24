@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PathToFollow: {fileID: 0}
-  StartingWayPointID: 1
+  startingWaypointID: 1
   speed: 15
   reachDistance: 1
   rotationSpeed: 5

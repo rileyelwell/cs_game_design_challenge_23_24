@@ -14,21 +14,17 @@ public class RaycastResultsUpdatedEventArgs : EventArgs
 
 public class Ray : MonoBehaviour
 {
-    public GameObject Player;  // The player GameObject to use as the origin of the raycasts
-    public float raycastDistance = 1f;  // Distance of each raycast
-    public LayerMask layerMask;  // Layer mask to specify which layers to raycast against
-    public Vector3 rayDirection;  // Direction of the raycast
-    public float drawDistance = 5.0f;  // Distance to draw debug lines for raycasts
-    public float lifeSpan = 1.0f;  // Lifespan of debug lines
-    public bool activateRaycast = false;  // Flag to activate raycasting
+    [SerializeField] private GameObject Player;             // The player GameObject to use as the origin of the raycasts
+    [SerializeField] private LayerMask layerMask;           // Layer mask to specify which layers to raycast against
+    [SerializeField] private Vector3 rayDirection;          // Direction of the raycast
+    [SerializeField] private float drawDistance = 5.0f;     // Distance to draw debug lines for raycasts
+    [SerializeField] private float lifeSpan = 1.0f;         // Lifespan of debug lines
+    [SerializeField] private bool activateRaycast = false;  // Flag to activate raycasting
+    private PlayerController playerController;              // Reference to the player controller for ADAS updates
 
-    public float sStep = 16f;  // Number of steps in the s direction
-    public float tStep = 16f;  // Number of steps in the t direction
-
-    public float sLeft = 2;  // Left boundary for s
-    public float sRight = 2;  // Right boundary for s
-    public float tTop = 2;  // Top boundary for t
-    public float tBot = 2;  // Bottom boundary for t
+    [SerializeField] private float sStep = 16f, tStep = 16f; // Number of steps in the s and t direction
+    [SerializeField] private float sLeft = 2, sRight = 2;   // Left and right boundary for s
+    [SerializeField] private float tTop = 2, tBot = 2;      // Top and bottom boundary for t
 
     // Delegates for the raycast results events
     public delegate void RaycastResultsUpdatedEventHandler(object sender, RaycastResultsUpdatedEventArgs e);
@@ -39,14 +35,22 @@ public class Ray : MonoBehaviour
     public event RaycastResultsUpdatedEventHandler OnRayRUpdated;
     public event RaycastResultsUpdatedEventHandler OnRayBUpdated;
 
-    private PlayerController playerController;  // Reference to the player controller
-
+    /*
+     * Name: Awake (Unity)
+     * Inputs: none
+     * Outputs: none
+     * Description: Gets the player controller
+     */
     private void Awake() {
-        // Initialize the player controller reference
         playerController = gameObject.GetComponentInParent<PlayerController>();
     }
 
-    // Method to perform raycasting in a specific direction
+    /*
+     * Name: RaycastInDirection
+     * Inputs: direction offset, rotation offset, raycast results, raycast color
+     * Outputs: boolean of if there was a hit or not
+     * Description: Performs raycasting in a specific direction
+     */
     private bool RaycastInDirection(Vector3 directionOffset, Quaternion rotationOffset, RaycastHit[,] results, Color debugColor)
     {
         bool hasHit = false;
@@ -95,6 +99,13 @@ public class Ray : MonoBehaviour
         return hasHit;
     }
 
+
+    /*
+     * Name: Update (Unity)
+     * Inputs: none
+     * Outputs: none
+     * Description: Checks for raycast hits and sends them to the player controller
+     */
     void Update()
     {
         if (activateRaycast)
@@ -111,42 +122,29 @@ public class Ray : MonoBehaviour
             bool hitR = RaycastInDirection(Vector3.right * 0.25f, Quaternion.Euler(0, 90, 0), rayR, Color.red);
             bool hitB = RaycastInDirection(Vector3.back * 0.3f, Quaternion.Euler(0, 180, 0), rayB, Color.yellow);
 
-            // Update player controller and trigger events based on raycast results
+            // Trigger events based on raycast results
             if (hitF)
             {
                 OnRayFUpdated?.Invoke(this, new RaycastResultsUpdatedEventArgs(rayF));
-                playerController.frontWarning = true;
-            } else 
-            {
-                playerController.frontWarning = false;
             }
-
             if (hitL)
             {
                 OnRayLUpdated?.Invoke(this, new RaycastResultsUpdatedEventArgs(rayL));
-                playerController.leftWarning = true;
-            } else 
-            {
-                playerController.leftWarning = false;
             }
-
             if (hitR)
             {
                 OnRayRUpdated?.Invoke(this, new RaycastResultsUpdatedEventArgs(rayR));
-                playerController.rightWarning = true;
-            } else 
-            {
-                playerController.rightWarning = false;
             }
-
             if (hitB)
             {
                 OnRayBUpdated?.Invoke(this, new RaycastResultsUpdatedEventArgs(rayB));
-                playerController.backWarning = true;
-            } else 
-            {
-                playerController.backWarning = false;
             }
+
+            // Update player controller
+            playerController.SetWarning('f', hitF);
+            playerController.SetWarning('b', hitB);
+            playerController.SetWarning('l', hitL);
+            playerController.SetWarning('r', hitR);
         }
     }
 }
