@@ -8,7 +8,7 @@ public class UIManager : MonoBehaviour
     public static UIManager instance;                                                               // Current instance of the gameplay manager
     private DeliveryTimer deliveryTimer;                                                            // Reference to deliverTimer
     private DeliveryHandler deliveryHandler;                                                        // Reference to deliveryHandler
-    private GameObject player;                                                                      // Reference to player
+    private Transform player;                                                                       // Reference to player
     [SerializeField] private Image leftSensorImg, rightSensorImg, backSensorImg, frontSensorImg;    // Sensor images
     [SerializeField] private Image robotHealthImage;                                                // Robot health image
     [SerializeField] private Image tempRectangleImage, tempCircleImage;                             // Temperature images
@@ -18,9 +18,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TMPro.TextMeshProUGUI stopwatchText;                                   // Timer text
     [SerializeField] private TMPro.TextMeshProUGUI currObjText;                                     // Objective text
     [SerializeField] private TMPro.TextMeshProUGUI scoreDescText, elapsedTimeText, scoreTitleText;  // Scoreboard text
+    [SerializeField] private GameObject resumeButton;                                               // Resume button
     [SerializeField] private Image star1, star2, star3, timerImage;                                 // Scoreboard images
     [SerializeField] private RectTransform arrowImage;                                              // Arrow pointer image
-    [SerializeField] private float rotationSpeed = 5f;                                              // Arrow rotation speed
+    [SerializeField] private float arrowOffset = 25;                                                // Arrow rotation speed
     private Transform targetWaypoint;                                                               // Target waypoint
 
     /*
@@ -38,7 +39,8 @@ public class UIManager : MonoBehaviour
 
         deliveryTimer = gameObject.GetComponent<DeliveryTimer>();
         deliveryHandler = GameObject.Find("DeliveryHandler").GetComponent<DeliveryHandler>();
-        player = GameObject.FindGameObjectWithTag(TagManager.PLAYER_TAG);
+        player = GameObject.FindGameObjectWithTag(TagManager.PLAYER_TAG).transform;
+        targetWaypoint = deliveryHandler.GetCurrentWaypoint();
     }
 
     /*
@@ -225,14 +227,15 @@ public class UIManager : MonoBehaviour
         // Update the total time taken and description texts
         elapsedTimeText.text = GetFormattedTime(time);   
         scoreTitleText.text = "Delivery Complete!";
+        resumeButton.SetActive(true);
 
         // User receives 3 stars for perfect health and at least half the temp gauge left full
         if (health == 1 && temp >= 0.5) 
-            SetScoreDescription(Color.white, Color.black, Color.black, "Excellent Delivery!");
+            SetScoreDescription(Color.white, Color.white, Color.white, "Excellent Delivery!");
 
         // User receives 2 stars for perfect health and poor temp, or good temp and decent health
         else if ((health == 1 && temp < 0.5 && temp > 0) || temp >= 0.5 && health >= 0.5)
-            SetScoreDescription(Color.white, Color.black, Color.black, "Good Delivery!");
+            SetScoreDescription(Color.white, Color.white, Color.black, "Good Delivery!");
 
         // User receives 1 star for poor health and poor temp, or no temp and perfect health
         else if (health <= 0.5 && health > 0 && temp < 0.5 && temp > 0)
@@ -242,6 +245,7 @@ public class UIManager : MonoBehaviour
         else 
             SetScoreDescription(Color.black, Color.black, Color.black, "temp_string");
             scoreTitleText.text = "Delivery Failed!";
+            resumeButton.SetActive(false);
 
             if (temp <= 0.01 && health > 0)
                 scoreDescText.text = "Your food is too cold!";
@@ -268,26 +272,25 @@ public class UIManager : MonoBehaviour
      * Outputs: none
      * Description: Update the arrow to point towards goal
      */
-    public void UpdateArrowDestination()
+    private void UpdateArrowDestination()
     {
-        targetWaypoint = deliveryHandler.GetCurrentWaypoint();
-        if (player.transform != null && targetWaypoint != null)
-        {
-            // Get the direction from the player to the target
-            Vector3 direction = targetWaypoint.position - player.transform.position;
+        Vector3 directionToGoal = (targetWaypoint.position - player.position).normalized;
+        Vector3 playerForward = player.forward;
 
-            // Calculate the angle to the target
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        float dotProduct = Vector3.Dot(playerForward, directionToGoal);
+        float angle = Mathf.Acos(dotProduct) * Mathf.Rad2Deg; // Convert the dot product to an angle in degrees
 
-            // Smoothly rotate the arrow towards the target
-            Quaternion targetRotation = Quaternion.Euler(new Vector3(0, 0, angle));
-            arrowImage.rotation = Quaternion.Slerp(arrowImage.rotation, targetRotation, Time.deltaTime * rotationSpeed);
-        }
+        // Determine the sign of the angle to know which direction to rotate the arrow
+        Vector3 crossProduct = Vector3.Cross(playerForward, directionToGoal);
+        if (crossProduct.y < 0)
+            angle = -angle;
+
+        // Rotate the arrow UI to point towards the goal
+        arrowImage.localRotation = Quaternion.Euler(0, 0, angle + arrowOffset);
     }
 
-    /*
-    private void Update() {
-        UpdateArrowDestination();
+    private void Update() 
+    {
+        UpdateArrowDestination();  
     }
-    */
 }

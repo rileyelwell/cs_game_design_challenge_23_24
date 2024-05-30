@@ -341,7 +341,7 @@ MonoBehaviour:
   rayDirection: {x: 0, y: 0, z: 0}
   drawDistance: 1.5
   lifeSpan: 1
-  activateRaycast: 0
+  activateRaycast: 1
   sStep: 16
   tStep: 4
   sLeft: 4
@@ -890,7 +890,7 @@ GameObject:
   - component: {fileID: 9147472380474758974}
   - component: {fileID: 8052002473608356125}
   - component: {fileID: 4890368895002123235}
-  - component: {fileID: 7909749761851251537}
+  - component: {fileID: 9189564701087461315}
   m_Layer: 0
   m_Name: Robot
   m_TagString: Player
@@ -1048,6 +1048,8 @@ MonoBehaviour:
   breakingForce: 20
   roboBoost: 1
   roboBoostUseRate: 0.3
+  rightAcceleration: 500
+  leftAcceleration: 500
 --- !u!114 &4890368895002123235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1067,7 +1069,7 @@ MonoBehaviour:
   - {fileID: 7766219353629113307}
   - {fileID: 4107519950097945186}
   - {fileID: 9090721910327072454}
---- !u!114 &7909749761851251537
+--- !u!114 &9189564701087461315
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1079,6 +1081,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 914b02cfa5588b949b9217f02e75b02d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pedestrianDamagePerHit: 0.1
+  vehicleDamagePerHit: 0.3
+  trainDamageperHit: 1
 --- !u!1 &7022093819512834893
 GameObject:
   m_ObjectHideFlags: 0

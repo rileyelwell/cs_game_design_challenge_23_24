@@ -11,6 +11,11 @@ public class PlayerController : MonoBehaviour
     private float currentRightAcceleration, currentLeftAcceleration, currentBreakForce;         // Current speed variabels
     private bool frontWarning, backWarning, rightWarning, leftWarning;                          // ADAS triggered variables
     private float leftModifier, rightModifier;                                                  // ADAS effect variables
+    public float rightAcceleration = 500.0f;
+    public float leftAcceleration = 500.0f;
+
+    // private float rightVerticalInput, leftVerticalInput;
+    // private bool isGamepadConnected;
 
     /*
      * Name: Awake (Unity)
@@ -18,7 +23,11 @@ public class PlayerController : MonoBehaviour
      * Outputs: none
      * Description: Sets the initial values for player variables
      */
-    void Awake ()
+    void Awake (){
+
+    }
+
+    void Start ()
     {
         currentBreakForce = 0.0f;
         currentRightAcceleration = 0.0f;
@@ -29,6 +38,11 @@ public class PlayerController : MonoBehaviour
         leftWarning = false;
         leftModifier = -1.0f;
         rightModifier = -1.0f;
+    }
+
+    private void Update() {
+        // Check if any joystick (including gamepads) is connected
+        // isGamepadConnected = Input.GetJoystickNames().Length > 0;
     }
 
     /*
@@ -42,17 +56,16 @@ public class PlayerController : MonoBehaviour
         // Apply any ADAS intervention
         ADAS();
 
-        // Update ADAS UI using warning booleans
+        // send the bool flags to be displayed accordingly on UI
         UIManager.instance.UpdateSensorDisplay(frontWarning, backWarning, leftWarning, rightWarning);
 
-        // Handle breaking with space
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space) || Input.GetButton("Gamepad_B"))
             currentBreakForce = breakingForce;
         else
             currentBreakForce = 0.0f;
 
-        // Handle the roboboost (sprint) with left shift
-        if (Input.GetKey(KeyCode.LeftShift) && !UIManager.instance.isBatteryOnCooldown)
+        // handle the roboBOOST with left shift
+        if ((Input.GetKey(KeyCode.LeftShift) || Input.GetButton("Gamepad_X")) && !UIManager.instance.isBatteryOnCooldown)
         {
             roboBoost = 1.5f;
             UIManager.instance.UpdateBatteryDisplay(roboBoostUseRate);
@@ -76,6 +89,55 @@ public class PlayerController : MonoBehaviour
         UpdateWheel(blwheel, bltrans, currentLeftAcceleration);
 
     }
+
+
+    
+//     void UpdateWheel (WheelCollider wheel, Transform trans, float acc)
+// =======
+
+//         if (isGamepadConnected)
+//         {
+//             currentRightAcceleration = rightModifier * rightAcceleration * Input.GetAxis("Gamepad_RT") * roboBoost;
+//             currentLeftAcceleration = leftModifier * leftAcceleration * Input.GetAxis("Gamepad_LT") * roboBoost;
+
+//             frwheel.motorTorque = currentRightAcceleration;
+//             mrwheel.motorTorque = currentRightAcceleration;
+//             brwheel.motorTorque = currentRightAcceleration;
+
+//             flwheel.motorTorque = currentLeftAcceleration;
+//             mlwheel.motorTorque = currentLeftAcceleration;
+//             blwheel.motorTorque = currentLeftAcceleration;
+//         }
+
+//         else
+//         {
+//             currentRightAcceleration = rightModifier * rightAcceleration * Input.GetAxis("RightVertical") * roboBoost;
+//             currentLeftAcceleration = leftModifier * leftAcceleration * Input.GetAxis("LeftVertical") * roboBoost;
+
+//             frwheel.motorTorque = currentRightAcceleration;
+//             mrwheel.motorTorque = currentRightAcceleration;
+//             brwheel.motorTorque = currentRightAcceleration;
+
+//             flwheel.motorTorque = currentLeftAcceleration;
+//             mlwheel.motorTorque = currentLeftAcceleration;
+//             blwheel.motorTorque = currentLeftAcceleration;
+//         }
+
+//         flwheel.brakeTorque = currentBreakForce;
+//         frwheel.brakeTorque = currentBreakForce;
+//         mrwheel.brakeTorque = currentBreakForce;
+//         mlwheel.brakeTorque = currentBreakForce;
+//         brwheel.brakeTorque = currentBreakForce;
+//         blwheel.brakeTorque = currentBreakForce;
+
+//         UpdateWheel(frwheel, frtransform);
+//         UpdateWheel(flwheel, fltransform);
+//         UpdateWheel(mrwheel, mrtransform);
+//         UpdateWheel(mlwheel, mltransform);
+//         UpdateWheel(brwheel, brtransform);
+//         UpdateWheel(blwheel, bltransform);
+
+//     }
 
 
     /*

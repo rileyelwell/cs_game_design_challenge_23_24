@@ -7,6 +7,7 @@ public class PlayerCollisions : MonoBehaviour
 
     private Dictionary<Collider, float> lastProcessedTimes = new Dictionary<Collider, float>();
     private float cooldownTime = 1f;
+    [SerializeField] private float pedestrianDamagePerHit = 0.1f, vehicleDamagePerHit = 0.3f, trainDamageperHit = 1f;
 
     /*
      * Name: OnCollisionEnter (Unity)
@@ -34,7 +35,7 @@ public class PlayerCollisions : MonoBehaviour
         // Player loses 10% health when hit by a pedestrain
         if (collider.gameObject.tag == TagManager.PEDESTRIAN_TAG)
         {
-            UIManager.instance.UpdateRobotHealthDisplay(0.1f);
+            UIManager.instance.UpdateRobotHealthDisplay(pedestrianDamagePerHit);
 
             // handle small extra force hitting robot from human
         }
@@ -42,7 +43,7 @@ public class PlayerCollisions : MonoBehaviour
         // player loses 30% health when hit by a vehicle
         if (collider.gameObject.tag == TagManager.VEHICLE_TAG)
         {
-            UIManager.instance.UpdateRobotHealthDisplay(0.3f);
+            UIManager.instance.UpdateRobotHealthDisplay(vehicleDamagePerHit);
 
             // handle hitting large force onto robot from car
         }
@@ -50,7 +51,7 @@ public class PlayerCollisions : MonoBehaviour
         // player loses 100% health when hit by a train
         if (collider.gameObject.tag == TagManager.TRAIN_TAG)
         {
-            UIManager.instance.UpdateRobotHealthDisplay(1f);
+            UIManager.instance.UpdateRobotHealthDisplay(trainDamageperHit);
 
             // handle hitting large force onto robot from train
         }

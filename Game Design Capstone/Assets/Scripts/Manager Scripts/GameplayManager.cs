@@ -10,7 +10,11 @@ public class GameplayManager : MonoBehaviour
     [SerializeField] private GameObject pausePanel;     // Pause menu
     [SerializeField] private GameObject gameplayPanel;  // Game UI
     [SerializeField] private GameObject scorePanel;     // Score screen
-    public bool isPaused, canPause;                     // Pause state
+    [SerializeField] private GameObject instructionsPanel;      // Instructions UI
+    [HideInInspector] public bool isPaused, canPause, isDisplayingInstructions;     // Bool states
+    [SerializeField] private GameObject[] instructionSections;      // Instruction Sections
+    private int currentSectionIndex = 0;        // current index for displaying Instructions
+    [SerializeField] private float timeToDisplayInstructions = 3.5f;        // time delay for displaying instructions at start
 
     /*
      * Name: Awake (Unity)
@@ -22,7 +26,10 @@ public class GameplayManager : MonoBehaviour
         if (instance != null && instance != this)
             Destroy(this); 
         else 
-            instance = this; 
+            instance = this;
+
+        canPause = true;
+        isPaused = false;
     }
 
     /*
@@ -31,9 +38,14 @@ public class GameplayManager : MonoBehaviour
      * Outputs: none
      * Description: Initializes pause state
      */
-    private void Start() {
-        canPause = true;
-        isPaused = false;
+    IEnumerator Start() {
+        // wait for a couple of frames before calling the function
+        yield return new WaitForSeconds(timeToDisplayInstructions);
+
+        // stop game movements and show instructions
+        DisplayInstructions();
+
+        isDisplayingInstructions = true;
     }
 
     /*
@@ -43,13 +55,23 @@ public class GameplayManager : MonoBehaviour
      * Description: Checks for pause input or game loss
      */
     private void Update() {
-        // Pause the game if ESC is hit by the user
-        if (Input.GetKeyDown(KeyCode.Escape) /*|| Input.GetButton()*/ && canPause)
-            PauseGame();
+        // don't allow other inputs or checking while displaying instructions at beginning
+        if (isDisplayingInstructions) 
+        {
+            if (Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetButtonDown("Gamepad_A"))
+                ShowNextInstruction();
+        }
+            
+        else 
+        {
+            // pause the game if ESC is hit by the user
+            if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Gamepad_Y")) && canPause)
+                PauseGame();
 
-        // Check player's health and temperature values for lose conditions
-        if (UIManager.instance.HasPlayerLost())
-            DisplayScoreScreen();
+            // check player's health and temperature values for lose conditions
+            if (UIManager.instance.HasPlayerLost())
+                DisplayScoreScreen();
+        }
     }
 
     /*
@@ -150,11 +172,35 @@ public class GameplayManager : MonoBehaviour
         UIManager.instance.ResetUIValues();
     }
 
-    
-    /*
-    public void TurnOffInstructions() {
-        SoundManager.instance.PlayButtonClick();
-        instructionsPanel.SetActive(false);
+    private void DisplayInstructions()
+    {
+        Time.timeScale = 0f;
+
+        // initialize all sections to be inactive except the first one
+        for (int i = 0; i < instructionSections.Length; i++)
+            instructionSections[i].SetActive(i == currentSectionIndex);
+
+        instructionsPanel.SetActive(true);
     }
-    */
+
+    private void ShowNextInstruction() 
+    {
+        // hide the current section
+        instructionSections[currentSectionIndex].SetActive(false);
+
+        // move to the next section
+        currentSectionIndex++;
+
+        // if the current section index exceeds the number of sections, end showing instructions
+        if (currentSectionIndex >= instructionSections.Length)
+        {
+            isDisplayingInstructions = false;
+            instructionsPanel.SetActive(false);
+            Time.timeScale = 1f;
+            return;
+        }
+            
+        // show the next section
+        instructionSections[currentSectionIndex].SetActive(true);
+    }
 }
