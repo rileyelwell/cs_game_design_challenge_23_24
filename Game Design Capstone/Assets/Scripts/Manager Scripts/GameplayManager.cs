@@ -58,14 +58,14 @@ public class GameplayManager : MonoBehaviour
         // don't allow other inputs or checking while displaying instructions at beginning
         if (isDisplayingInstructions) 
         {
-            if (Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetButtonDown("Gamepad_A"))
+            if (Input.GetButtonDown("Continue"))
                 ShowNextInstruction();
         }
             
         else 
         {
             // pause the game if ESC is hit by the user
-            if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Gamepad_Y")) && canPause)
+            if (Input.GetButtonDown("Pause") && canPause)
                 PauseGame();
 
             // check player's health and temperature values for lose conditions

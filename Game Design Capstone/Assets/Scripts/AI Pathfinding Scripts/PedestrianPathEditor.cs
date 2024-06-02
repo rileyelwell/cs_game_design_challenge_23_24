@@ -11,6 +11,7 @@ public class PedestrianPathEditor : MonoBehaviour
     [SerializeField] private float minTime;                     // Minimum time between spawns
     [SerializeField] private float maxTime;                     // Maximum time between spawns
     private float timer;                                        // Current time between spawns
+    [SerializeField] private float offset;                     // The offset range each pedestrian could have walking the path
 
     /*
      * Name: Start (Unity)
@@ -41,7 +42,8 @@ public class PedestrianPathEditor : MonoBehaviour
 
             // Spawns a pedestrian to walk on this path
             GameObject temp_pedestrian = Instantiate(pedestrian, start.transform);
-            temp_pedestrian.GetComponent<WalkOnPath>().PathToFollow = this.gameObject.GetComponent<PedestrianPathEditor>();
+            temp_pedestrian.GetComponent<WalkOnPath>().SetPath(this.gameObject.GetComponent<PedestrianPathEditor>());
+            temp_pedestrian.GetComponent<WalkOnPath>().SetOffset(offset);
         }
     }
 
@@ -72,12 +74,23 @@ public class PedestrianPathEditor : MonoBehaviour
 
         // Draw lines between each point and smaller wire sphere at each point
         Vector3 previous;
+        if (offset == 0)
+            offset = 0.1f;
+        Vector3 oC = new Vector3(offset, offset, offset);
         for (int i = 1; i < path_objs.Count - 1; i++)
         {
+            oC.y = offset;
             position = path_objs[i].position;
-            Gizmos.DrawWireSphere(position, 0.3f);
+            Gizmos.DrawWireCube(position, oC * 2);
             previous = path_objs[i - 1].position;
-            Gizmos.DrawLine(previous, position);
+            oC.y = 0;
+            Gizmos.DrawLine(previous + oC, position + oC);
+            oC.x*=-1;
+            Gizmos.DrawLine(previous + oC, position + oC);
+            oC *= -1;
+            Gizmos.DrawLine(previous + oC, position + oC);
+            oC.x *= -1;
+            Gizmos.DrawLine(previous + oC, position + oC);
         }
 
         // Draw a large wire sphere at the end

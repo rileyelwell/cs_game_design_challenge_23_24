@@ -1098,7 +1098,7 @@ MonoBehaviour:
   PathToFollow: {fileID: 0}
   startingWaypointID: 1
   speed: 2
-  reachDistance: 0.1
+  reachDistance: 0.5
   rotationSpeed: 5
 --- !u!114 &5613650532655420227
 MonoBehaviour:
@@ -1107,7 +1107,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2686890238580948232}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5d2dffb961554854aa47900e857c4440, type: 3}
   m_Name: 

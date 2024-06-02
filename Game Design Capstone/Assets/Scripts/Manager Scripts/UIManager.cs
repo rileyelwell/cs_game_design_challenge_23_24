@@ -286,7 +286,7 @@ public class UIManager : MonoBehaviour
             angle = -angle;
 
         // Rotate the arrow UI to point towards the goal
-        arrowImage.localRotation = Quaternion.Euler(0, 0, angle + arrowOffset);
+        arrowImage.localRotation = Quaternion.Euler(0, 0, -angle - arrowOffset + 90);
     }
 
     private void Update() 

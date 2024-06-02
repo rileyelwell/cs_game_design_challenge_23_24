@@ -21,7 +21,7 @@ public class DriveOnPath : MonoBehaviour
     void Start()
     {
         currentWaypointID = startingWaypointID;
-        currentWaypoint = new Vector3(PathToFollow.path_objs[currentWaypointID].position.x, transform.position.y, PathToFollow.path_objs[currentWaypointID].position.z);
+        currentWaypoint = new Vector3(PathToFollow.path_objs[currentWaypointID].position.x, transform.position.y + 1, PathToFollow.path_objs[currentWaypointID].position.z);
     }
 
     /*
@@ -32,6 +32,8 @@ public class DriveOnPath : MonoBehaviour
      */
     void Update()
     {
+        // Negate height differences
+        currentWaypoint.y = transform.position.y;
         // Get distance from point
         float distance = Vector3.Distance(currentWaypoint, transform.position);
         transform.position = Vector3.MoveTowards(transform.position, currentWaypoint, Time.deltaTime * speed);
@@ -51,7 +53,6 @@ public class DriveOnPath : MonoBehaviour
                 Destroy(gameObject);
                 return;
             }
-
             currentWaypoint = new Vector3(PathToFollow.path_objs[currentWaypointID].position.x, transform.position.y, PathToFollow.path_objs[currentWaypointID].position.z);
         }
 

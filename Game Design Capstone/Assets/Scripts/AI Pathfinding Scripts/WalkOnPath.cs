@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class WalkOnPath : MonoBehaviour
 {
-    public PedestrianPathEditor PathToFollow;               // Path for the pedestrian to follow
+    private PedestrianPathEditor PathToFollow;               // Path for the pedestrian to follow
+    private float offset;
     [SerializeField] private int startingWaypointID = 0;    // Starting id for point on path
     private int currentWaypointID;                          // Current id for point on path
     private Vector3 currentWaypoint;                        // Current point on path                                   
     [SerializeField] private float speed;                   // Walk speed
     [SerializeField] private float reachDistance = 0.5f;    // Distance from point on path before turning
     [SerializeField] private float rotationSpeed = 5.0f;    // Rotation speed
+    private Vector3 randomOffset;
 
     /*
      * Name: Start (Unity)
@@ -21,7 +23,8 @@ public class WalkOnPath : MonoBehaviour
     void Start()
     {
         currentWaypointID = startingWaypointID;
-        currentWaypoint = new Vector3(PathToFollow.path_objs[currentWaypointID].position.x, transform.position.y, PathToFollow.path_objs[currentWaypointID].position.z);
+        randomOffset = new Vector3(UnityEngine.Random.Range(-offset, offset), 0, UnityEngine.Random.Range(-offset, offset));
+        currentWaypoint = PathToFollow.path_objs[currentWaypointID].position + randomOffset;
     }
 
     /*
@@ -32,6 +35,9 @@ public class WalkOnPath : MonoBehaviour
      */
     void Update()
     {
+        // Negate height differences
+        currentWaypoint.y = transform.position.y;
+
         // Get distance from point
         float distance = Vector3.Distance(currentWaypoint, transform.position);
         transform.position = Vector3.MoveTowards(transform.position, currentWaypoint, Time.deltaTime * speed);
@@ -51,9 +57,26 @@ public class WalkOnPath : MonoBehaviour
                 Destroy(gameObject);
                 return;
             }
+            if (currentWaypointID != PathToFollow.path_objs.Count - 1)
+            {
+                currentWaypoint = PathToFollow.path_objs[currentWaypointID].position + randomOffset;
+            }
+            else
+            {
+                currentWaypoint = PathToFollow.path_objs[currentWaypointID].position;
+            }
 
-            currentWaypoint = new Vector3(PathToFollow.path_objs[currentWaypointID].position.x, transform.position.y, PathToFollow.path_objs[currentWaypointID].position.z);
         }
 
+    }
+
+    public void SetPath(PedestrianPathEditor path)
+    {
+        PathToFollow = path;
+    }
+
+    public void SetOffset(float newOffset)
+    {
+        offset = newOffset;
     }
 }

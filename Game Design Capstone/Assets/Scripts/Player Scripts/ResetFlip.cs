@@ -34,7 +34,7 @@ public class ResetFlip : MonoBehaviour
 
         // if (AreWheelsOffGround())
         // {
-            if (Input.GetKeyDown(KeyCode.R))
+            if (Input.GetButton("Reset"))
             {
                 PlayerResetFlip();
             }

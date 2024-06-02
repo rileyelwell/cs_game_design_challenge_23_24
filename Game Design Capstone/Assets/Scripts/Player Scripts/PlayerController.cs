@@ -18,15 +18,11 @@ public class PlayerController : MonoBehaviour
     // private bool isGamepadConnected;
 
     /*
-     * Name: Awake (Unity)
+     * Name: Start (Unity)
      * Inputs: none
      * Outputs: none
      * Description: Sets the initial values for player variables
      */
-    void Awake (){
-
-    }
-
     void Start ()
     {
         currentBreakForce = 0.0f;
@@ -38,11 +34,6 @@ public class PlayerController : MonoBehaviour
         leftWarning = false;
         leftModifier = -1.0f;
         rightModifier = -1.0f;
-    }
-
-    private void Update() {
-        // Check if any joystick (including gamepads) is connected
-        // isGamepadConnected = Input.GetJoystickNames().Length > 0;
     }
 
     /*
@@ -59,13 +50,17 @@ public class PlayerController : MonoBehaviour
         // send the bool flags to be displayed accordingly on UI
         UIManager.instance.UpdateSensorDisplay(frontWarning, backWarning, leftWarning, rightWarning);
 
-        if (Input.GetKey(KeyCode.Space) || Input.GetButton("Gamepad_B"))
+        // Update right and left acceleration to be a product of everything effecting the robots movement
+        float leftInput = GetPlayerInput("LeftVertical", "LeftForwardController");
+        float rightInput = GetPlayerInput("RightVertical", "RightForwardController");
+
+        if (Input.GetButton("Break"))
             currentBreakForce = breakingForce;
         else
             currentBreakForce = 0.0f;
 
         // handle the roboBOOST with left shift
-        if ((Input.GetKey(KeyCode.LeftShift) || Input.GetButton("Gamepad_X")) && !UIManager.instance.isBatteryOnCooldown)
+        if (Input.GetButton("Boost") && (rightInput !=0 || leftInput != 0) && !UIManager.instance.isBatteryOnCooldown)
         {
             roboBoost = 1.5f;
             UIManager.instance.UpdateBatteryDisplay(roboBoostUseRate);
@@ -76,9 +71,9 @@ public class PlayerController : MonoBehaviour
             UIManager.instance.UpdateBatteryDisplay(-roboBoostUseRate / 3);
         }
 
-        // Update right and left acceleration to be a product of everything effecting the robots movement
-        currentRightAcceleration = rightModifier * acceleration * Input.GetAxis("RightVertical") * roboBoost;
-        currentLeftAcceleration = leftModifier * acceleration * Input.GetAxis("LeftVertical") * roboBoost;
+        currentRightAcceleration = rightModifier * acceleration * rightInput * roboBoost;
+        currentLeftAcceleration = leftModifier * acceleration * leftInput * roboBoost;
+
 
         // Update each of the wheels
         UpdateWheel(frwheel, frtrans, currentRightAcceleration);
@@ -87,58 +82,15 @@ public class PlayerController : MonoBehaviour
         UpdateWheel(mlwheel, mltrans, currentLeftAcceleration);
         UpdateWheel(brwheel, brtrans, currentRightAcceleration);
         UpdateWheel(blwheel, bltrans, currentLeftAcceleration);
-
     }
 
-
-    
-//     void UpdateWheel (WheelCollider wheel, Transform trans, float acc)
-// =======
-
-//         if (isGamepadConnected)
-//         {
-//             currentRightAcceleration = rightModifier * rightAcceleration * Input.GetAxis("Gamepad_RT") * roboBoost;
-//             currentLeftAcceleration = leftModifier * leftAcceleration * Input.GetAxis("Gamepad_LT") * roboBoost;
-
-//             frwheel.motorTorque = currentRightAcceleration;
-//             mrwheel.motorTorque = currentRightAcceleration;
-//             brwheel.motorTorque = currentRightAcceleration;
-
-//             flwheel.motorTorque = currentLeftAcceleration;
-//             mlwheel.motorTorque = currentLeftAcceleration;
-//             blwheel.motorTorque = currentLeftAcceleration;
-//         }
-
-//         else
-//         {
-//             currentRightAcceleration = rightModifier * rightAcceleration * Input.GetAxis("RightVertical") * roboBoost;
-//             currentLeftAcceleration = leftModifier * leftAcceleration * Input.GetAxis("LeftVertical") * roboBoost;
-
-//             frwheel.motorTorque = currentRightAcceleration;
-//             mrwheel.motorTorque = currentRightAcceleration;
-//             brwheel.motorTorque = currentRightAcceleration;
-
-//             flwheel.motorTorque = currentLeftAcceleration;
-//             mlwheel.motorTorque = currentLeftAcceleration;
-//             blwheel.motorTorque = currentLeftAcceleration;
-//         }
-
-//         flwheel.brakeTorque = currentBreakForce;
-//         frwheel.brakeTorque = currentBreakForce;
-//         mrwheel.brakeTorque = currentBreakForce;
-//         mlwheel.brakeTorque = currentBreakForce;
-//         brwheel.brakeTorque = currentBreakForce;
-//         blwheel.brakeTorque = currentBreakForce;
-
-//         UpdateWheel(frwheel, frtransform);
-//         UpdateWheel(flwheel, fltransform);
-//         UpdateWheel(mrwheel, mrtransform);
-//         UpdateWheel(mlwheel, mltransform);
-//         UpdateWheel(brwheel, brtransform);
-//         UpdateWheel(blwheel, bltransform);
-
-//     }
-
+    float GetPlayerInput(string in1, string in2)
+    {
+        float val = Input.GetAxis(in2);
+        if (val > 0.5)
+            return -1;
+        return Input.GetAxis(in1);
+    }
 
     /*
      * Name: UpdateWheel
