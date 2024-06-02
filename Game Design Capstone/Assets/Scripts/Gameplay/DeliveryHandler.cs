@@ -17,16 +17,6 @@ public class DeliveryHandler : MonoBehaviour
     private DeliveryTimer deliveryTimer;                                    // Displays a timer on the screen
 
     /*
-     * Name: Awake (Unity)
-     * Inputs: none
-     * Outputs: none
-     * Description: Initializes the delivery timer UI
-     */
-    private void Awake() {
-        deliveryTimer = UIManager.instance.GetComponent<DeliveryTimer>();
-    }
-
-    /*
      * Name: Start (Unity)
      * Inputs: none
      * Outputs: none
@@ -34,6 +24,8 @@ public class DeliveryHandler : MonoBehaviour
      */
     void Start()
     {
+        deliveryTimer = UIManager.instance.GetComponent<DeliveryTimer>();
+
         // Initialize game state booleans
         startReached = true;
         endReached = true;

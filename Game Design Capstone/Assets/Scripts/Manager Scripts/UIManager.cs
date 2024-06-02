@@ -5,24 +5,25 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    public static UIManager instance;                                                               // Current instance of the gameplay manager
-    private DeliveryTimer deliveryTimer;                                                            // Reference to deliverTimer
-    private DeliveryHandler deliveryHandler;                                                        // Reference to deliveryHandler
-    private Transform player;                                                                       // Reference to player
-    [SerializeField] private Image leftSensorImg, rightSensorImg, backSensorImg, frontSensorImg;    // Sensor images
-    [SerializeField] private Image robotHealthImage;                                                // Robot health image
-    [SerializeField] private Image tempRectangleImage, tempCircleImage;                             // Temperature images
-    [SerializeField] private Image batteryImage;                                                    // Battery images
-    [SerializeField] private float batteryCooldownLimit = 0.5f;                                     // Battery cooldown
-    public bool isBatteryOnCooldown;                                                                // Boolean for the battery on cooldown
-    [SerializeField] private TMPro.TextMeshProUGUI stopwatchText;                                   // Timer text
-    [SerializeField] private TMPro.TextMeshProUGUI currObjText;                                     // Objective text
-    [SerializeField] private TMPro.TextMeshProUGUI scoreDescText, elapsedTimeText, scoreTitleText;  // Scoreboard text
-    [SerializeField] private GameObject resumeButton;                                               // Resume button
-    [SerializeField] private Image star1, star2, star3, timerImage;                                 // Scoreboard images
-    [SerializeField] private RectTransform arrowImage;                                              // Arrow pointer image
-    [SerializeField] private float arrowOffset = 25;                                                // Arrow rotation speed
-    private Transform targetWaypoint;                                                               // Target waypoint
+    public static UIManager instance;                                                                           // Current instance of the gameplay manager
+    private DeliveryTimer deliveryTimer;                                                                        // Reference to deliverTimer
+    private DeliveryHandler deliveryHandler;                                                                    // Reference to deliveryHandler
+    private Transform player;                                                                                   // Reference to player
+    [SerializeField] private Image leftSensorImg, rightSensorImg, backSensorImg, frontSensorImg;                // Sensor images
+    [SerializeField] private Image robotHealthImage;                                                            // Robot health image
+    [SerializeField] private Image tempRectangleImage, tempCircleImage;                                         // Temperature images
+    [SerializeField] private Image batteryImage;                                                                // Battery images
+    [SerializeField] private float batteryCooldownLimit = 0.5f;                                                 // Battery cooldown
+    public bool isBatteryOnCooldown;                                                                            // Boolean for the battery on cooldown
+    [SerializeField] private TMPro.TextMeshProUGUI stopwatchText;                                               // Timer text
+    [SerializeField] private TMPro.TextMeshProUGUI currObjText;                                                 // Objective text
+    [SerializeField] private TMPro.TextMeshProUGUI scoreDescText, elapsedTimeText, scoreTitleText, scoreText;   // Scoreboard text
+    [SerializeField] private GameObject resumeButton;                                                           // Resume button
+    [SerializeField] private Image star1, star2, star3, timerImage;                                             // Scoreboard images
+    [SerializeField] private RectTransform arrowImage;                                                          // Arrow pointer image
+    [SerializeField] private float arrowOffset = 25;                                                            // Arrow rotation speed
+    private Transform targetWaypoint;                                                                           // Target waypoint
+    [SerializeField] private float baseScore = 50, maxBonusScore = 50;
 
     /*
      * Name: Awake (Unity)
@@ -222,27 +223,12 @@ public class UIManager : MonoBehaviour
         int time = deliveryTimer.GetElapsedTime();
         float tempDuration = deliveryTimer.GetTimerDuration();
         float temp = deliveryTimer.GetCurrentTemp() / tempDuration;
-        float health = robotHealthImage.fillAmount;
-        
-        // Update the total time taken and description texts
-        elapsedTimeText.text = GetFormattedTime(time);   
-        scoreTitleText.text = "Delivery Complete!";
-        resumeButton.SetActive(true);
+        float health = robotHealthImage.fillAmount;  
+        int finalScore = 0;
 
-        // User receives 3 stars for perfect health and at least half the temp gauge left full
-        if (health == 1 && temp >= 0.5) 
-            SetScoreDescription(Color.white, Color.white, Color.white, "Excellent Delivery!");
-
-        // User receives 2 stars for perfect health and poor temp, or good temp and decent health
-        else if ((health == 1 && temp < 0.5 && temp > 0) || temp >= 0.5 && health >= 0.5)
-            SetScoreDescription(Color.white, Color.white, Color.black, "Good Delivery!");
-
-        // User receives 1 star for poor health and poor temp, or no temp and perfect health
-        else if (health <= 0.5 && health > 0 && temp < 0.5 && temp > 0)
-            SetScoreDescription(Color.white, Color.black, Color.black, "Poor Delivery!");
-
-        // User receives no stars for anything worse (a failed delivery)
-        else 
+        // Handle the case for when a delivery fails early
+        if (health <= 0 || temp <= 0.01)
+        {
             SetScoreDescription(Color.black, Color.black, Color.black, "temp_string");
             scoreTitleText.text = "Delivery Failed!";
             resumeButton.SetActive(false);
@@ -253,6 +239,34 @@ public class UIManager : MonoBehaviour
                 scoreDescText.text = "Your robot has been badly damaged!";
             else 
                 scoreDescText.text = "Your robot has been badly damaged and your food is cold!";
+        }
+
+        else {
+            scoreTitleText.text = "Delivery Complete!";
+            resumeButton.SetActive(true);
+
+            // Add points for health and temperature (up to ~50)
+            baseScore += health * maxBonusScore;
+            baseScore += temp * maxBonusScore;
+
+            // Apply time bonus if delivered faster than the duration
+            float timeBonus = time < tempDuration ? (tempDuration - time) * 0.1f : 0;
+            finalScore = (int)(baseScore + timeBonus);
+
+            // Determine the description based on the final score
+            if (finalScore >= 130)
+                SetScoreDescription(Color.white, Color.white, Color.white, "Perfect timing and driving!");
+            else if (finalScore >= 100)
+                SetScoreDescription(Color.white, Color.white, Color.black, "Well done, you made a happy customer!");
+            else
+                SetScoreDescription(Color.white, Color.black, Color.black, "Your delivery skills could be better...");
+        }
+
+        // Display the numerical score
+        scoreText.text = $"{finalScore}";
+
+        // Update the total time taken and description texts
+        elapsedTimeText.text = GetFormattedTime(time); 
     }
 
     /*
