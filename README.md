@@ -31,7 +31,7 @@ Drive your robot to pick up and deliver orders across campus quickly while avoid
 During the development of this game we had three primary roles:
 - A Map/Environment/UI Developer (Makes everything look good)
 - A Gameplay Developer (Make everything work good)
-- An ADAS developer (Focuses on making our ADAS simulation realistic).
+- An ADAS developer (Focuses on making our ADAS simulation realistic).  
 The four of us worked a little in each category, but we each had a primary role and one of us joined later and worked as a “free agent”. Development started slow since many features relied on other features to be completed before we could start working on them. Once the bulk of these bottleneck features were completed, working on the game was an easy task that we were able to finish, fine tune, and add some stretch goals too.
 
 ---
