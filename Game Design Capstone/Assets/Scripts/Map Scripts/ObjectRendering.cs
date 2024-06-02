@@ -35,6 +35,7 @@ public class ObjectRendering : MonoBehaviour
         {
             if (visualContainer.parent.gameObject.tag == TagManager.PEDESTRIAN_TAG)
                 visualContainer.GetComponent<Renderer>().enabled = distance <= maxDistance;
+                // visualContainer.parent.gameObject.SetActive(false);
             else if (visualContainer.parent.gameObject.tag == TagManager.VEHICLE_TAG)
             {
                 visualContainer.GetComponent<Renderer>().enabled = distance <= maxDistance;
