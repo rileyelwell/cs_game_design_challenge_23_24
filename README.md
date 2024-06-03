@@ -24,7 +24,8 @@ The game has an easy to understand tutorial when you first start the game that w
 | Space | B Button | Brake |
 | Left Shift | X Button | RoboBoost |
 | R | Y Button | Flip Robot Rightside Up |
-| ESC | Start Button | Pause Game|
+| ESC | Start Button | Pause Game |
+
 Drive your robot to pick up and deliver orders across campus quickly while avoiding pedestrians, vehicles, and trains (RIP). You’ll pick up an order, deliver the order, pick up a new order, etc.  
 
 ---
