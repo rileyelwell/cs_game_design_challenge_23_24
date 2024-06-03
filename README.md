@@ -14,16 +14,17 @@ The main goals of our game are to:
 ---
 ## How to Play
 The game has an easy to understand tutorial when you first start the game that will teach you the controls and what everything on your screen means. Here is a list of the controls:  
-	PC		Xbox			Input
-	Q		Left Trigger		Left Drive Track Forward
-	A		Left Bumper		Left Drive Track Backward
-	W		Right Trigger		Right Drive Track Forward
-	S		Right Bumper		Right Drive Track Backward
-	Enter		A Button		Continue
-	Space		B Button		Brake
-	Left Shift	X Button		RoboBoost
-	R		Y Button		Flip Robot Rightside Up
-	ESC		Start Button		Pause Game
+| PC | Xbox | Input |
+| --- | --- | --- |
+| Q | Left Trigger | Left Drive Track Forward |
+| A | Left Bumper | Left Drive Track Backward |
+| W | Right Trigger | Right Drive Track Forward |
+| S | Right Bumper | Right Drive Track Backward |
+| Enter | A Button | Continue |
+| Space | B Button | Brake |
+| Left Shift | X Button | RoboBoost |
+| R | Y Button | Flip Robot Rightside Up |
+| ESC | Start Button | Pause Game|
 Drive your robot to pick up and deliver orders across campus quickly while avoiding pedestrians, vehicles, and trains (RIP). You’ll pick up an order, deliver the order, pick up a new order, etc.  
 
 ---
