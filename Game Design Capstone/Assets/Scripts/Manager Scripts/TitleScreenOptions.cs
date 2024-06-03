@@ -6,8 +6,10 @@ using UnityEngine.UI;
 public class TitleScreenOptions : MonoBehaviour
 {
     [SerializeField] private GameObject loadingPanel;
-    // [SerializeField] private float loadingDuration = 5f;
+    [SerializeField] private float duration = 10.0f;
     [SerializeField] private Image progressBarFill;
+    [SerializeField] private RectTransform spriteBig, spriteSmall;
+    [SerializeField] private Vector2 startPointBig, startPointSmall, endPointBig, endPointSmall;
 
     private string sceneToLoad;
 
@@ -22,26 +24,42 @@ public class TitleScreenOptions : MonoBehaviour
         // Prevent the scene from activating immediately
         asyncLoad.allowSceneActivation = false;
 
+        float timeElapsed = 0f;
+
         // While the scene is still loading
         while (!asyncLoad.isDone)
         {
-            // Update the fill amount of the progress bar based on loading progress
-            float progress = Mathf.Clamp01(asyncLoad.progress / 0.9f); // Normalize the progress
+            // Update the fill amount of the progress bar based on timed loading progress
+            float progress = Mathf.Clamp01(timeElapsed / duration);
             progressBarFill.fillAmount = progress;
+
+            // Move the sprite across the screen
+            if (timeElapsed < duration)
+            {
+                spriteBig.anchoredPosition = Vector2.Lerp(startPointBig, endPointBig, timeElapsed / duration);
+                spriteSmall.anchoredPosition = Vector2.Lerp(startPointSmall, endPointSmall, timeElapsed / duration);
+                timeElapsed += Time.deltaTime;
+            }
+            else
+            {
+                spriteBig.anchoredPosition = endPointBig;
+                spriteSmall.anchoredPosition = endPointSmall;
+            }
 
             // If the scene has loaded, introduce a slight delay before activating it
             if (asyncLoad.progress >= 0.9f)
             {
-                yield return new WaitForSeconds(0.5f); // Introduce a small delay before activating the scene
-                asyncLoad.allowSceneActivation = true;
+                // Ensure the sprite has reached the end before activating the scene
+                if (timeElapsed >= duration)
+                {
+                    yield return new WaitForSeconds(0.5f); // Introduce a small delay before activating the scene
+                    asyncLoad.allowSceneActivation = true;
+                }
             }
 
             // Wait for the next frame
             yield return null;
         }
-
-        // Optionally, deactivate the loading panel (this may not be necessary as the scene will switch)
-        loadingPanel.SetActive(false);
     }
 
     /*

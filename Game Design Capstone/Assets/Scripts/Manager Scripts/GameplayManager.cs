@@ -6,15 +6,19 @@ using UnityEngine.SceneManagement;
 
 public class GameplayManager : MonoBehaviour
 {
-    public static GameplayManager instance;             // Current instance of the gameplay manager
-    [SerializeField] private GameObject pausePanel;     // Pause menu
-    [SerializeField] private GameObject gameplayPanel;  // Game UI
-    [SerializeField] private GameObject scorePanel;     // Score screen
-    [SerializeField] private GameObject instructionsPanel;      // Instructions UI
+    public static GameplayManager instance;                                         // Current instance of the gameplay manager
+    [SerializeField] private GameObject pausePanel;                                 // Pause menu
+    [SerializeField] private GameObject gameplayPanel;                              // Game UI
+    [SerializeField] private GameObject scorePanel;                                 // Score screen
+    [SerializeField] private GameObject instructionsPanel;                          // Instructions UI
+    [SerializeField] private GameObject customizerPanel;                            // Customizer UI Panel
     [HideInInspector] public bool isPaused, canPause, isDisplayingInstructions;     // Bool states
-    [SerializeField] private GameObject[] instructionSections;      // Instruction Sections
-    private int currentSectionIndex = 0;        // current index for displaying Instructions
-    [SerializeField] private float timeToDisplayInstructions = 3.5f;        // time delay for displaying instructions at start
+    [SerializeField] private GameObject[] instructionSections;                      // Instruction Sections
+    private int currentSectionIndex = 0;                                            // current index for displaying Instructions
+    [SerializeField] private float timeToDisplayInstructions = 3.5f;                // time delay for displaying instructions at start
+    [SerializeField] private GameObject playerSticker, playerTopper;
+    [SerializeField] private GameObject stickerSelector, topperSelector;
+    private CustomizerScreen stickerSelect, topperSelect;
 
     /*
      * Name: Awake (Unity)
@@ -27,9 +31,6 @@ public class GameplayManager : MonoBehaviour
             Destroy(this); 
         else 
             instance = this;
-
-        canPause = true;
-        isPaused = false;
     }
 
     /*
@@ -38,14 +39,33 @@ public class GameplayManager : MonoBehaviour
      * Outputs: none
      * Description: Initializes pause state
      */
-    IEnumerator Start() {
+    private void Start() {
+        stickerSelect = stickerSelector.GetComponent<CustomizerScreen>();
+        topperSelect = topperSelector.GetComponent<CustomizerScreen>();
+
+        DisplayCustomizerScreen();
+    }
+
+    IEnumerator DisplayInstructions()
+    {
+        Time.timeScale = 1f;
+
         // wait for a couple of frames before calling the function
         yield return new WaitForSeconds(timeToDisplayInstructions);
 
-        // stop game movements and show instructions
-        DisplayInstructions();
+        Time.timeScale = 0f;
+
+        // initialize all sections to be inactive except the first one
+        for (int i = 0; i < instructionSections.Length; i++)
+            instructionSections[i].SetActive(i == currentSectionIndex);
+
+        instructionsPanel.SetActive(true);
+        customizerPanel.SetActive(false);
+        gameplayPanel.SetActive(true);
 
         isDisplayingInstructions = true;
+        canPause = true;
+        isPaused = false;
     }
 
     /*
@@ -56,12 +76,13 @@ public class GameplayManager : MonoBehaviour
      */
     private void Update() {
         // don't allow other inputs or checking while displaying instructions at beginning
-        if (isDisplayingInstructions) 
+        if (customizerPanel.activeInHierarchy && Input.GetButtonDown("Continue"))
         {
-            if (Input.GetButtonDown("Continue"))
-                ShowNextInstruction();
+            SetPlayerCustomization();
+            StartCoroutine(DisplayInstructions());
         }
-            
+        else if (isDisplayingInstructions && Input.GetButtonDown("Continue")) 
+            ShowNextInstruction();
         else 
         {
             // pause the game if ESC is hit by the user
@@ -172,17 +193,6 @@ public class GameplayManager : MonoBehaviour
         UIManager.instance.ResetUIValues();
     }
 
-    private void DisplayInstructions()
-    {
-        Time.timeScale = 0f;
-
-        // initialize all sections to be inactive except the first one
-        for (int i = 0; i < instructionSections.Length; i++)
-            instructionSections[i].SetActive(i == currentSectionIndex);
-
-        instructionsPanel.SetActive(true);
-    }
-
     private void ShowNextInstruction() 
     {
         // hide the current section
@@ -202,5 +212,38 @@ public class GameplayManager : MonoBehaviour
             
         // show the next section
         instructionSections[currentSectionIndex].SetActive(true);
+    }
+
+    private void DisplayCustomizerScreen()
+    {
+        Time.timeScale = 0f;
+        customizerPanel.SetActive(true);
+    }
+
+    private void SetPlayerCustomization()
+    {
+        for (int index = 0; index < playerSticker.transform.childCount; index++)
+        {
+            // Get the child GameObject at the current index
+            GameObject child = playerSticker.transform.GetChild(index).gameObject;
+
+            // Check if this is the child we want to keep active
+            if (index == stickerSelect.GetCurrentIndex())
+                child.SetActive(true);
+            else
+                child.SetActive(false);
+        }
+
+        for (int index = 0; index < playerTopper.transform.childCount; index++)
+        {
+            // Get the child GameObject at the current index
+            GameObject child = playerTopper.transform.GetChild(index).gameObject;
+
+            // Check if this is the child we want to keep active
+            if (index == topperSelect.GetCurrentIndex())
+                child.SetActive(true);
+            else
+                child.SetActive(false);
+        }
     }
 }
