@@ -6857,7 +6857,12 @@ MonoBehaviour:
   - {fileID: 115263222}
   - {fileID: 2059094380}
   rayColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  vehicle: {fileID: 6494536042137597264, guid: b7fd2bf40aa0ed04a880a5a710b30dfb, type: 3}
+  vehicles:
+  - {fileID: 9193091905229099719, guid: 5a826e1a9f9a0a74fbf63d825c3e464a, type: 3}
+  - {fileID: 9193091905229099719, guid: d55bd3d9fb3bcdf45bb59912ffc0c472, type: 3}
+  - {fileID: 9193091905229099719, guid: 739ae10b85041f64ca009297cad0b6da, type: 3}
+  - {fileID: 9193091905229099719, guid: 2828f6d4c25dc384a9269e193e52646d, type: 3}
+  - {fileID: 9193091905229099719, guid: 5a0afffec8bc4fa4a8b82a3ed6d78266, type: 3}
   minTime: 5
   maxTime: 15
   startTimer: 0
@@ -17877,6 +17882,7 @@ MonoBehaviour:
   gameplayPanel: {fileID: 1332807959}
   scorePanel: {fileID: 925776940}
   instructionsPanel: {fileID: 1924499910}
+  customizerPanel: {fileID: 0}
   isPaused: 0
   canPause: 1
   isDisplayingInstructions: 0
@@ -17891,6 +17897,10 @@ MonoBehaviour:
   - {fileID: 542260171}
   - {fileID: 324837740}
   timeToDisplayInstructions: 1.3
+  playerSticker: {fileID: 0}
+  playerTopper: {fileID: 0}
+  stickerSelector: {fileID: 0}
+  topperSelector: {fileID: 0}
 --- !u!4 &635639686
 Transform:
   m_ObjectHideFlags: 0
@@ -18036,7 +18046,12 @@ MonoBehaviour:
   - {fileID: 1101599736}
   - {fileID: 886897358}
   rayColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  vehicle: {fileID: 6494536042137597264, guid: b7fd2bf40aa0ed04a880a5a710b30dfb, type: 3}
+  vehicles:
+  - {fileID: 9193091905229099719, guid: 5a826e1a9f9a0a74fbf63d825c3e464a, type: 3}
+  - {fileID: 9193091905229099719, guid: d55bd3d9fb3bcdf45bb59912ffc0c472, type: 3}
+  - {fileID: 9193091905229099719, guid: 739ae10b85041f64ca009297cad0b6da, type: 3}
+  - {fileID: 9193091905229099719, guid: 2828f6d4c25dc384a9269e193e52646d, type: 3}
+  - {fileID: 9193091905229099719, guid: 5a0afffec8bc4fa4a8b82a3ed6d78266, type: 3}
   minTime: 5
   maxTime: 10
   startTimer: 0
@@ -27599,7 +27614,12 @@ MonoBehaviour:
   - {fileID: 1392004701}
   - {fileID: 1312679296}
   rayColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  vehicle: {fileID: 6494536042137597264, guid: b7fd2bf40aa0ed04a880a5a710b30dfb, type: 3}
+  vehicles:
+  - {fileID: 9193091905229099719, guid: 5a826e1a9f9a0a74fbf63d825c3e464a, type: 3}
+  - {fileID: 9193091905229099719, guid: d55bd3d9fb3bcdf45bb59912ffc0c472, type: 3}
+  - {fileID: 9193091905229099719, guid: 739ae10b85041f64ca009297cad0b6da, type: 3}
+  - {fileID: 9193091905229099719, guid: 2828f6d4c25dc384a9269e193e52646d, type: 3}
+  - {fileID: 9193091905229099719, guid: 5a0afffec8bc4fa4a8b82a3ed6d78266, type: 3}
   minTime: 5
   maxTime: 20
   startTimer: 0
@@ -32079,7 +32099,12 @@ MonoBehaviour:
   - {fileID: 2061397208}
   - {fileID: 1435462989}
   rayColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  vehicle: {fileID: 6494536042137597264, guid: b7fd2bf40aa0ed04a880a5a710b30dfb, type: 3}
+  vehicles:
+  - {fileID: 9193091905229099719, guid: 5a826e1a9f9a0a74fbf63d825c3e464a, type: 3}
+  - {fileID: 9193091905229099719, guid: d55bd3d9fb3bcdf45bb59912ffc0c472, type: 3}
+  - {fileID: 9193091905229099719, guid: 739ae10b85041f64ca009297cad0b6da, type: 3}
+  - {fileID: 9193091905229099719, guid: 2828f6d4c25dc384a9269e193e52646d, type: 3}
+  - {fileID: 9193091905229099719, guid: 5a0afffec8bc4fa4a8b82a3ed6d78266, type: 3}
   minTime: 5
   maxTime: 15
   startTimer: 0
@@ -34380,6 +34405,7 @@ MonoBehaviour:
   scoreDescText: {fileID: 648952748}
   elapsedTimeText: {fileID: 1423145790}
   scoreTitleText: {fileID: 680566588}
+  scoreText: {fileID: 0}
   resumeButton: {fileID: 747810510}
   star1: {fileID: 2097882447}
   star2: {fileID: 537136783}
@@ -34387,6 +34413,8 @@ MonoBehaviour:
   timerImage: {fileID: 467789997}
   arrowImage: {fileID: 1038606564}
   arrowOffset: 45
+  baseScore: 50
+  maxBonusScore: 50
 --- !u!114 &1217250864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39614,7 +39642,12 @@ MonoBehaviour:
   - {fileID: 753773405}
   - {fileID: 451682974}
   rayColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  vehicle: {fileID: 6494536042137597264, guid: b7fd2bf40aa0ed04a880a5a710b30dfb, type: 3}
+  vehicles:
+  - {fileID: 9193091905229099719, guid: 5a826e1a9f9a0a74fbf63d825c3e464a, type: 3}
+  - {fileID: 9193091905229099719, guid: d55bd3d9fb3bcdf45bb59912ffc0c472, type: 3}
+  - {fileID: 9193091905229099719, guid: 739ae10b85041f64ca009297cad0b6da, type: 3}
+  - {fileID: 9193091905229099719, guid: 2828f6d4c25dc384a9269e193e52646d, type: 3}
+  - {fileID: 9193091905229099719, guid: 5a0afffec8bc4fa4a8b82a3ed6d78266, type: 3}
   minTime: 10
   maxTime: 20
   startTimer: 0
@@ -42060,7 +42093,7 @@ MonoBehaviour:
   - {fileID: 1936790155}
   - {fileID: 1370465762}
   rayColor: {r: 1, g: 0.015686274, b: 0.15393266, a: 1}
-  vehicle: {fileID: 1756464774094550, guid: 6e35b9c040b5a1248ab789b5a16c9af8, type: 3}
+  vehicles: []
   minTime: 20
   maxTime: 120
   startTimer: 2
@@ -60540,7 +60573,12 @@ MonoBehaviour:
   - {fileID: 1234537098}
   - {fileID: 839592705}
   rayColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  vehicle: {fileID: 6494536042137597264, guid: b7fd2bf40aa0ed04a880a5a710b30dfb, type: 3}
+  vehicles:
+  - {fileID: 9193091905229099719, guid: 5a826e1a9f9a0a74fbf63d825c3e464a, type: 3}
+  - {fileID: 9193091905229099719, guid: d55bd3d9fb3bcdf45bb59912ffc0c472, type: 3}
+  - {fileID: 9193091905229099719, guid: 739ae10b85041f64ca009297cad0b6da, type: 3}
+  - {fileID: 9193091905229099719, guid: 2828f6d4c25dc384a9269e193e52646d, type: 3}
+  - {fileID: 9193091905229099719, guid: 5a0afffec8bc4fa4a8b82a3ed6d78266, type: 3}
   minTime: 10
   maxTime: 30
   startTimer: 0

@@ -6,13 +6,13 @@ public class VehiclePathEditor : MonoBehaviour
 {
     public List<Transform> path_objs = new List<Transform>();   // List of nodes in path
     [SerializeField] private Color rayColor = Color.yellow;     // Color of the path in scene
-    [SerializeField] private GameObject vehicle;                // Pedestrian prefab
+    [SerializeField] private GameObject[] vehicles;             // Vehicle prefabs
+    private int arrSize;                                        // Number of vehicles in the array
     private GameObject start;                                   // Spawner location
     [SerializeField] private float minTime;                     // Minimum time between spawns
     [SerializeField] private float maxTime;                     // Maximum time between spawns
     private float timer;                                        // Current time between spawns
     [SerializeField] private float startTimer;                  // Starting time before spawn
-
 
     /*
      * Name: Start (Unity)
@@ -27,6 +27,7 @@ public class VehiclePathEditor : MonoBehaviour
         start.transform.position = path_objs[0].position;
         start.transform.rotation = Quaternion.LookRotation(path_objs[1].position - path_objs[0].position);
         timer = startTimer;
+        arrSize = vehicles.Length;
     }
 
     /*
@@ -41,9 +42,10 @@ public class VehiclePathEditor : MonoBehaviour
         if (timer <= 0)
         {
             timer = UnityEngine.Random.Range(minTime, maxTime);
+            int vehicleIndex =  Random.Range(0, arrSize - 1);
 
             // Spawns a vehicle to drive on this path
-            GameObject temp_vehicle = Instantiate(vehicle, start.transform);
+            GameObject temp_vehicle = Instantiate(vehicles[vehicleIndex], start.transform);
             temp_vehicle.GetComponent<DriveOnPath>().PathToFollow = this.gameObject.GetComponent<VehiclePathEditor>();
         }
     }
