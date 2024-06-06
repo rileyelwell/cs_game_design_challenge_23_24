@@ -1821,7 +1821,7 @@ GameObject:
   - component: {fileID: 5253706440359610620}
   - component: {fileID: 3933345546671222300}
   m_Layer: 3
-  m_Name: FemaleWhite
+  m_Name: Female3
   m_TagString: Pedestrian
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

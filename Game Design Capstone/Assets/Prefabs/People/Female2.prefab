@@ -648,7 +648,7 @@ GameObject:
   - component: {fileID: 9039596530475698}
   - component: {fileID: 7497122156766875443}
   m_Layer: 3
-  m_Name: FemaleAsian
+  m_Name: Female2
   m_TagString: Pedestrian
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

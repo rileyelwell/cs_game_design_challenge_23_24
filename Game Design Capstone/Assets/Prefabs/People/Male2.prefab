@@ -1766,7 +1766,7 @@ GameObject:
   - component: {fileID: 8405869050313360572}
   - component: {fileID: 27737937703527301}
   m_Layer: 3
-  m_Name: MaleAsian
+  m_Name: Male2
   m_TagString: Pedestrian
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

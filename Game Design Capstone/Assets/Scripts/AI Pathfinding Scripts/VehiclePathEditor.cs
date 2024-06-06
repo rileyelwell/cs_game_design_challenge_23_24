@@ -6,8 +6,7 @@ public class VehiclePathEditor : MonoBehaviour
 {
     public List<Transform> path_objs = new List<Transform>();   // List of nodes in path
     [SerializeField] private Color rayColor = Color.yellow;     // Color of the path in scene
-    [SerializeField] private GameObject[] vehicles;             // Vehicle prefabs
-    private int arrSize;                                        // Number of vehicles in the array
+    [SerializeField] private List<GameObject> vehicles = new List<GameObject>();// Vehicle prefabs
     private GameObject start;                                   // Spawner location
     [SerializeField] private float minTime;                     // Minimum time between spawns
     [SerializeField] private float maxTime;                     // Maximum time between spawns
@@ -27,7 +26,6 @@ public class VehiclePathEditor : MonoBehaviour
         start.transform.position = path_objs[0].position;
         start.transform.rotation = Quaternion.LookRotation(path_objs[1].position - path_objs[0].position);
         timer = startTimer;
-        arrSize = vehicles.Length;
     }
 
     /*
@@ -41,11 +39,12 @@ public class VehiclePathEditor : MonoBehaviour
         timer -= Time.deltaTime;
         if (timer <= 0)
         {
-            timer = UnityEngine.Random.Range(minTime, maxTime);
-            int vehicleIndex =  Random.Range(0, arrSize - 1);
+            timer = Random.Range(minTime, maxTime);
+
+            int randIndex = Random.Range(0, vehicles.Count);
 
             // Spawns a vehicle to drive on this path
-            GameObject temp_vehicle = Instantiate(vehicles[vehicleIndex], start.transform);
+            GameObject temp_vehicle = Instantiate(vehicles[randIndex], start.transform);
             temp_vehicle.GetComponent<DriveOnPath>().PathToFollow = this.gameObject.GetComponent<VehiclePathEditor>();
         }
     }
@@ -60,7 +59,7 @@ public class VehiclePathEditor : MonoBehaviour
     {
         Gizmos.color = rayColor;
 
-        // FIll path_objs with the path points
+        // Fill path_objs with the path points
         Transform[] theArray = GetComponentsInChildren<Transform>();
         path_objs.Clear();
         foreach (Transform path_obj in theArray)

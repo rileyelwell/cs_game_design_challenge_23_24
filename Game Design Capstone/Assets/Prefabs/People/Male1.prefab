@@ -454,7 +454,7 @@ GameObject:
   - component: {fileID: 274937312929139923}
   - component: {fileID: 4194452087359283001}
   m_Layer: 3
-  m_Name: Male_AA
+  m_Name: Male1
   m_TagString: Pedestrian
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

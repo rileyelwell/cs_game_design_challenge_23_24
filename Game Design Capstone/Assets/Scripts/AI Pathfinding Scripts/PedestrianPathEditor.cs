@@ -42,7 +42,6 @@ public class PedestrianPathEditor : MonoBehaviour
 
             // gets a random index to spawn a random person from the array
             int randIndex = Random.Range(0, pedestrians.Count);
-            // print(randIndex);
 
             // Spawns a pedestrian to walk on this path
             GameObject temp_pedestrian = Instantiate(pedestrians[randIndex], start.transform);
