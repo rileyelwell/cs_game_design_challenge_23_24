@@ -6,12 +6,13 @@ public class VehiclePathEditor : MonoBehaviour
 {
     public List<Transform> path_objs = new List<Transform>();   // List of nodes in path
     [SerializeField] private Color rayColor = Color.yellow;     // Color of the path in scene
-    [SerializeField] private List<GameObject> vehicles = new List<GameObject>();// Vehicle prefabs
+    [SerializeField] private GameObject vehicle;                // Pedestrian prefab
     private GameObject start;                                   // Spawner location
     [SerializeField] private float minTime;                     // Minimum time between spawns
     [SerializeField] private float maxTime;                     // Maximum time between spawns
     private float timer;                                        // Current time between spawns
     [SerializeField] private float startTimer;                  // Starting time before spawn
+
 
     /*
      * Name: Start (Unity)
@@ -39,12 +40,10 @@ public class VehiclePathEditor : MonoBehaviour
         timer -= Time.deltaTime;
         if (timer <= 0)
         {
-            timer = Random.Range(minTime, maxTime);
-
-            int randIndex = Random.Range(0, vehicles.Count);
+            timer = UnityEngine.Random.Range(minTime, maxTime);
 
             // Spawns a vehicle to drive on this path
-            GameObject temp_vehicle = Instantiate(vehicles[randIndex], start.transform);
+            GameObject temp_vehicle = Instantiate(vehicle, start.transform);
             temp_vehicle.GetComponent<DriveOnPath>().PathToFollow = this.gameObject.GetComponent<VehiclePathEditor>();
         }
     }
@@ -59,7 +58,7 @@ public class VehiclePathEditor : MonoBehaviour
     {
         Gizmos.color = rayColor;
 
-        // Fill path_objs with the path points
+        // FIll path_objs with the path points
         Transform[] theArray = GetComponentsInChildren<Transform>();
         path_objs.Clear();
         foreach (Transform path_obj in theArray)

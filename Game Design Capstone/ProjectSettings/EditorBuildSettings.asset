@@ -9,7 +9,10 @@ EditorBuildSettings:
     path: Assets/Scenes/TitleScreen.unity
     guid: 47e73cc55f711e240beabeb1a56cbe16
   - enabled: 1
-    path: Assets/Scenes/MainGame.unity
-    guid: 0bc485c0261580b4397712036e9047f0
+    path: Assets/Scenes/RileyBackup.unity
+    guid: 8573b0009d5a0bb4290d67e8803509a7
+  - enabled: 0
+    path: Assets/Scenes/OldMain.unity
+    guid: 7db2fd69bfc9ab749a548d615bd907ba
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 10b5a71791756b84fb7aa20381a68294, type: 2}

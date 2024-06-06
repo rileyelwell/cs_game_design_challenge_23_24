@@ -8,12 +8,12 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: WC_Hornbeam-Bark
-    second: {fileID: 2100000, guid: 04fefc490947ff748b7b3d4b231467bd, type: 2}
+    second: {fileID: 2100000, guid: bebcd834595b7f543aa28fddfb1b0b23, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: WC_Hornbeam-Leaf
-    second: {fileID: 2100000, guid: 977e7bfd004228e4dae611d7b170ca42, type: 2}
+    second: {fileID: 2100000, guid: 65067e8ce6f2e3f408024250bf1b23f7, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

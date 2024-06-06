@@ -93,29 +93,10 @@ The gameplay was developed following these steps:
 
 ---
 ## The ADAS
-For the robot ADAS, we created it following these stepsFor the robot ADAS, we created it following these steps:
-1. Define Raycast Results Event Arguments
-2. Initialize Ray Parameters
-3. Declare Event Handlers
-4. Setup Player Controller Reference
-5. Implement Raycast Method
-6. Perform Raycasts in Update
-7. Process Raycast Results
+For the robot ADAS, we created it following these steps
+1. (RESERVED FOR THE CREATIVE VISIONARY)
 
-1 - The RaycastResultsUpdatedEventArgs class is created to hold the results of the raycasts. This class includes a property Results of type RaycastHit[,] to store the 2D array of raycast hits. The constructor initializes this property with the provided raycast results.
-
-2 - Several public variables are declared to configure the raycasting behavior. These include Player for the player GameObject, raycastDistance for the distance of each raycast, layerMask to specify which layers to raycast against, rayDirection for the direction of the raycast, drawDistance for the distance to draw debug lines, lifeSpan for the lifespan of debug lines, activateRaycast to control whether raycasting is active, sStep and tStep for the number of steps in the s and t directions, and sLeft, sRight, tTop, and tBot for the boundaries in the s and t directions.
-
-3 - Delegate types are defined for handling raycast result updates. Events are declared for each direction (front, left, right, back) to notify other parts of the system when raycast results are updated.
-
-4 - In the Awake method, a reference to the PlayerController component is obtained from the parent object. This reference is used to interact with the player's controller based on raycast results.
-
-5 - The RaycastInDirection method performs raycasts in a specified direction. It calculates the direction vectors, performs the raycasts, stores the results, and draws debug lines for visualization. It returns a boolean indicating whether any hits were detected.
-
-6 - In the Update method, the activateRaycast flag is checked. If it is true, raycast result arrays for each direction (front, left, right, back) are initialized. The RaycastInDirection method is called to perform raycasts in each direction.
-
-7 - The results of each direction's raycasts are processed. If hits are detected, the corresponding events are triggered, and the PlayerController is updated to reflect the presence of obstacles. If no hits are detected, the warnings in the PlayerController are cleared.
-
+1 - A short description of each step (RESERVED FOR THE CREATIVE VISIONARY)
 
 ---
 ## Future Goals
