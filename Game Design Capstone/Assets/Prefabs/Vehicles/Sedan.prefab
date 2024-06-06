@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3657777248590531867}
   - component: {fileID: 5101182443738232366}
   - component: {fileID: 8059284679122733570}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: door_br
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 3733604795460686781}
   - component: {fileID: 3487041744164699734}
   - component: {fileID: 1003109165506397315}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: FR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 1102828611043792483}
   - component: {fileID: 2116840648830591064}
   - component: {fileID: 4093913193257454892}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: steering_wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -261,7 +261,7 @@ GameObject:
   - component: {fileID: 546731874957471701}
   - component: {fileID: 8383521082354327301}
   - component: {fileID: 294215280333263853}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: door_fr
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -345,7 +345,7 @@ GameObject:
   - component: {fileID: 7903008090292270943}
   - component: {fileID: 3103118402904989614}
   - component: {fileID: 1186329105148653335}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: FL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -428,7 +428,7 @@ GameObject:
   - component: {fileID: 5754854042629316185}
   - component: {fileID: 637365500244850314}
   - component: {fileID: 1088953860737445032}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: door_bl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -512,7 +512,7 @@ GameObject:
   - component: {fileID: 274642233089648646}
   - component: {fileID: 2885284511756267650}
   - component: {fileID: 96735313817732277}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: door_fl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -596,7 +596,7 @@ GameObject:
   - component: {fileID: 8935905611919979344}
   - component: {fileID: 3247308223343394356}
   - component: {fileID: 2399043282634934317}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sedan1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -681,7 +681,7 @@ GameObject:
   - component: {fileID: 1813457810355178317}
   - component: {fileID: 1684240755766158294}
   - component: {fileID: 8636011262219436393}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -764,7 +764,7 @@ GameObject:
   - component: {fileID: 9004891196241034783}
   - component: {fileID: 3348074411396226719}
   - component: {fileID: 8505942580384491693}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -848,8 +848,7 @@ GameObject:
   - component: {fileID: -1995195543988096663}
   - component: {fileID: 5826170037688937548}
   - component: {fileID: 2659309812083575689}
-  - component: {fileID: 805132033995748646}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sedan
   m_TagString: Vehicle
   m_Icon: {fileID: 0}
@@ -946,17 +945,3 @@ MonoBehaviour:
   speed: 15
   reachDistance: 1
   rotationSpeed: 5
---- !u!114 &805132033995748646
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9193091905229099719}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d2dffb961554854aa47900e857c4440, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxDistance: 80
-  visualContainer: {fileID: 0}

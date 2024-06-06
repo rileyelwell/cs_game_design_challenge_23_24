@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9193091905229197025}
   - component: {fileID: 9193091905225805505}
   - component: {fileID: 9193091905226902529}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 9193091905229197027}
   - component: {fileID: 9193091905225805507}
   - component: {fileID: 9193091905226902531}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 9193091905229197029}
   - component: {fileID: 9193091905225805511}
   - component: {fileID: 9193091905226902535}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Car2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -263,8 +263,7 @@ GameObject:
   - component: {fileID: -1995195543988096663}
   - component: {fileID: 5826170037688937548}
   - component: {fileID: 2659309812083575689}
-  - component: {fileID: 805132033995748646}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Car
   m_TagString: Vehicle
   m_Icon: {fileID: 0}
@@ -359,20 +358,6 @@ MonoBehaviour:
   speed: 15
   reachDistance: 1
   rotationSpeed: 5
---- !u!114 &805132033995748646
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9193091905229099719}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d2dffb961554854aa47900e857c4440, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxDistance: 80
-  visualContainer: {fileID: 0}
 --- !u!1 &9193091905229099721
 GameObject:
   m_ObjectHideFlags: 0
@@ -384,7 +369,7 @@ GameObject:
   - component: {fileID: 9193091905229197033}
   - component: {fileID: 9193091905225805515}
   - component: {fileID: 9193091905226902539}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: FR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -467,7 +452,7 @@ GameObject:
   - component: {fileID: 9193091905229197035}
   - component: {fileID: 9193091905225805509}
   - component: {fileID: 9193091905226902533}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: FL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -550,7 +535,7 @@ GameObject:
   - component: {fileID: 9193091905229197037}
   - component: {fileID: 9193091905225805519}
   - component: {fileID: 9193091905226902543}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: door_fr
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -634,7 +619,7 @@ GameObject:
   - component: {fileID: 9193091905229197039}
   - component: {fileID: 9193091905225805513}
   - component: {fileID: 9193091905226902537}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: door_fl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -718,7 +703,7 @@ GameObject:
   - component: {fileID: 9193091905229197043}
   - component: {fileID: 9193091905225805517}
   - component: {fileID: 9193091905226902541}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: steering_wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}

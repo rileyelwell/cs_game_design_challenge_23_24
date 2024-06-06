@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3012071624744420502}
   - component: {fileID: 7035181801130348528}
   - component: {fileID: 4296253678487068772}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SportCar2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 1806605178777581035}
   - component: {fileID: 8208924330134916371}
   - component: {fileID: 8545571033884672192}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: FR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179,7 +179,7 @@ GameObject:
   - component: {fileID: 6234901891994170740}
   - component: {fileID: 6519506064151096675}
   - component: {fileID: 6398506188064326530}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -262,7 +262,7 @@ GameObject:
   - component: {fileID: 8999832803739431629}
   - component: {fileID: 523375970516458184}
   - component: {fileID: 4903940125621523545}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -345,7 +345,7 @@ GameObject:
   - component: {fileID: 4682896754384574834}
   - component: {fileID: 8641321544000077418}
   - component: {fileID: 4303289051349508891}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: steering_wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -428,7 +428,7 @@ GameObject:
   - component: {fileID: 207274160565506113}
   - component: {fileID: 756417544651263618}
   - component: {fileID: 5420156338559557511}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: door_fr
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -512,7 +512,7 @@ GameObject:
   - component: {fileID: 5758762412544984378}
   - component: {fileID: 3229336440001597893}
   - component: {fileID: 8117521661023405450}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: FL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -596,8 +596,7 @@ GameObject:
   - component: {fileID: -1995195543988096663}
   - component: {fileID: 5826170037688937548}
   - component: {fileID: 2659309812083575689}
-  - component: {fileID: 805132033995748646}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SportsCar
   m_TagString: Vehicle
   m_Icon: {fileID: 0}
@@ -692,20 +691,6 @@ MonoBehaviour:
   speed: 15
   reachDistance: 1
   rotationSpeed: 5
---- !u!114 &805132033995748646
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9193091905229099719}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d2dffb961554854aa47900e857c4440, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxDistance: 80
-  visualContainer: {fileID: 0}
 --- !u!1 &9193801344712124732
 GameObject:
   m_ObjectHideFlags: 0
@@ -717,7 +702,7 @@ GameObject:
   - component: {fileID: 141685689466410073}
   - component: {fileID: 1059708313115055419}
   - component: {fileID: 1981314521927241765}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: door_fl
   m_TagString: Untagged
   m_Icon: {fileID: 0}

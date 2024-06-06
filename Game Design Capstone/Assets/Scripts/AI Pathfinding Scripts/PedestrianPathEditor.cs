@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class PedestrianPathEditor : MonoBehaviour
 {
-    public List<Transform> path_objs = new List<Transform>();   // List of nodes in path
-    [SerializeField] private Color rayColor = Color.magenta;    // Color of the path in scene
-    [SerializeField] private GameObject pedestrian;             // Pedestrian prefab
-    private GameObject start;                                   // Spawner location
-    [SerializeField] private float minTime;                     // Minimum time between spawns
-    [SerializeField] private float maxTime;                     // Maximum time between spawns
-    private float timer;                                        // Current time between spawns
-    [SerializeField] private float offset;                     // The offset range each pedestrian could have walking the path
+    public List<Transform> path_objs = new List<Transform>();                                // List of nodes in path
+    [SerializeField] private Color rayColor = Color.magenta;                                 // Color of the path in scene
+    [SerializeField] private List<GameObject> pedestrians = new List<GameObject>();          // Pedestrian prefab
+    private GameObject start;                                                                // Spawner location
+    [SerializeField] private float minTime;                                                  // Minimum time between spawns
+    [SerializeField] private float maxTime;                                                  // Maximum time between spawns
+    private float timer;                                                                     // Current time between spawns
+    [SerializeField] private float offset;                                                   // The offset range each pedestrian could have walking the path
 
     /*
      * Name: Start (Unity)
@@ -38,10 +38,14 @@ public class PedestrianPathEditor : MonoBehaviour
         timer -= Time.deltaTime;
         if (timer <= 0)
         {
-            timer = UnityEngine.Random.Range(minTime, maxTime);
+            timer = Random.Range(minTime, maxTime);
+
+            // gets a random index to spawn a random person from the array
+            int randIndex = Random.Range(0, pedestrians.Count);
+            // print(randIndex);
 
             // Spawns a pedestrian to walk on this path
-            GameObject temp_pedestrian = Instantiate(pedestrian, start.transform);
+            GameObject temp_pedestrian = Instantiate(pedestrians[randIndex], start.transform);
             temp_pedestrian.GetComponent<WalkOnPath>().SetPath(this.gameObject.GetComponent<PedestrianPathEditor>());
             temp_pedestrian.GetComponent<WalkOnPath>().SetOffset(offset);
         }

@@ -19,6 +19,7 @@ public class GameplayManager : MonoBehaviour
     [SerializeField] private GameObject playerSticker, playerTopper;
     [SerializeField] private GameObject stickerSelector, topperSelector;
     private CustomizerScreen stickerSelect, topperSelect;
+    [SerializeField] private MenuNavigationCustom menuNavCustomScript;
 
     /*
      * Name: Awake (Unity)
@@ -43,12 +44,16 @@ public class GameplayManager : MonoBehaviour
         stickerSelect = stickerSelector.GetComponent<CustomizerScreen>();
         topperSelect = topperSelector.GetComponent<CustomizerScreen>();
 
+        canPause = false;
+        isPaused = false;
+
         DisplayCustomizerScreen();
     }
 
     IEnumerator DisplayInstructions()
     {
         Time.timeScale = 1f;
+        customizerPanel.SetActive(false);
 
         // wait for a couple of frames before calling the function
         yield return new WaitForSeconds(timeToDisplayInstructions);
@@ -60,12 +65,9 @@ public class GameplayManager : MonoBehaviour
             instructionSections[i].SetActive(i == currentSectionIndex);
 
         instructionsPanel.SetActive(true);
-        customizerPanel.SetActive(false);
         gameplayPanel.SetActive(true);
 
         isDisplayingInstructions = true;
-        canPause = true;
-        isPaused = false;
     }
 
     /*
@@ -76,7 +78,7 @@ public class GameplayManager : MonoBehaviour
      */
     private void Update() {
         // don't allow other inputs or checking while displaying instructions at beginning
-        if (customizerPanel.activeInHierarchy && Input.GetButtonDown("Continue"))
+        if (customizerPanel.activeInHierarchy && Input.GetButtonDown("Submit"))
         {
             SetPlayerCustomization();
             StartCoroutine(DisplayInstructions());
@@ -207,6 +209,7 @@ public class GameplayManager : MonoBehaviour
             isDisplayingInstructions = false;
             instructionsPanel.SetActive(false);
             Time.timeScale = 1f;
+            canPause = true;
             return;
         }
             
@@ -222,13 +225,48 @@ public class GameplayManager : MonoBehaviour
 
     private void SetPlayerCustomization()
     {
+        string lastSelectedButton = menuNavCustomScript.GetSelectedButtonName();
+        int stickerCurrentIndex = stickerSelect.GetCurrentIndex(0);
+        int topperCurrentIndex = topperSelect.GetCurrentIndex(0);
+
+        if (lastSelectedButton == "StickerLeftArrow")
+        {
+            print("leftStick");
+            stickerCurrentIndex = stickerSelect.GetCurrentIndex(1);
+            print(stickerCurrentIndex);
+        }
+            
+        else if (lastSelectedButton == "StickerRightArrow")
+        {
+            print("rightStick");
+            stickerCurrentIndex = stickerSelect.GetCurrentIndex(-1);
+            print(stickerCurrentIndex);
+        }
+            
+        else if (lastSelectedButton == "TopperLeftArrow")
+        {
+            print("lefttop");
+            topperCurrentIndex = topperSelect.GetCurrentIndex(1);
+            print(topperCurrentIndex);
+        }
+            
+        else if (lastSelectedButton == "TopperRightArrow")
+        {
+            print("righttop");
+            topperCurrentIndex = topperSelect.GetCurrentIndex(-1);
+            print(topperCurrentIndex);
+        }
+            
+
         for (int index = 0; index < playerSticker.transform.childCount; index++)
         {
             // Get the child GameObject at the current index
             GameObject child = playerSticker.transform.GetChild(index).gameObject;
 
+            
+
             // Check if this is the child we want to keep active
-            if (index == stickerSelect.GetCurrentIndex())
+            if (index == stickerCurrentIndex)
                 child.SetActive(true);
             else
                 child.SetActive(false);
@@ -240,7 +278,7 @@ public class GameplayManager : MonoBehaviour
             GameObject child = playerTopper.transform.GetChild(index).gameObject;
 
             // Check if this is the child we want to keep active
-            if (index == topperSelect.GetCurrentIndex())
+            if (index == topperCurrentIndex)
                 child.SetActive(true);
             else
                 child.SetActive(false);

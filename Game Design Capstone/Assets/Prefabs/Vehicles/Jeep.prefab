@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5207563435577695363}
   - component: {fileID: 1836290780021305581}
   - component: {fileID: 5768832341112574773}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 9035697465805168153}
   - component: {fileID: 1410969821916753916}
   - component: {fileID: 315984241710156157}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: FR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 5743708749133398294}
   - component: {fileID: 4479792927108980999}
   - component: {fileID: 5112269432255412943}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Jeep
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -262,7 +262,7 @@ GameObject:
   - component: {fileID: 2184281667572912803}
   - component: {fileID: 7604941488074844128}
   - component: {fileID: 116900351984868122}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -345,7 +345,7 @@ GameObject:
   - component: {fileID: 3701165161608647597}
   - component: {fileID: 7621701119121998966}
   - component: {fileID: 1657639381686044170}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: FL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -428,7 +428,7 @@ GameObject:
   - component: {fileID: 7978621714539829795}
   - component: {fileID: 1737365786608613803}
   - component: {fileID: 8876929511498969436}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: steering_wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -511,7 +511,7 @@ GameObject:
   - component: {fileID: 1125478131966918538}
   - component: {fileID: 8364532652771640526}
   - component: {fileID: 1439529073207567882}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: door_fr
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -595,7 +595,7 @@ GameObject:
   - component: {fileID: 3755876150248927178}
   - component: {fileID: 6518384374865800703}
   - component: {fileID: 6767060883953243853}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: door_fl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -680,8 +680,7 @@ GameObject:
   - component: {fileID: -1995195543988096663}
   - component: {fileID: 5826170037688937548}
   - component: {fileID: 2659309812083575689}
-  - component: {fileID: 805132033995748646}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Jeep
   m_TagString: Vehicle
   m_Icon: {fileID: 0}
@@ -776,17 +775,3 @@ MonoBehaviour:
   speed: 15
   reachDistance: 1
   rotationSpeed: 5
---- !u!114 &805132033995748646
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9193091905229099719}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d2dffb961554854aa47900e857c4440, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxDistance: 80
-  visualContainer: {fileID: 0}

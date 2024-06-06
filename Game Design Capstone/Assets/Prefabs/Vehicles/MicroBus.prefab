@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2737349707540395459}
   - component: {fileID: 7607520032326895174}
   - component: {fileID: 8186402475310009008}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: door_br
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 2714272947404658309}
   - component: {fileID: 1591078470860935842}
   - component: {fileID: 315270330325060422}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: FR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 674560895571089654}
   - component: {fileID: 8199554929857264828}
   - component: {fileID: 1399614534748254579}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: door_fr
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -262,7 +262,7 @@ GameObject:
   - component: {fileID: 1985336980379227596}
   - component: {fileID: 7484681714277626468}
   - component: {fileID: 7293293117878542125}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -345,7 +345,7 @@ GameObject:
   - component: {fileID: 6946301696939278191}
   - component: {fileID: 5320694764878020915}
   - component: {fileID: 1992555304609548066}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: steering_wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -428,7 +428,7 @@ GameObject:
   - component: {fileID: 6601570297544568860}
   - component: {fileID: 9101083768924309049}
   - component: {fileID: 7857158885644978381}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: FL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -511,7 +511,7 @@ GameObject:
   - component: {fileID: 2436246592457724634}
   - component: {fileID: 8263379999979072243}
   - component: {fileID: 9011653165145521079}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: MicroBus4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -596,7 +596,7 @@ GameObject:
   - component: {fileID: 2494799692814399123}
   - component: {fileID: 6303294893231415512}
   - component: {fileID: 8766499044497206759}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -679,7 +679,7 @@ GameObject:
   - component: {fileID: 8236294712054552660}
   - component: {fileID: 5228236876900231599}
   - component: {fileID: 2520250961481315542}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: door_fl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -764,8 +764,7 @@ GameObject:
   - component: {fileID: -1995195543988096663}
   - component: {fileID: 5826170037688937548}
   - component: {fileID: 2659309812083575689}
-  - component: {fileID: 805132033995748646}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: MicroBus
   m_TagString: Vehicle
   m_Icon: {fileID: 0}
@@ -861,17 +860,3 @@ MonoBehaviour:
   speed: 15
   reachDistance: 1
   rotationSpeed: 5
---- !u!114 &805132033995748646
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9193091905229099719}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d2dffb961554854aa47900e857c4440, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxDistance: 80
-  visualContainer: {fileID: 0}
