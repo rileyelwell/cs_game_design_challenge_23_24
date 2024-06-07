@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WalkOnPath : MonoBehaviour
 {
-    private PedestrianPathEditor PathToFollow;               // Path for the pedestrian to follow
+    [SerializeField] private PedestrianPathEditor PathToFollow;               // Path for the pedestrian to follow
     private float offset;
     [SerializeField] private int startingWaypointID = 0;    // Starting id for point on path
     private int currentWaypointID;                          // Current id for point on path

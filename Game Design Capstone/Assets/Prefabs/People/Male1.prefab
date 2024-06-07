@@ -565,8 +565,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e448dc1ffdd5ace4994fbe7f91559d43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PathToFollow: {fileID: 0}
   startingWaypointID: 1
-  speed: 1.5
+  speed: 1.8
   reachDistance: 0.5
   rotationSpeed: 5
 --- !u!1 &1567473936819926331
