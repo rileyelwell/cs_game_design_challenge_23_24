@@ -55,7 +55,10 @@ public class PlayerController : MonoBehaviour
         float rightInput = GetPlayerInput("RightVertical", "RightForwardController");
 
         if (Input.GetButton("Break"))
+        {
             currentBreakForce = breakingForce;
+            // AudioManager.instance.PlayScreeSound();
+        }
         else
             currentBreakForce = 0.0f;
 
@@ -82,6 +85,9 @@ public class PlayerController : MonoBehaviour
         UpdateWheel(mlwheel, mltrans, currentLeftAcceleration);
         UpdateWheel(brwheel, brtrans, currentRightAcceleration);
         UpdateWheel(blwheel, bltrans, currentLeftAcceleration);
+
+        // if (currentLeftAcceleration != 0 && currentRightAcceleration != 0)
+            // AudioManager.instance.PlayStartDrivingSound();
     }
 
     float GetPlayerInput(string in1, string in2)

@@ -3,7 +3,27 @@ guid: cf19392af3e16304394f4848bef9769c
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BuxtonSign
+    second: {fileID: 2100000, guid: d1e17b46062fdd844a722c43c9f0c950, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CauthornSign
+    second: {fileID: 2100000, guid: 9db9d3db121e7a648a26b43786e35a83, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: HawleySign
+    second: {fileID: 2100000, guid: a67bc8e4cc311c94a891e991e92cc668, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PolingSign
+    second: {fileID: 2100000, guid: 8c5a3da0f015f4f4c8f7ab235ff3128c, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

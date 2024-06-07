@@ -23,7 +23,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private RectTransform arrowImage;                                                          // Arrow pointer image
     [SerializeField] private float arrowOffset = 25;                                                            // Arrow rotation speed
     private Transform targetWaypoint;                                                                           // Target waypoint
-    [SerializeField] private float baseScore = 50, maxBonusScore = 50;
+    [SerializeField] private float baseScore = 100, maxBonusScore = 100;
 
     /*
      * Name: Awake (Unity)
@@ -247,16 +247,16 @@ public class UIManager : MonoBehaviour
 
             // Add points for health and temperature (up to ~50)
             baseScore += health * maxBonusScore;
-            baseScore += temp * maxBonusScore;
+            // baseScore += temp * maxBonusScore;
 
             // Apply time bonus if delivered faster than the duration
-            float timeBonus = time < tempDuration ? (tempDuration - time) * 0.1f : 0;
+            float timeBonus = time < tempDuration ? (tempDuration - time) * 0.5f : 0;
             finalScore = (int)(baseScore + timeBonus);
 
             // Determine the description based on the final score
-            if (finalScore >= 130)
+            if (finalScore >= 220)
                 SetScoreDescription(Color.white, Color.white, Color.white, "Perfect timing and driving!");
-            else if (finalScore >= 100)
+            else if (finalScore >= 130)
                 SetScoreDescription(Color.white, Color.white, Color.black, "Well done, you made a happy customer!");
             else
                 SetScoreDescription(Color.white, Color.black, Color.black, "Your delivery skills could be better...");
