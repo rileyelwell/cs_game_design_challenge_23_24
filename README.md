@@ -12,6 +12,10 @@ The main goals of our game are to:
 - Win the game design competition (of course!)
 
 ---
+## Now Available to Download and Play for Windows!
+If you wish to drive your robot around anytime, visit our [itch.io page here](https://khuynh2002.itch.io/university-delivery-drone) to download the project (for Windows devices). After downloading the zip file and extracting, you just need to double-click or run the "Game Design Capstone.exe" file. Please leave a comment on the itch.io page if you encounter any issues, and enjoy driving!  
+
+---
 ## How to Play
 The game has an easy to understand tutorial when you first start the game that will teach you the controls and what everything on your screen means. Here is a list of the controls:  
 | PC | Xbox | Input |
