@@ -93,8 +93,8 @@ public class PlayerController : MonoBehaviour
     float GetPlayerInput(string in1, string in2)
     {
         float val = Input.GetAxis(in2);
-        if (val > 0.5)
-            return -1;
+        if (val > 0.05)
+            return -1 * Input.GetAxis(in2);
         return Input.GetAxis(in1);
     }
 
